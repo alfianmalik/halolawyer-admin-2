@@ -26,25 +26,19 @@ use App\Http\Controllers\User\ProfileController;
 Route::view('/','welcome');
 
 
-Route::group(['namespace' => 'Admin','middleware' => 'auth','prefix' => 'admin'],function(){
+Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin'],function(){
 	
-	Route::get('/',[AdminController::class,'index'])->name('admin')->middleware(['can:admin']);
+	Route::get('/',[AdminController::class,'index'])->name('admin');
+
+	Route::group(['prefix' => 'chat'],function(){
+		Route::get('/',[App\Http\Controllers\Admin\ChatController::class, 'index'])->name('chat');
+		Route::get('/show/{order_uuid}',[App\Http\Controllers\Admin\ChatController::class, 'show'])->name('chat.show');
+	});
 
 	//Route Rescource
-	Route::resource('/user','UserController')->middleware(['can:admin']);
+	Route::resource('/user','UserController');
 
 	//Route View
-	
-	Route::view('/404-page','admin.404-page')->name('404-page');
-	Route::view('/blank-page','admin.blank-page')->name('blank-page');
-	Route::view('/buttons','admin.buttons')->name('buttons');
-	Route::view('/cards','admin.cards')->name('cards');
-	Route::view('/utilities-colors','admin.utilities-color')->name('utilities-colors');
-	Route::view('/utilities-borders','admin.utilities-border')->name('utilities-borders');
-	Route::view('/utilities-animations','admin.utilities-animation')->name('utilities-animations');
-	Route::view('/utilities-other','admin.utilities-other')->name('utilities-other');
-	Route::view('/chart','admin.chart')->name('chart');
-	Route::view('/tables','admin.tables')->name('tables');
 	
 
 });
