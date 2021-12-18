@@ -13,6 +13,7 @@
         "@fortawesome/fontawesome-free": "^5.15.4",
         "axios": "^0.19",
         "cross-env": "^7.0",
+        "bootstrap": "^4.6.0",
         "jquery": "^3.6",
         "laravel-echo": "^1.11.3",
         "laravel-mix": "^6.0.39",
