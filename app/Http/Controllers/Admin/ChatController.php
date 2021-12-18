@@ -24,10 +24,13 @@ class ChatController extends Controller
      */
     public function show(Request $request)
     {
-        $order = Order::find($request->order_uuid);
+        $order = Order::whereOrderUuid($request->order_uuid)->first();
 
-        $chat = Chat::conversations()->getById($order->chat_id);
+        $conversationId = $order->chat_id;
+        $conversation = Chat::conversations()->getById($order->chat_id);
+        $participants = $conversation->getParticipants();
 
-        return view("admin.chat.show", compact("order", "chat"));
+
+        return view("admin.chat.show", compact('order', "conversation", "participants", "conversationId"));
     }
 }
