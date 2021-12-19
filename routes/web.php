@@ -23,7 +23,9 @@ use App\Http\Controllers\User\ProfileController;
 |
 */
 
-Route::view('/','welcome');
+Route::get('/', function(){
+	return redirect()->route("login");
+});
 
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin'],function(){
