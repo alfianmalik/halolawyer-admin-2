@@ -2006,10 +2006,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     currentUser: function currentUser() {
-      return participants[1];
+      return participants[0];
     }
   },
   methods: {
+    scrollToEnd: function scrollToEnd() {
+      var content = this.$refs.container; // content.scrollTop = content.scrollHeight;
+
+      content.scrollTop = content.clientHeight; // content.scrollIntoView({behavior: 'smooth'});
+    },
     fetchMessages: function fetchMessages() {
       var _this = this;
 
@@ -2051,6 +2056,13 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.fetchMessages();
     this.enablePusher();
+  },
+  mounted: function mounted() {
+    // This will be called on load
+    this.scrollToEnd();
+  },
+  updated: function updated() {
+    this.scrollToEnd();
   },
   filters: {
     formatDate: function formatDate(value) {
@@ -48235,7 +48247,7 @@ var render = function () {
   return _c("div", { staticClass: "position-relative" }, [
     _c(
       "div",
-      { staticClass: "chat-messages p-1" },
+      { ref: "container", staticClass: "chat-messages p-1" },
       _vm._l(_vm.messages.data, function (message, index) {
         return _c(
           "div",
@@ -48243,7 +48255,12 @@ var render = function () {
             key: index,
             staticClass: "pb-4",
             class: [
-              message.is_sender ? "chat-message-left" : "chat-message-right",
+              message.sender.participation[0].messageable_id ==
+                _vm.currentUser.participation[0].messageable_id &&
+              message.sender.participation[0].messageable_type ==
+                _vm.currentUser.participation[0].messageable_type
+                ? "chat-message-right"
+                : "chat-message-left",
             ],
           },
           [
@@ -48267,7 +48284,14 @@ var render = function () {
               "div",
               {
                 staticClass: "flex-shrink-1 bg-light rounded py-2 px-3 ",
-                class: [message.is_sender ? "ml-3" : "mr-3"],
+                class: [
+                  message.sender.participation[0].messageable_id ==
+                    _vm.currentUser.participation[0].messageable_id &&
+                  message.sender.participation[0].messageable_type ==
+                    _vm.currentUser.participation[0].messageable_type
+                    ? "mr-3"
+                    : "ml-3",
+                ],
               },
               [
                 _c("div", { staticClass: "font-weight-bold mb-1" }, [
