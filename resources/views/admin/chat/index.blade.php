@@ -10,33 +10,47 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>No</th>
+                        <th>Nama Customer</th>
+                        <th>Email</th>
+                        <th>No HP</th>
+                        <th>Jadwal Konsultasi</th>
+                        <th>Status</th>
+                        <th>Tindakan</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>No</th>
+                        <th>Nama Customer</th>
+                        <th>Email</th>
+                        <th>No HP</th>
+                        <th>Jadwal Konsultasi</th>
+                        <th>Status</th>
+                        <th>Tindakan</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     @foreach ($orders as $order)
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->user_first_name }} {{ $order->user_last_name }}</td>
+                            <td>{{ $order->user_email }}</td>
+                            <td>{{ $order->user_phone }}</td>
+                            <td>{{ $order->lawyer_schedule }}</td>
+                            <th>
+                                <a href="{{ route("chat.show", $order->order_uuid) }}" class="btn btn-primary {{ $order->is_waiting?"Proses":($order->is_finished?"Live Chat":"disabled") }}">
+                                    {{ $order->is_waiting?"Proses":($order->is_finished?"Live Chat":"Pending") }}
+                                </a>
+                            </th>
+                            <th>
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                                <button class="btn btn-primary">
+                                    Live Chat
+                                </button>
+                            </th>
                         </tr>
                     @endforeach
                 </tbody>
