@@ -30,9 +30,12 @@ class CreateLawyersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             
             $table->string('slug');
-            $table->string('location');
-            $table->text('expertise_specialization');
-            $table->text("consultation");
+            $table->string('location')->nullable();
+            $table->string('province_id')->nullable();
+            $table->string('city_id')->nullable();
+            $table->string('district_id')->nullable();
+            $table->text('expertise_specialization')->nullable();
+            $table->text("consultation")->nullable();
             $table->date('lawyers_since')->nullable();
             $table->integer('is_favorite')->length(1)->default(0);
             $table->integer('is_special')->length(1)->default(0);
