@@ -39,17 +39,17 @@
                             <td>{{ $order->user_phone }}</td>
                             <td>{{ $order->lawyer_schedule }}</td>
                             <th>
-                                <a href="{{ route("chat.show", $order->order_uuid) }}" class="btn btn-primary {{ $order->is_waiting?"Proses":($order->is_finished?"Live Chat":"disabled") }}">
+                                <button class="btn btn-primary btn-sm">
                                     {{ $order->is_waiting?"Proses":($order->is_finished?"Live Chat":"Pending") }}
                                 </a>
                             </th>
                             <th>
-                                <button class="btn btn-primary">
+                                <button class="btn btn-primary btn-sm">
                                     <i class="fa fa-eye"></i>
                                 </button>
-                                <button class="btn btn-primary">
+                                <a href="{{ route("chat.show", $order->order_uuid) }}" class="btn btn-primary {{ $order->is_waiting?"Proses":($order->is_finished?"Live Chat":"disabled") }}">
                                     Live Chat
-                                </button>
+                                </a>
                             </th>
                         </tr>
                     @endforeach
