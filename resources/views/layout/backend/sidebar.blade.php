@@ -1,15 +1,14 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-white sidebar shadow-sm rounded sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
         <div class="sidebar-brand-icon">
-            <img src="" alt="">
+            <img src="{{ asset("images/halolawyer.png") }}" alt="">
         </div>
-        <div class="sidebar-brand-text mx-3">Halolawyer</div>
     </a>
 
     <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider my-0 mt-3">
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
