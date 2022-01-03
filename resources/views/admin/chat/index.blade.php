@@ -54,8 +54,8 @@
                             <td>{{ $order->user_phone }}</td>
                             <td>{{ $order->lawyer_schedule }}</td>
                             <th>
-                                <button class="btn btn-outline-primary btn-sm" {{ $order->is_waiting?"disabled":($order->is_finished?"Live Chat":"disabled") }}>
-                                    {{ $order->is_waiting?"Proses":($order->is_finished?"Live Chat":"Pending") }}
+                                <button class="btn btn-outline-{{ $order->is_waiting?"primary":($order->is_finished?"danger":"primary") }} btn-sm" {{ $order->is_waiting?"disabled":($order->is_finished?"Live Chat":"disabled") }}>
+                                    <i class="fa fa-circle" style="font-size: 6px;top: -10px" aria-hidden="true"></i> {{ $order->is_waiting?"Proses":($order->is_finished?"Live Chat":"Pending") }}
                                 </a>
                             </th>
                             <th>
@@ -63,7 +63,7 @@
                                     <i class="fa fa-eye"></i>
                                 </button>
                                 <a href="{{ route("chat.show", $order->order_uuid) }}" class="btn btn-outline-primary btn-sm {{ $order->is_waiting?"Proses":($order->is_finished?"Live Chat":"disabled") }}">
-                                    Live Chat
+                                    <i class="fa fa-comments"></i> Live Chat
                                 </a>
                             </th>
                         </tr>

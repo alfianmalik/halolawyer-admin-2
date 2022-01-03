@@ -18,31 +18,122 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('user') }}">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Users</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user"
+            aria-expanded="true" aria-controls="user">
+            <i class="fas fa-users"></i>
+            <span>Manajemen User</span>
+        </a>
+        <div id="user" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('user') }}">
+                    <span>Customer</span>
+                </a>
+                <a class="collapse-item" href="{{ route('lawyers') }}">
+                    <span>Mitra</span>
+                </a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Manajemen Kasus</span>
+        </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('lawyers') }}">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Lawyers</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-users"></i>
+            <span>Produk</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('user') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Customer</span>
+                </a>
+                <a class="collapse-item" href="{{ route('lawyers') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span></span>
+                </a>
+            </div>
+        </div>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('chat') }}">
-            <i class="fas fa-fw fa-user"></i>
+            <i class="fa fa-comments"></i>
             <span>Chat</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Marketing</span>
+        </a>
+    </li>
+    
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Sales</span>
+        </a>
+    </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <hr class="sidebar-divider mt-3">
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Monitoring</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-users"></i>
+            <span>Setting</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('user') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Customer</span>
+                </a>
+                <a class="collapse-item" href="{{ route('lawyers') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span></span>
+                </a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-users"></i>
+            <span>Admin Account</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('user') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Customer</span>
+                </a>
+                <a class="collapse-item" href="{{ route('lawyers') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span></span>
+                </a>
+            </div>
+        </div>
+    </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
+    <div class="text-center d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 </ul>

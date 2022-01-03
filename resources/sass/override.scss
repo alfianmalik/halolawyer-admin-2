@@ -23,3 +23,35 @@ $blue: #524B9F !default;
 .sidebar .nav-item .nav-link {
     padding: 5px 1rem;
 }
+
+.sidebar-dark hr.sidebar-divider {
+    border-top: 1px solid #eee;
+}
+
+.sidebar-dark .nav-item .nav-link[data-toggle=collapse]::after {
+    color: black;
+}
+
+.sidebar .nav-item .nav-link span {
+    color: black;
+}
+
+.sidebar .nav-item .nav-link i {
+    color: black;
+}
+
+.sidebar-dark .nav-item .nav-link:focus i, .sidebar-dark .nav-item .nav-link:hover i {
+    color: black;
+}
+
+.sidebar .nav-item .collapse .collapse-inner .collapse-item:active {
+    color: black;
+}
+
+.sidebar .nav-item .collapse .collapse-inner .collapse-item:hover {
+    color: black;
+}
+
+.sidebar .nav-item .collapse .collapse-inner {
+    margin: 0px;
+}
