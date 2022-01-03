@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 Use App\Model\CaseCategory;
@@ -31,7 +33,7 @@ class LawyersTableSeeder extends Seeder
 	            'email' => 'lawyer'. $i .'@material.com',
 	            'uuid' => Str::uuid(),
 	            'slug' => Str::slug($faker->name),
-	            'profile_picture' => "http://halolawyer.co.id/wp-content/uploads/2020/07/bw.jpg",
+	            'profile_picture' => "https://i.pravatar.cc/300",
 	            'bod' => Carbon::now(),
 	            'phone' => '08676767676',
 	            'email_verified_at' => now(),

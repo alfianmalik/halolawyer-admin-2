@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class ProvinceSeeder extends Seeder
+class LawyerCaseExperienceTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class ProvinceSeeder extends Seeder
      */
     public function run()
     {
-        \DB::unprepared(\File::get(base_path('indonesia/province.sql')));
+        //
     }
 }
