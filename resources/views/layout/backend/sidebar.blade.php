@@ -21,7 +21,13 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ route('user') }}">
             <i class="fas fa-fw fa-user"></i>
-            <span>User Dashboard</span></a>
+            <span>Users</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('lawyers') }}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Lawyers</span></a>
     </li>
 
     <li class="nav-item">

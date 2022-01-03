@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\ProfileController;
 
+use App\Http\Controllers\Lawyer\LawyersController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +51,10 @@ Route::group(['namespace' => 'User','middleware' => 'auth' ,'prefix' => 'user'],
 	Route::get('/',[UserController::class,'index'])->name('user');
 	Route::get('/profile',[ProfileController::class,'index'])->name('profile');
 	Route::patch('/profile/update/{user}',[ProfileController::class,'update'])->name('profile.update');
+});
+
+Route::group(['namespace' => 'Lawyer','middleware' => 'auth' ,'prefix' => 'lawyers'],function(){
+	Route::get('/',[LawyersController::class,'index'])->name('lawyers');
 });
 
 Route::group(['namespace' => 'Auth','middleware' => 'guest'],function(){
