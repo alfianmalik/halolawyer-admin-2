@@ -35,7 +35,7 @@ class LawyersTableSeeder extends Seeder
 	            'email' => 'lawyer'. $i .'@material.com',
 	            'uuid' => Str::uuid(),
 	            'slug' => Str::slug($faker->name),
-	            'profile_picture' => "https://i.pravatar.cc/300",
+	            'profile_picture' => "https://i.pravatar.cc/150",
 	            'bod' => Carbon::now(),
 	            'phone' => '08676767676',
 	            'email_verified_at' => now(),
