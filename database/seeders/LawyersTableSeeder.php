@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Faker\Factory;
+use App\Models\Province;
 
 class LawyersTableSeeder extends Seeder
 {
@@ -123,7 +124,7 @@ class LawyersTableSeeder extends Seeder
             );
 
             for ($o=1;$o<10;$o++) {
-                $province = \App\Model\Province::inRandomOrder()->first();
+                $province = Province::inRandomOrder()->first();
                 DB::table('lawyers_work_area')->insert(
                     [
                         [
