@@ -8,6 +8,7 @@ Use App\Model\CaseCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Factory;
 
 class LawyersTableSeeder extends Seeder
 {
@@ -26,7 +27,7 @@ class LawyersTableSeeder extends Seeder
     	// DB::statement("SET foreign_key_checks=1");
 
     	for ($i=0; $i < 40; $i++) {
-            $faker = Faker\Factory::create();
+            $faker = Factory::create();
     		$lawyer = DB::table('lawyers')->insertGetId([
 	            'first_name' => $faker->firstName,
 	            'last_name' => $faker->lastName,
