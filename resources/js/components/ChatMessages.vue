@@ -43,7 +43,7 @@ export default {
       axios
         .get(
           // `/chat/conversations/${this.conversation}/messages?participant_id=${window.participants.id}&participant_type=${window.participants.type}`
-          `/chat/conversations/${this.conversation}/messages?participant_id=${participants[0].id}&participant_type=${participants[1].participation[0].messageable_type}&participant_id=${participants[0].id}&participant_type=${participants[1].participation[0].messageable_type}`
+          `/chat/conversations/${this.conversation}/messages?participant_id=${participants[0].id}&participant_type=${participants[0].participation[0].messageable_type}&participant_id=${participants[1].id}&participant_type=${participants[1].participation[0].messageable_type}`
         )
         .then(response => {
           this.messages = response.data;
