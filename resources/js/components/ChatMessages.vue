@@ -40,6 +40,7 @@ export default {
       // content.scrollIntoView({behavior: 'smooth'});
     },
     fetchMessages() {
+      console.log(participants)
       axios
         .get(
           // `/chat/conversations/${this.conversation}/messages?participant_id=${window.participants.id}&participant_type=${window.participants.type}`
