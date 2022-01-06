@@ -23,7 +23,7 @@
           <h6 class="font-weight-bold">Customer</h6>
       </div>
       <div v-for="(participant, index) in participants" :key="index">
-        <div class="media" v-if="participant.participation[1].messageable_type == 'App\\Models\\Administrator'">
+        <div class="media" v-if="participant.participation[0].messageable_type == 'App\\Models\\User'">
             <img class="mr-3 rounded-circle" src="https://via.placeholder.com/50" alt="">
             <div class="media-body">
               <h6 class="mb-0 font-weight-bold"></h6>
