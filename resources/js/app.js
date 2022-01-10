@@ -1,6 +1,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+var vueAwesomeCountdown = require('vue-awesome-countdown').default;
+
+Vue.use(vueAwesomeCountdown);
 
 Vue.component('chat-conversations', require('./components/ChatConversations.vue').default);
 Vue.component('chat-form', require('./components/ChatForm.vue').default);
@@ -14,7 +17,7 @@ const app = new Vue({
         message: []
     },
     created() {
-
+        this.startChatPusher()
     },
     methods : {
         showPassword(id) {
@@ -48,6 +51,24 @@ const app = new Vue({
         },
         messageToChat(message) {
             this.message = message
-        }
+        },
+        startChatPusher() {
+            let token = document.head.querySelector('meta[name="csrf-token"]');
+      
+            let pusher = new Pusher(process.env.MIX_PUSHER_APP_KEY, {
+              cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+              auth: { headers: { "X-CSRF-Token": token.content } },
+              authEndpoint: "/broadcasting/auth",
+            });
+      
+            let channel = pusher.subscribe(
+              `private-mc-start-chat-conversation.${conversation.id}`
+            );
+            channel.bind("App\\Events\\StartTimeChat", data => {
+                // console.log(new Date().getTime() + 10000)
+                this.$refs.start.startCountdown(true)
+                // this.$refs.start.timeObj.endTime(new Date().getTime() + 1800000)
+            });
+          }
     }
 });

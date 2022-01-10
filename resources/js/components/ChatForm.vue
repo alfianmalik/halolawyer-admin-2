@@ -49,9 +49,14 @@
                     this.newMessage = "";
                     // location.reload(); // comment this out if you are broadcasting
                 });
+
+                // First Send To Customer
+                axios.post(`/api/chat/start/${this.conversation}`)
+                    .then((e) => {
+                        // console.log(e)
+                    });
             },
             messageToChat(message) {
-                console.log(message);
                 this.$emit("inputData", message);
             },
         }

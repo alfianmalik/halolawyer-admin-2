@@ -21,6 +21,7 @@ class CreateOrderRequestTable extends Migration
             $table->integer('service_id');
             $table->integer('service_details_id');
             $table->integer('chat_id')->nullable();
+            $table->dateTime('start_chat_time')->nullable();
             $table->string('makingdocuments_service_id')->nullable();
             $table->string('makingdocuments_service_name')->nullable();
             $table->string('lawyer_uuid');

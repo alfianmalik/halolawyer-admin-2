@@ -37,6 +37,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin
 	Route::group(['prefix' => 'chat'],function(){
 		Route::get('/',[App\Http\Controllers\Admin\ChatController::class, 'index'])->name('chat');
 		Route::get('/show/{order_uuid}',[App\Http\Controllers\Admin\ChatController::class, 'show'])->name('chat.show');
+		Route::post('end/{uuid}', [App\Http\Controllers\Admin\ChatController::class, 'endChat'])->name('selesai.konsultasi.chat');
 	});
 
 	//Route Rescource
@@ -48,13 +49,25 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin
 });
 
 Route::group(['namespace' => 'User','middleware' => 'auth' ,'prefix' => 'user'],function(){
-	Route::get('/',[UserController::class,'index'])->name('user');
+	Route::get('/', [UserController::class,'index'])->name('user');
 	Route::get('/profile',[ProfileController::class,'index'])->name('profile');
-	Route::patch('/profile/update/{user}',[ProfileController::class,'update'])->name('profile.update');
+	Route::patch('/profile/update/{user}', [ProfileController::class,'update'])->name('profile.update');
 });
 
 Route::group(['namespace' => 'Lawyer','middleware' => 'auth' ,'prefix' => 'lawyers'],function(){
 	Route::get('/',[LawyersController::class,'index'])->name('lawyers');
+});
+
+Route::group(['namespace' => 'Product', 'middleware' => 'auth' , 'prefix' => 'product'],function(){
+
+});
+
+Route::group(['namespace' => 'Setting', 'middleware' => 'auth' , 'prefix' => 'setting'],function(){
+
+});
+
+Route::group(['namespace' => 'Admin', 'middleware' => 'auth' , 'prefix' => 'admin'],function(){
+
 });
 
 Route::group(['namespace' => 'Auth','middleware' => 'guest'],function(){

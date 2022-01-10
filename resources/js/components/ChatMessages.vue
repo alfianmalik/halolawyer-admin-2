@@ -35,9 +35,7 @@ export default {
   methods: {
     scrollToEnd () {
       var content = this.$refs.container;
-      // content.scrollTop = content.scrollHeight;
       content.scrollTop = content.clientHeight;
-      // content.scrollIntoView({behavior: 'smooth'});
     },
     fetchMessages() {
       axios
