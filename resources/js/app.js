@@ -69,6 +69,6 @@ const app = new Vue({
                 this.$refs.start.startCountdown(true)
                 // this.$refs.start.timeObj.endTime(new Date().getTime() + 1800000)
             });
-          }
+        }
     }
 });

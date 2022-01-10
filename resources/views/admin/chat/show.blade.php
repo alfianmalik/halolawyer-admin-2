@@ -40,13 +40,13 @@
                 </div>
                 <div class="card-header">
                     Waktu Tersisa
-                    <vac :start-time="{{ $startTime }}" :end-time="{{ $endTime }}" :auto-start="false" ref="start">
+                    <vac :start-time="{{ $startTime }}" :end-time="{{ $endTime }}" :auto-start="{{ $autoStart }}" ref="start">
                         <span
                           slot="process"
                           slot-scope="{ timeObj }">
                             @{{ timeObj.m }}:@{{ timeObj.s }}
                           </span>
-                      </vac>
+                    </vac>
                 </div>
                 <div class="card-body">
                   <div class="">
