@@ -1956,6 +1956,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     messageToChat: function messageToChat(message) {
+      console.log(message);
       this.$emit("inputData", message);
     }
   }
@@ -2019,7 +2020,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get( // `/chat/conversations/${this.conversation}/messages?participant_id=${window.participants.id}&participant_type=${window.participants.type}`
-      "/chat/conversations/".concat(this.conversation, "/messages?participant_id=").concat(participants[0].id, "&participant_type=").concat(participants[1].participation[0].messageable_type, "&participant_id=").concat(participants[0].id, "&participant_type=").concat(participants[1].participation[0].messageable_type)).then(function (response) {
+      "/chat/conversations/".concat(this.conversation, "/messages?participant_id=").concat(participants[0].id, "&participant_type=").concat(participants[0].participation[0].messageable_type, "&participant_id=").concat(participants[1].id, "&participant_type=").concat(participants[1].participation[0].messageable_type)).then(function (response) {
         _this.messages = response.data;
       });
     },
@@ -2045,10 +2046,7 @@ __webpack_require__.r(__webpack_exports__);
         authEndpoint: "/broadcasting/auth"
       });
       var channel = pusher.subscribe("private-mc-chat-conversation.".concat(this.conversation));
-      console.log(channel);
       channel.bind("Musonza\\Chat\\Eventing\\MessageWasSent", function (data) {
-        console.log(data);
-
         _this3.messages.data.push(data.message);
       });
     }
@@ -2086,7 +2084,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
 //
 //
 //
@@ -48335,46 +48332,84 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card card-default" }, [
-    _c("div", { staticClass: "card-body" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _vm._m(2),
-      _vm._v(" "),
-      _vm._m(3),
-      _vm._v(" "),
-      _vm._m(4),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "chat d-none" },
+    _c(
+      "div",
+      { staticClass: "card-body" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _vm._m(3),
+        _vm._v(" "),
         _vm._l(_vm.participants, function (participant, index) {
-          return _c(
-            "li",
-            { key: index, staticClass: "left clearfix border-bottom py-1" },
-            [
-              _c("div", { staticClass: "chat-body clearfix" }, [
-                _c("div", { staticClass: "d-flex align-items-center header" }, [
-                  _c("div", { staticClass: "primary-font participant-name" }, [
-                    _vm._v(_vm._s(participant.name)),
-                  ]),
+          return _c("div", { key: index }, [
+            participant.participation[0].messageable_type == "App\\Models\\User"
+              ? _c("div", { staticClass: "media" }, [
+                  _c("img", {
+                    staticClass: "mr-3 rounded-circle",
+                    attrs: { src: "https://via.placeholder.com/50", alt: "" },
+                  }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "participant-type pl-1" }, [
-                    _vm._v(
-                      " (" +
-                        _vm._s(participant.participation[0].messageable_type) +
-                        ")"
-                    ),
+                  _c("div", { staticClass: "media-body" }, [
+                    _c("h6", { staticClass: "mb-0 font-weight-bold" }),
+                    _vm._v(" "),
+                    _c("div", [
+                      _vm._v(
+                        _vm._s(participant.first_name) +
+                          " " +
+                          _vm._s(participant.last_name)
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v(_vm._s(participant.phone))]),
                   ]),
-                ]),
-              ]),
-            ]
-          )
+                ])
+              : _vm._e(),
+          ])
         }),
-        0
-      ),
-    ]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "chat d-none" },
+          _vm._l(_vm.participants, function (participant, index) {
+            return _c(
+              "li",
+              { key: index, staticClass: "left clearfix border-bottom py-1" },
+              [
+                _c("div", { staticClass: "chat-body clearfix" }, [
+                  _c(
+                    "div",
+                    { staticClass: "d-flex align-items-center header" },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "primary-font participant-name" },
+                        [_vm._v(_vm._s(participant.first_name))]
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "participant-type pl-1" }, [
+                        _vm._v(
+                          " (" +
+                            _vm._s(
+                              participant.participation[0].messageable_type
+                            ) +
+                            ")"
+                        ),
+                      ]),
+                    ]
+                  ),
+                ]),
+              ]
+            )
+          }),
+          0
+        ),
+      ],
+      2
+    ),
   ])
 }
 var staticRenderFns = [
@@ -48382,7 +48417,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "d-none" }, [
       _c("h6", { staticClass: "font-weight-bold" }, [_vm._v("Mitra Hukum")]),
     ])
   },
@@ -48390,7 +48425,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "media" }, [
+    return _c("div", { staticClass: "media d-none" }, [
       _c("img", {
         staticClass: "mr-3 rounded-circle",
         attrs: {
@@ -48410,14 +48445,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "d-none" }, [
       _c("div", { staticClass: "mt-2 mb-2" }, [
         _vm._v("Bidang Keahlian dan Spesialisasi"),
       ]),
       _vm._v(" "),
       _c("div", [
         _vm._v(
-          "\n            Hutang Piutang, Keluarga,\n            Ketenagakerjaan, Pidana dan Laporan\n            Polisi, Pertanahan dan Properti, Bisnis,\n            dan Teknologi Informasi\n\n        "
+          "\n            Hutang Piutang, Keluarga,\n            Ketenagakerjaan, Pidana dan Laporan\n            Polisi, Pertanahan dan Properti, Bisnis,\n            dan Teknologi Informasi\n        "
         ),
       ]),
     ])
@@ -48426,32 +48461,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-5" }, [
+    return _c("div", { staticClass: "mt-1" }, [
       _c("h6", { staticClass: "font-weight-bold" }, [_vm._v("Customer")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "media" }, [
-      _c("img", {
-        staticClass: "mr-3 rounded-circle",
-        attrs: {
-          src: "https://via.placeholder.com/50",
-          alt: "Generic placeholder image",
-        },
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "media-body" }, [
-        _c("h6", { staticClass: "mb-0 font-weight-bold" }, [
-          _vm._v("Customer Name"),
-        ]),
-        _vm._v(" "),
-        _c("div", [_vm._v("yuda@gmail.com")]),
-        _vm._v(" "),
-        _c("div", [_vm._v("09128866")]),
-      ]),
     ])
   },
 ]

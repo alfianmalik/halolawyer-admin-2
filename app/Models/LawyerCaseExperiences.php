@@ -18,4 +18,12 @@ class LawyerCaseExperiences extends Model
     {
         return $this->belongsTo(Lawyers::class, 'lawyers_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function case_category()
+    {
+        return $this->belongsTo(CaseCategory::class, 'case_category_id');
+    }
 }

@@ -18,7 +18,10 @@ mix.js('resources/js/app.js', 'public/js')
         'node_modules/@fortawesome/fontawesome-free/webfonts',
         'public/webfonts'
     )
-    .version();
+    
+    if (mix.inProduction()) {
+        mix.version();
+    }
     // .postCss('resources/css/app.css', 'public/css', [
     //     //
     // ]);

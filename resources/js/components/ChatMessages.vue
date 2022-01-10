@@ -40,7 +40,6 @@ export default {
       // content.scrollIntoView({behavior: 'smooth'});
     },
     fetchMessages() {
-      console.log(participants)
       axios
         .get(
           // `/chat/conversations/${this.conversation}/messages?participant_id=${window.participants.id}&participant_type=${window.participants.type}`
@@ -74,9 +73,7 @@ export default {
       let channel = pusher.subscribe(
         `private-mc-chat-conversation.${this.conversation}`
       );
-      console.log(channel)
       channel.bind("Musonza\\Chat\\Eventing\\MessageWasSent", data => {
-        console.log(data)
         this.messages.data.push(data.message);
       });
     }

@@ -70,6 +70,15 @@ class LawyersTableSeeder extends Seeder
                 'specialization_id' => 2,
             ]);
 
+            DB::table('lawyers_case_experience')->insert([
+                'lawyers_id' => $lawyer,
+                'case_category_id' => 1,
+                'title' => "Hands down this is the best law firm that I've used",
+                'year' => "2018",
+                'type' => "Hukum Perkawinan",
+                "reason" => "Definitely hands down the best experience ever when dealing with lawyers. Ryan Bolender made the whole process stress free, and always made sure that my husband and I understood our options and he listened to our concerns."
+            ]);
+
 	        $random1 = CaseCategory::inRandomOrder()->first();
 	        $random2 = CaseCategory::inRandomOrder()->first();
 

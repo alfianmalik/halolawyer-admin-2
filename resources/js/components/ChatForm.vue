@@ -51,6 +51,7 @@
                 });
             },
             messageToChat(message) {
+                console.log(message);
                 this.$emit("inputData", message);
             },
         }
