@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/chat/start/{chat_id}', [ChatController::class, 'startTime'])->name('profile.update');
+Route::post('/chat/start/{chat_id}', [ChatController::class, 'startTime'])->name('start.chat');
+Route::post('/chat/end/{chat_id}', [ChatController::class, 'endTime'])->name('end.chat');

@@ -2177,7 +2177,8 @@ var app = new Vue({
   el: '#wrapper',
   data: {
     checked: false,
-    message: []
+    message: [],
+    finished: false
   },
   created: function created() {
     this.startChatPusher();
@@ -2232,6 +2233,13 @@ var app = new Vue({
         _this.$refs.start.startCountdown(true); // this.$refs.start.timeObj.endTime(new Date().getTime() + 1800000)
 
       });
+    },
+    finish: function finish() {
+      // First Send To Customer
+      axios.post("/api/chat/end/".concat(conversation.id)).then(function (e) {
+        console.log("finish");
+      });
+      this.finished = true;
     }
   }
 });

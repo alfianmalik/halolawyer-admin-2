@@ -14,7 +14,8 @@ const app = new Vue({
     el: '#wrapper',
     data: {
         checked: false,
-        message: []
+        message: [],
+        finished: false
     },
     created() {
         this.startChatPusher()
@@ -69,6 +70,14 @@ const app = new Vue({
                 this.$refs.start.startCountdown(true)
                 // this.$refs.start.timeObj.endTime(new Date().getTime() + 1800000)
             });
+        },
+        finish() {
+             // First Send To Customer
+            axios.post(`/api/chat/end/${conversation.id}`)
+                .then((e) => {
+                    console.log("finish")
+                });
+            this.finished = true
         }
     }
 });

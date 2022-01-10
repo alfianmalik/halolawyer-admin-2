@@ -60,6 +60,16 @@ class ChatController extends Controller
         }
     }
 
+    public function endTime(Request $request)
+    {
+        $conversationId = $request->chat_id;    
+        $order = Order::whereChatId($conversationId)->first();
+
+        $order->update([
+            "is_finished" => 1
+        ]);
+    }
+
     public function endChat(Request $request)
     {
         $order = Order::whereOrderUuid($request->uuid)->first();

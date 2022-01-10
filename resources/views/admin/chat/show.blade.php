@@ -40,12 +40,13 @@
                 </div>
                 <div class="card-header">
                     Waktu Tersisa
-                    <vac :start-time="{{ $startTime }}" :end-time="{{ $endTime }}" :auto-start="{{ $autoStart }}" ref="start">
+                    <vac :start-time="{{ $startTime }}" :end-time="{{ $endTime }}" :auto-start="{{ $autoStart }}" ref="start"  @finish="(vac) => finish(vac)">
                         <span
                           slot="process"
                           slot-scope="{ timeObj }">
                             @{{ timeObj.m }}:@{{ timeObj.s }}
-                          </span>
+                        </span>
+                        <span slot="finish" ref="finish">Done!</span>
                     </vac>
                 </div>
                 <div class="card-body">
@@ -58,7 +59,7 @@
                                 </div>
                                 <div class="w-100">
                                     @if(!$order->is_finished)
-                                        <chat-form
+                                        <chat-form v-if="!finished"
                                                 :conversation="{{ $conversationId }}"
                                                 :user="{{ auth()->user() }}"
                                                 :participants = "{{ $participants }}"
