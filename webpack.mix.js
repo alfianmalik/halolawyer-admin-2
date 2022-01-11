@@ -19,9 +19,9 @@ mix.js('resources/js/app.js', 'public/js')
         'public/webfonts'
     )
     
-    if (mix.inProduction()) {
+    // if (mix.inProduction()) {
         mix.version();
-    }
+    // }
     // .postCss('resources/css/app.css', 'public/css', [
     //     //
     // ]);
