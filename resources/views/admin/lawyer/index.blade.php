@@ -9,7 +9,7 @@
         <h5 class="m-0 font-weight-bold text-dark ml-2">Mitra</h5>
       </div>
       <div class="col-md-6">        
-        <button type="button" name="" id="" class="btn btn-primary btn-sm float-right mt-1">Add New</button>
+        <a href="{{ route("lawyers.new") }}" class="btn btn-primary btn-sm float-right mt-1">Add New</a>
       </div>
   </div>
   <div style="border-top: 1px solid #eee;">

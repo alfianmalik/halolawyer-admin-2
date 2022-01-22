@@ -26,7 +26,7 @@ class LawyersController extends Controller
 	{
 		# code...
 
-		// return view('admin.lawyer.index', compact("lawyers"));
+		return view('admin.lawyer.store');
 	}	
 
 	public function newPost(Request $request)
