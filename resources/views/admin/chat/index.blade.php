@@ -3,7 +3,7 @@
 @section('content')
 <div class="bg-white mb-4">
     <div class="py-3 p-2 ">
-        <h4 class="m-0 font-weight-bold text-dark mt-3 mb-3 ml-2">Chat Customer</h4>
+        <h5 class="m-0 font-weight-bold text-dark ml-2">Chat Customer</h5>
     </div>
     <div style="border-top: 1px solid #eee;">
         <div class="row col-md-5 mt-3">
