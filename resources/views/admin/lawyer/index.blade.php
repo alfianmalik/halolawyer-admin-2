@@ -8,8 +8,7 @@
       <div class="col-md-6">
         <h5 class="m-0 font-weight-bold text-dark ml-2">Mitra</h5>
       </div>
-      <div class="col-md-6">
-        <button type="button" name="" id="" class="btn btn-outline-primary btn-sm float-right mt-1  ml-2"> <i class="fa fa-file-export"></i> Export</button>
+      <div class="col-md-6">        
         <button type="button" name="" id="" class="btn btn-primary btn-sm float-right mt-1">Add New</button>
       </div>
   </div>
@@ -17,8 +16,10 @@
       <div class="row">
           <div class="col-md-6 mt-3">
               <div class="form-group has-search ml-3">
-                  <span class="fa fa-search form-control-feedback"></span>
-                  <input type="text" class="form-control" placeholder="Cari Nama Customer atau Mitra">
+                    <form action="{{ route("lawyers") }}" method="get">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" name="q" class="form-control" placeholder="Cari Nama Customer atau Mitra">
+                    </form>
               </div>
           </div>
       </div>
@@ -28,20 +29,22 @@
                   <tr>
                       <th></th>
                       <th>No</th>
-                      <th>Nama Customer</th>
+                      <th>Photo</th>
+                      <th>Nama</th>
                       <th>Email</th>
-                      <th>Tanggal Registrasi</th>
+                      <th>Wilayah Kerja</th>
                       <th>Tindakan</th>
                   </tr>
               </thead>
               <tfoot>
                   <tr>
-                      <th></th>
-                      <th>No</th>
-                      <th>Nama Customer</th>
-                      <th>Email</th>
-                      <th>Tanggal Registrasi</th>
-                      <th>Tindakan</th>
+                    <th></th>
+                    <th>No</th>
+                    <th>Photo</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Wilayah Kerja</th>
+                    <th>Tindakan</th>
                   </tr>
               </tfoot>
               <tbody>
@@ -49,9 +52,11 @@
                       <tr>
                           <td></td>
                           <td>{{ $user->id }}</td>
+                          
+                          <td></td>
                           <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                           <td>{{ $user->email }}</td>
-                          <td>{{ $user->created_at }}</td>
+                          <td></td>
                           <th>
                               <i class="fa fa-eye"></i>
                               
@@ -61,6 +66,7 @@
                   @endforeach
               </tbody>
           </table>
+          <div>{{ $lawyers->links('vendor.pagination.custom') }}</div>
       </div>
   </div>
 </div>

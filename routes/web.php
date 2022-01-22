@@ -56,6 +56,10 @@ Route::group(['namespace' => 'User','middleware' => 'auth' ,'prefix' => 'user'],
 
 Route::group(['namespace' => 'Lawyer','middleware' => 'auth' ,'prefix' => 'lawyers'],function(){
 	Route::get('/',[LawyersController::class,'index'])->name('lawyers');
+	Route::get('/lawyers/new',[LawyersController::class,'index'])->name('lawyers.new');
+	Route::post('/lawyers',[LawyersController::class,'index'])->name('lawyers.new.post');
+	Route::get('/lawyers/{uuid}',[LawyersController::class,'index'])->name('lawyers.edit');
+	Route::post('/lawyers/{uuid}',[LawyersController::class,'index'])->name('lawyers.edit.post');
 });
 
 Route::group(['namespace' => 'Product', 'middleware' => 'auth' , 'prefix' => 'product'],function(){
