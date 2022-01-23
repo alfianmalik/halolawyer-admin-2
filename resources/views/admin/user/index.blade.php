@@ -17,8 +17,10 @@
       <div class="row">
           <div class="col-md-6 mt-3">
               <div class="form-group has-search ml-3">
-                  <span class="fa fa-search form-control-feedback"></span>
-                  <input type="text" class="form-control" placeholder="Cari Nama Customer atau Mitra">
+                <form action="{{ route("user") }}" method="get">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" name="q" class="form-control" placeholder="Cari Nama Customer atau Mitra">
+                </form>
               </div>
           </div>
       </div>
@@ -61,6 +63,7 @@
                   @endforeach
               </tbody>
           </table>
+          <div>{{ $users->links('vendor.pagination.custom') }}</div>
       </div>
   </div>
 </div>

@@ -63,9 +63,9 @@
 }
 
 $main-color: #f0f0f0;
-$secondary-color: #1d1f20;
+$secondary-color: $blue;
 
- @mixin display-child($n) {
+@mixin display-child($n) {
     @for $i from 2 through $n {
       &:nth-child(#{$i}) {
         a {
@@ -119,8 +119,8 @@ $secondary-color: #1d1f20;
   &.active {
     a {
       color: lighten($main-color, 5%);
-      background-color: $secondary-color;
-      border: solid 1px $secondary-color;
+      background-color: $blue;
+      border: solid 1px $blue;
     }
   }
   &:first-child {
@@ -187,8 +187,8 @@ $secondary-color: #1d1f20;
     &:nth-last-child(3) {
       display: inline-block;
       &:after {
-        padding: 0 1rem;
-        content: "...";
+        // padding: 0 1rem;
+        // content: "...";
       }
     }
   }
@@ -224,8 +224,8 @@ $secondary-color: #1d1f20;
     &:nth-last-child(3) {
       display: inline-block;
       &:after {
-        padding: 0 1rem;
-        content: "...";
+        // padding: 0 1rem;
+        // content: "...";
       }
     }
   }
