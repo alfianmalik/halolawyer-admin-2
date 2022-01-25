@@ -27,7 +27,9 @@
           <table class="table" id="dataTable" width="100%" cellspacing="0">
               <thead>
                   <tr>
-                      <th></th>
+                      <th>
+                        <input type="checkbox" class="" name="" id="" value="checkedValue">
+                      </th>
                       <th>No</th>
                       <th>Photo</th>
                       <th>Nama</th>
@@ -38,7 +40,9 @@
               </thead>
               <tfoot>
                   <tr>
-                    <th></th>
+                    <th>
+                        <input type="checkbox" class="" name="" id="" value="checkedValue">
+                    </th>
                     <th>No</th>
                     <th>Photo</th>
                     <th>Nama</th>
@@ -50,7 +54,9 @@
               <tbody>
                   @foreach ($lawyers as $user)
                       <tr>
-                          <td></td>
+                          <td>
+                            <input type="checkbox" class="" name="" id="" value="checkedValue">
+                          </td>
                           <td>{{ $user->id }}</td>
                           
                           <td></td>
@@ -58,9 +64,90 @@
                           <td>{{ $user->email }}</td>
                           <td></td>
                           <th>
-                              <i class="fa fa-eye"></i>
-                              
-                              <i class="fa fa-pencil">&nbsp;</i>
+                            <i class="fa fa-pencil-alt mr-2"></i>
+                            <!-- Button trigger modal -->
+                            <i class="fa fa-eye cursor-pointer" data-toggle="modal" data-target="#modelUser{{ $user->id }}"></i>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modelUser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title font-weight-bold">Detail User Mitra</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                        </div>
+                                        <div class="modal-body row">
+                                            <div class="col-md-12">
+                                                <h5 class="font-weight-bold mb-2">
+                                                    Profil
+                                                </h5>
+
+                                                <div class="my-2 row">
+                                                    <div class="col-md-6">Tanggal Registrasi</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ date("d F Y", strtotime($user->created_at)) }}</div>
+                                                </div>
+
+                                                <div class="my-2 row">
+                                                    <div class="col-md-6">Nama</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                </div>
+
+                                                <div class="my-2 row">
+                                                    <div class="col-md-6">No Hp</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                </div>
+
+                                                <div class="my-2 row">
+                                                    <div class="col-md-6">Email</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                </div>
+
+                                                <div class="my-2 row">
+                                                    <div class="col-md-6">Jenis Kelamin</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                </div>
+
+                                                <div class="my-2 row">
+                                                    <div class="col-md-6">Tanggal Lahir</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                </div>
+
+                                                <div class="my-2 row">
+                                                    <div class="col-md-6">Status</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                </div>
+
+                                                <hr class="my-3">
+
+                                                <h5 class="font-weight-bold mb-2">
+                                                    Bank Account
+                                                </h5>
+
+                                                <div class="my-2 row">
+                                                    <div class="col-md-6">Nama Bank</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                </div>
+
+                                                <div class="my-2 row">
+                                                    <div class="col-md-6">Nomor Rekening</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                </div>
+
+                                                <div class="my-2 row">
+                                                    <div class="col-md-6">Nama Penerima</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer justify-content-center text-center">
+                                            <button type="button" class="btn btn-primary px-5" data-dismiss="modal">Ok</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <i class="fa fa-ban ml-2"></i>
                           </th>
                       </tr>
                   @endforeach
