@@ -21,12 +21,13 @@ class CreateUsersTable extends Migration
             $table->string('slug');
             $table->uuid('uuid');
             $table->string('phone')->nullable();
+            $table->string('otp')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->date('bod')->nullable();
             $table->string('gender')->nullable();
             $table->string('work')->nullable();
             $table->string('religion')->nullable();
             $table->string('profile_picture')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             
             $table->softDeletes('deleted_at', 0);
