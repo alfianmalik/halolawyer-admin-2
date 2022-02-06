@@ -33,7 +33,7 @@ class LawyersController extends Controller
 	{
 		# code...
 
-		// return view('admin.lawyer.index', compact("lawyers"));
+		return redirect()->route("lawyers");
 	}	
 
 	public function edit(Request $request)

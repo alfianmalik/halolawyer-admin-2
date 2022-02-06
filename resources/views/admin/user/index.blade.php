@@ -57,7 +57,10 @@
                           <td>{{ $user->email }}</td>
                           <td>{{ $user->created_at }}</td>
                           <th>
-                              <i class="fa fa-pencil-alt mr-2"></i>
+                              <a class="text-reset" href="{{ route("user.edit", ['uuid' => $user->uuid]) }}">
+                                <i class="fa fa-pencil-alt mr-2"></i>
+                              </a>
+
                               <!-- Button trigger modal -->
                               <i class="fa fa-eye cursor-pointer" data-toggle="modal" data-target="#modelUser{{ $user->id }}"></i>
                                                             

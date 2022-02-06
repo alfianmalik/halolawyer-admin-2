@@ -50,9 +50,10 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin
 
 Route::group(['namespace' => 'User','middleware' => 'auth' ,'prefix' => 'user'],function(){
 	Route::get('/', [UserController::class,'index'])->name('user');
-	Route::get('/profile',[ProfileController::class,'index'])->name('profile');
-	Route::patch('/profile/update/{user}', [ProfileController::class,'update'])->name('profile.update');
+	Route::get('/edit/{uuid}', [UserController::class,'edit'])->name('user.edit');
+	Route::post('/edit/{uuid}', [UserController::class,'editPost'])->name('user.post.edit');
 });
+
 
 Route::group(['namespace' => 'Lawyer','middleware' => 'auth' ,'prefix' => 'lawyers'],function(){
 	Route::get('/',[LawyersController::class,'index'])->name('lawyers');
@@ -71,7 +72,8 @@ Route::group(['namespace' => 'Setting', 'middleware' => 'auth' , 'prefix' => 'se
 });
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'auth' , 'prefix' => 'admin'],function(){
-
+	Route::get('/profile',[ProfileController::class,'index'])->name('profile');
+	Route::patch('/profile/update/{user}', [ProfileController::class,'update'])->name('profile.update');
 });
 
 Route::group(['namespace' => 'Auth','middleware' => 'guest'],function(){

@@ -41,14 +41,15 @@ class UserController extends Controller
 	public function edit(Request $request)
 	{
 		# code...
+		$user = User::whereUuid($request->uuid)->first();
 
-		// return view('admin.user.index', compact("lawyers"));
+		return view('admin.user.edit', compact("user"));
 	}	
 
 	public function editPost(Request $request)
 	{
 		# code...
 
-		// return view('admin.user.index', compact("lawyers"));
+		return redirect()->back();
 	}	
 }
