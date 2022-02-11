@@ -13,6 +13,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\ProfileController;
 
 use App\Http\Controllers\Lawyer\LawyersController;
+use App\Http\Controllers\Product\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,11 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin
 		Route::post('end/{uuid}', [App\Http\Controllers\Admin\ChatController::class, 'endChat'])->name('selesai.konsultasi.chat');
 	});
 
+	Route::group(['prefix' => 'case'],function(){
+		Route::get('/',[App\Http\Controllers\Admin\CaseController::class, 'index'])->name('case');
+		Route::get('/show/{order_uuid}',[App\Http\Controllers\Admin\CaseController::class, 'show'])->name('chat.show');
+	});
+
 	//Route Rescource
 	Route::resource('/user','UserController');
 
@@ -63,8 +69,13 @@ Route::group(['namespace' => 'Lawyer','middleware' => 'auth' ,'prefix' => 'lawye
 	Route::post('/{uuid}',[LawyersController::class,'editPost'])->name('lawyers.edit.post');
 });
 
-Route::group(['namespace' => 'Product', 'middleware' => 'auth' , 'prefix' => 'product'],function(){
 
+Route::group(['namespace' => 'Product', 'middleware' => 'auth' , 'prefix' => 'product'],function(){
+	Route::get('/mitra', [ProductController::class,'mitra'])->name('product.mitra');
+	Route::get('/mitra', [ProductController::class,'mitraEdit'])->name('product.mitra.edit');
+	Route::post('/mitra', [ProductController::class,'mitraPostEdit'])->name('product.mitra.post.edit');
+
+	Route::get('/dokumen', [ProductController::class,'document'])->name('product.document');
 });
 
 Route::group(['namespace' => 'Setting', 'middleware' => 'auth' , 'prefix' => 'setting'],function(){

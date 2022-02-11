@@ -79,29 +79,29 @@ $secondary-color: $blue;
     }
 }
 
-.center {
+.pagination .center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.xlarge {
+.pagination .xlarge {
   width: 65rem;
 }
 
-.large {
+.pagination .large {
   width: 45rem;
 }
 
-.middle {
+.pagination .middle {
   width: 32rem;
 }
 
-.small {
+.pagination .small {
   width: 22rem;
 }
 
-.xsmall {
+.pagination .xsmall {
   width: 14rem;
 }
 
