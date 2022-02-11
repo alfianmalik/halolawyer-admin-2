@@ -43,7 +43,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin
 
 	Route::group(['prefix' => 'case'],function(){
 		Route::get('/',[App\Http\Controllers\Admin\CaseController::class, 'index'])->name('case');
-		Route::get('/show/{order_uuid}',[App\Http\Controllers\Admin\CaseController::class, 'show'])->name('chat.show');
+		Route::get('/show/{order_uuid}',[App\Http\Controllers\Admin\CaseController::class, 'show'])->name('case.show');
 	});
 
 	//Route Rescource
