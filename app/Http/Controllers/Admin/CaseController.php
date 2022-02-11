@@ -18,9 +18,4 @@ class CaseController extends Controller
     {
         # code...
     }
-
-    public function index(Request $request)
-    {
-        # code...
-    }
 }
