@@ -5,7 +5,6 @@
 @section('content')
 <h5 class="text-black my-4 font-weight-bold">Add New User Mitra Hukum</h5>
 <div class="mb-4">
-    
     <ul class="nav nav-tabs" id="nav-tab">
         <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#a" role="tab" aria-controls="home" aria-selected="true">

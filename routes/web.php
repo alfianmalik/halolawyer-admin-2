@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 //Namespace Admin
 use App\Http\Controllers\Admin\AdminController;
-
+use App\Http\Controllers\FooterController;
 //Namespace User
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\ProfileController;
@@ -72,14 +72,22 @@ Route::group(['namespace' => 'Lawyer','middleware' => 'auth' ,'prefix' => 'lawye
 
 Route::group(['namespace' => 'Product', 'middleware' => 'auth' , 'prefix' => 'product'],function(){
 	Route::get('/mitra', [ProductController::class,'mitra'])->name('product.mitra');
-	Route::get('/mitra', [ProductController::class,'mitraEdit'])->name('product.mitra.edit');
+	Route::get('/mitra/{uuid}', [ProductController::class,'mitraEdit'])->name('product.mitra.edit');
 	Route::post('/mitra', [ProductController::class,'mitraPostEdit'])->name('product.mitra.post.edit');
 
 	Route::get('/dokumen', [ProductController::class,'document'])->name('product.document');
 });
 
 Route::group(['namespace' => 'Setting', 'middleware' => 'auth' , 'prefix' => 'setting'],function(){
-
+	Route::get('/aboutus', [FooterController::class, 'aboutus'])->name('aboutus');
+	Route::get('/contactus', 'FooterController@contactus')->name('contactus');
+	Route::get('/useragreement', 'FooterController@useragreement')->name('useragreement');
+	Route::get('/privacy', 'FooterController@privacy')->name('privacy');
+	Route::get('/cookiesprivacy', 'FooterController@cookiesprivacy')->name('cookiesprivacy');
+	Route::get('/copyright', 'FooterController@copyright')->name('copyright');
+	Route::get('/brand', 'FooterController@brand')->name('brand');
+	Route::get('/faq', 'FooterController@faq')->name('faq');
+	Route::post('/update/{id}', 'FooterController@update')->name('update');
 });
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'auth' , 'prefix' => 'admin'],function(){
