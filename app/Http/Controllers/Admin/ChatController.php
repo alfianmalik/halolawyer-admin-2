@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\EndTimeChat;
 use App\Events\StartTimeChat;
 use App\Http\Controllers\Controller;
 use App\Models\Administrator as AdminModel;
@@ -64,6 +65,8 @@ class ChatController extends Controller
     {
         $conversationId = $request->chat_id;    
         $order = Order::whereChatId($conversationId)->first();
+        
+        event(new EndTimeChat($conversationId));
 
         $order->update([
             "is_finished" => 1
@@ -76,6 +79,8 @@ class ChatController extends Controller
         $order->update([
             "is_finished" => 1
         ]);
+        
+        event(new EndTimeChat($order->chat_id));
 
         return redirect()->back();
     }

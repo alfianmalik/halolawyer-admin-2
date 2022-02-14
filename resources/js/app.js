@@ -70,6 +70,14 @@ const app = new Vue({
                 this.$refs.start.startCountdown(true)
                 // this.$refs.start.timeObj.endTime(new Date().getTime() + 1800000)
             });
+
+            var channelend = pusher.subscribe(
+                `private-mc-end-chat-conversation.${conversation.id}`
+            );
+
+            channelend.bind("App\\Events\\EndTimeChat", data => {
+                this.finished = true
+            });
         },
         finish() {
              // First Send To Customer

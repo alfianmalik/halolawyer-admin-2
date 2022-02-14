@@ -28,3 +28,7 @@ Broadcast::channel('mc-chat-conversation.{conversationId}', function ($user, $co
 Broadcast::channel('mc-start-chat-conversation.{conversationId}', function ($user, $conversationId) {
     return true;
 });
+
+Broadcast::channel('mc-end-chat-conversation.{conversationId}', function ($user, $conversationId) {
+    return true;
+});

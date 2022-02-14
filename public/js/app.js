@@ -2233,6 +2233,10 @@ var app = new Vue({
         _this.$refs.start.startCountdown(true); // this.$refs.start.timeObj.endTime(new Date().getTime() + 1800000)
 
       });
+      var channelend = pusher.subscribe("private-mc-end-chat-conversation.".concat(conversation.id));
+      channelend.bind("App\\Events\\EndTimeChat", function (data) {
+        _this.finished = true;
+      });
     },
     finish: function finish() {
       // First Send To Customer
