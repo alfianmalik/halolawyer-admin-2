@@ -7,7 +7,7 @@ return [
      * Channel: mc-chat-conversation.2,
      * Event: Musonza\Chat\Eventing\MessageWasSent
      */
-    'broadcasts' => true,
+    'broadcasts' => false,
 
     /*
      * Specify the fields that you want to return each time for the sender.
@@ -21,7 +21,7 @@ return [
      * Specify the fields that you want to return each time for the sender.
      * If not set or empty, all the columns for the sender will be returned
      */
-    'sender_fields_whitelist' => [],
+    'sender_fields_whitelist' => ["first_name", "last_name"],
 
     /*
      * Whether to load the package routes file in your application.

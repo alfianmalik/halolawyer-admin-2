@@ -2,14 +2,14 @@
   <div class="position-relative">
     <div class="chat-messages p-1" ref="container">
       <div class="pb-4" 
-        :class="[ message.sender.participation[0].messageable_id == currentUser.participation[0].messageable_id && message.sender.participation[0].messageable_type == currentUser.participation[0].messageable_type ? 'chat-message-right' : 'chat-message-left']"
+        :class="[ !message.is_sender ? 'chat-message-right' : 'chat-message-left']"
         v-for="(message, index) in messages.data"
         :key="index">
           <div>
               <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
               <div class="text-muted small text-nowrap mt-2"> {{ message.created_at  | formatDate }}</div>
           </div>
-          <div class="flex-shrink-1 bg-light rounded py-2 px-3 " :class="[message.sender.participation[0].messageable_id == currentUser.participation[0].messageable_id && message.sender.participation[0].messageable_type == currentUser.participation[0].messageable_type ? 'mr-3' : 'ml-3']">
+          <div class="flex-shrink-1 bg-light rounded py-2 px-3 " :class="[!message.is_sender ? 'mr-3' : 'ml-3']">
               <div class="font-weight-bold mb-1">{{ message.sender.first_name }} {{ message.sender.last_name }}</div>
               {{ message.body }}
           </div>
@@ -71,9 +71,15 @@ export default {
       let channel = pusher.subscribe(
         `private-mc-chat-conversation.${this.conversation}`
       );
+
       channel.bind("Musonza\\Chat\\Eventing\\MessageWasSent", data => {
         this.messages.data.push(data.message);
       });
+
+      // Echo.private(`private-mc-chat-conversation.${this.conversation}`)
+      //     .listen('Musonza\\Chat\\Eventing\\MessageWasSent', (e) => {
+      //         this.messages.data.push(data.message);
+      //     });
     }
 
   },

@@ -2049,7 +2049,10 @@ __webpack_require__.r(__webpack_exports__);
       var channel = pusher.subscribe("private-mc-chat-conversation.".concat(this.conversation));
       channel.bind("Musonza\\Chat\\Eventing\\MessageWasSent", function (data) {
         _this3.messages.data.push(data.message);
-      });
+      }); // Echo.private(`private-mc-chat-conversation.${this.conversation}`)
+      //     .listen('Musonza\\Chat\\Eventing\\MessageWasSent', (e) => {
+      //         this.messages.data.push(data.message);
+      //     });
     }
   },
   created: function created() {
@@ -2283,12 +2286,15 @@ if (token) {
 
 
 
-window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
+window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js"); // window.io = require('socket.io-client');
+
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
   key: "cf715e6aee39e960b6bd",
   cluster: "ap1",
-  forceTLS: true
+  forceTLS: true // broadcaster: 'socket.io',
+  // host: 'http://localhost:6001'
+
 });
 
 /***/ }),
@@ -48894,12 +48900,7 @@ var render = function () {
             key: index,
             staticClass: "pb-4",
             class: [
-              message.sender.participation[0].messageable_id ==
-                _vm.currentUser.participation[0].messageable_id &&
-              message.sender.participation[0].messageable_type ==
-                _vm.currentUser.participation[0].messageable_type
-                ? "chat-message-right"
-                : "chat-message-left",
+              !message.is_sender ? "chat-message-right" : "chat-message-left",
             ],
           },
           [
@@ -48923,14 +48924,7 @@ var render = function () {
               "div",
               {
                 staticClass: "flex-shrink-1 bg-light rounded py-2 px-3 ",
-                class: [
-                  message.sender.participation[0].messageable_id ==
-                    _vm.currentUser.participation[0].messageable_id &&
-                  message.sender.participation[0].messageable_type ==
-                    _vm.currentUser.participation[0].messageable_type
-                    ? "mr-3"
-                    : "ml-3",
-                ],
+                class: [!message.is_sender ? "mr-3" : "ml-3"],
               },
               [
                 _c("div", { staticClass: "font-weight-bold mb-1" }, [
