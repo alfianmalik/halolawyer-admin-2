@@ -32,8 +32,9 @@ class ChatController extends Controller
 
         $conversationId = $order->chat_id;
         $conversation = Chat::conversations()->getById($order->chat_id);
-        $participants = $conversation->getParticipants();
-
+        $participants = $conversation->participants;
+        
+        
         $startTime = "00000000000000000";
         $endTime = \Carbon\Carbon::now()->addMinutes(30)->getPreciseTimestamp(3);
         $autoStart = "false";

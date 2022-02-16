@@ -21,7 +21,7 @@ return [
      * Specify the fields that you want to return each time for the sender.
      * If not set or empty, all the columns for the sender will be returned
      */
-    'sender_fields_whitelist' => ["first_name", "last_name"],
+    'sender_fields_whitelist' => [],
 
     /*
      * Whether to load the package routes file in your application.
@@ -41,7 +41,7 @@ return [
      */
     'pagination' => [
         'page'     => 1,
-        'perPage'  => 25,
+        'perPage'  => 1000,
         'sorting'  => 'asc',
         'columns'  => ['*'],
         'pageName' => 'page',

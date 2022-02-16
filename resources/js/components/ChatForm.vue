@@ -41,8 +41,8 @@
                     message: {
                         body: this.newMessage,
                     },
-                    participant_id: participants[0].id,
-                    participant_type: participants[0].participation[0].messageable_type,
+                    participant_id: participants[0].messageable_id,
+                    participant_type: participants[0].messageable_type,
                 })
                 .then((e) => {
                     this.messageToChat(e)

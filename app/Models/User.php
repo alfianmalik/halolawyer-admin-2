@@ -57,4 +57,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    /**
+     * 
+     */
+    public function getParticipantDetails()
+    {
+        return [
+            "first_name" => $this->first_name,
+            "last_name" => $this->last_name,
+            'messageable_id' => $this->id,
+            'messageable_type' => get_class($this),
+        ];
+    }
 }

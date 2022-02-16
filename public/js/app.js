@@ -1947,8 +1947,8 @@ __webpack_require__.r(__webpack_exports__);
         message: {
           body: this.newMessage
         },
-        participant_id: participants[0].id,
-        participant_type: participants[0].participation[0].messageable_type
+        participant_id: participants[0].messageable_id,
+        participant_type: participants[0].messageable_type
       }).then(function (e) {
         _this.messageToChat(e);
 
@@ -2015,13 +2015,16 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     scrollToEnd: function scrollToEnd() {
       var content = this.$refs.container;
-      content.scrollTop = content.clientHeight;
+      content.scrollTop = content.scrollHeight;
+      content.scrollIntoView({
+        behavior: 'smooth'
+      });
     },
     fetchMessages: function fetchMessages() {
       var _this = this;
 
       axios.get( // `/chat/conversations/${this.conversation}/messages?participant_id=${window.participants.id}&participant_type=${window.participants.type}`
-      "/chat/conversations/".concat(this.conversation, "/messages?participant_id=").concat(participants[0].id, "&participant_type=").concat(participants[0].participation[0].messageable_type, "&participant_id=").concat(participants[1].id, "&participant_type=").concat(participants[1].participation[0].messageable_type)).then(function (response) {
+      "/chat/conversations/".concat(this.conversation, "/messages?participant_id=").concat(participants[0].messageable_id, "&participant_type=").concat(participants[0].messageable_type, "&participant_id=").concat(participants[1].messageable_id, "&participant_type=").concat(participants[1].messageable_type)).then(function (response) {
         _this.messages = response.data;
       });
     },
@@ -2049,19 +2052,14 @@ __webpack_require__.r(__webpack_exports__);
       var channel = pusher.subscribe("private-mc-chat-conversation.".concat(this.conversation));
       channel.bind("Musonza\\Chat\\Eventing\\MessageWasSent", function (data) {
         _this3.messages.data.push(data.message);
-      }); // Echo.private(`private-mc-chat-conversation.${this.conversation}`)
-      //     .listen('Musonza\\Chat\\Eventing\\MessageWasSent', (e) => {
-      //         this.messages.data.push(data.message);
-      //     });
+      });
     }
   },
   created: function created() {
     this.fetchMessages();
     this.enablePusher();
   },
-  mounted: function mounted() {
-    // This will be called on load
-    this.scrollToEnd();
+  mounted: function mounted() {// This will be called on load
   },
   updated: function updated() {
     this.scrollToEnd();
@@ -48900,7 +48898,11 @@ var render = function () {
             key: index,
             staticClass: "pb-4",
             class: [
-              !message.is_sender ? "chat-message-right" : "chat-message-left",
+              message.sender.messageable_id == _vm.currentUser.messageable_id &&
+              message.sender.messageable_type ==
+                _vm.currentUser.messageable_type
+                ? "chat-message-right"
+                : "chat-message-left",
             ],
           },
           [
@@ -48924,7 +48926,14 @@ var render = function () {
               "div",
               {
                 staticClass: "flex-shrink-1 bg-light rounded py-2 px-3 ",
-                class: [!message.is_sender ? "mr-3" : "ml-3"],
+                class: [
+                  message.sender.messageable_id ==
+                    _vm.currentUser.messageable_id &&
+                  message.sender.messageable_type ==
+                    _vm.currentUser.messageable_type
+                    ? "mr-3"
+                    : "ml-3",
+                ],
               },
               [
                 _c("div", { staticClass: "font-weight-bold mb-1" }, [
