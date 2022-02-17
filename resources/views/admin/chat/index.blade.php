@@ -91,6 +91,8 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <div>{{ $orders->links('vendor.pagination.custom') }}</div>
         </div>
     </div>
 </div>
