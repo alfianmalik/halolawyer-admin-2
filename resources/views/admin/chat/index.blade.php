@@ -68,13 +68,44 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Modal title</h5>
+                                                <h5 class="modal-title">Detail Layanan Konsultasi Chat</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                             </div>
-                                            <div class="modal-body">
-                                                Body
+                                            <div class="modal-body row">
+                                                <div class="col-md-12">
+    
+                                                    <div class="my-2 row">
+                                                        <div class="col-md-6">Nama Customer</div>
+                                                        <div class="col-md-6 text-reset font-weight-normal">: {{ $order->user_first_name }} {{ $order->user_last_name }}</div>
+                                                    </div>
+    
+                                                    <div class="my-2 row">
+                                                        <div class="col-md-6">Email</div>
+                                                        <div class="col-md-6 text-reset font-weight-normal">: {{ $order->user_email }}</div>
+                                                    </div>
+    
+                                                    <div class="my-2 row">
+                                                        <div class="col-md-6">No Hp</div>
+                                                        <div class="col-md-6 text-reset font-weight-normal">: {{ $order->user_phone }}</div>
+                                                    </div>
+    
+                                                    <div class="my-2 row">
+                                                        <div class="col-md-6">Jadwal Konsultasi</div>
+                                                        <div class="col-md-6 text-reset font-weight-normal">: {{ $order->lawyer_schedule }}</div>
+                                                    </div>
+    
+                                                    <div class="my-2 row">
+                                                        <div class="col-md-6">Status</div>
+                                                        <div class="col-md-6 text-reset font-weight-normal">: </div>
+                                                    </div>
+    
+                                                    <div class="my-2 row">
+                                                        <div class="col-md-6">Detail Masalah</div>
+                                                        <div class="col-md-6 text-reset font-weight-normal">: {{ $order->catatan }}</div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
