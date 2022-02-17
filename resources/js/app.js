@@ -2,7 +2,6 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 var vueAwesomeCountdown = require('vue-awesome-countdown').default;
-
 Vue.use(vueAwesomeCountdown);
 
 Vue.component('chat-conversations', require('./components/ChatConversations.vue').default);

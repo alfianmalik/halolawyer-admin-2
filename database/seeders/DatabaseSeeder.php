@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
         	PembuatanDokumenTableSeeder::class,
         	RolesTableSeeder::class,
             ServicesDatabaseSeeder::class,
-            SpecializationTableSeeder::class
+            SpecializationTableSeeder::class,
+            FooterTableSeeder::class
         ]);
     }
 }
