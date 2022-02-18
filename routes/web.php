@@ -80,14 +80,15 @@ Route::group(['namespace' => 'Product', 'middleware' => 'auth' , 'prefix' => 'pr
 
 Route::group(['namespace' => 'Setting', 'middleware' => 'auth' , 'prefix' => 'setting'],function(){
 	Route::get('/aboutus', [FooterController::class, 'aboutus'])->name('aboutus');
-	Route::get('/contactus', 'FooterController@contactus')->name('contactus');
-	Route::get('/useragreement', 'FooterController@useragreement')->name('useragreement');
-	Route::get('/privacy', 'FooterController@privacy')->name('privacy');
-	Route::get('/cookiesprivacy', 'FooterController@cookiesprivacy')->name('cookiesprivacy');
-	Route::get('/copyright', 'FooterController@copyright')->name('copyright');
-	Route::get('/brand', 'FooterController@brand')->name('brand');
-	Route::get('/faq', 'FooterController@faq')->name('faq');
-	Route::post('/update/{id}', 'FooterController@update')->name('update');
+	Route::get('/contactus', [FooterController::class, 'contactus'])->name('contactus');
+	Route::get('/useragreement', [FooterController::class, 'useragreement'])->name('useragreement');
+	Route::get('/privacy', [FooterController::class, 'privacy'])->name('privacy');
+	Route::get('/cookiesprivacy', [FooterController::class, 'cookiesprivacy'])->name('cookiesprivacy');
+	Route::get('/copyright', [FooterController::class, 'copyright'])->name('copyright');
+	Route::get('/brand', [FooterController::class, 'brand'])->name('brand');
+	Route::get('/faq', [FooterController::class, 'faq'])->name('faq');
+	Route::post('/update/{id}', [FooterController::class, 'update'])->name('footer.update');
+	
 });
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'auth' , 'prefix' => 'admin'],function(){

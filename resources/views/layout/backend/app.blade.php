@@ -20,6 +20,7 @@
     <!-- Custom styles for this template-->
     {{-- <link href="{{ asset('template/backend/sb-admin-2') }}/css/sb-admin-2.min.css" rel="stylesheet"> --}}
     <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('css')
 </head>
@@ -114,10 +115,29 @@
               }
         });
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="{{ mix('js/app.js') }}" defer></script>    
+
     @stack('js')
 
+    <script>
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                tabsize: 2,
+                height: 300,
+                dialogsInBody: true,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
+    </script>
 </body>
 
 </html>

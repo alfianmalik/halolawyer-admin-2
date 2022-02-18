@@ -104,22 +104,22 @@
                 <a class="collapse-item" href="{{ route('user') }}">
                     <span>Notifikasi</span>
                 </a>
-                <a class="collapse-item" href="{{ route('lawyers') }}">
+                <a class="collapse-item" href="{{ route('aboutus') }}">
                     <span>Tentang Kami</span>
                 </a>
-                <a class="collapse-item" href="{{ route('lawyers') }}">
+                <a class="collapse-item" href="{{ route('faq') }}">
                     <span>FAQ</span>
                 </a>
-                <a class="collapse-item" href="{{ route('lawyers') }}">
+                <a class="collapse-item" href="{{ route('contactus') }}">
                     <span>Hubungi Kami</span>
                 </a>
-                <a class="collapse-item" href="{{ route('lawyers') }}">
+                <a class="collapse-item" href="{{ route('useragreement') }}">
                     <span>Syarat & Ketentuan</span>
                 </a>
                 <a class="collapse-item" href="{{ route('lawyers') }}">
                     <span>Syarat & Ketentuan Mitra</span>
                 </a>
-                <a class="collapse-item" href="{{ route('lawyers') }}">
+                <a class="collapse-item" href="{{ route('privacy') }}">
                     <span>Kebijakan Privasi</span>
                 </a>
                 <a class="collapse-item" href="{{ route('lawyers') }}">

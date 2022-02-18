@@ -43,6 +43,10 @@ class FooterTableSeeder extends Seeder
             [
                 "footer_type" => "brandpolicy",
                 "contents" => "",
+            ],
+            [
+                "footer_type" => "faq",
+                "contents" => "",
             ]
         ]);
     }

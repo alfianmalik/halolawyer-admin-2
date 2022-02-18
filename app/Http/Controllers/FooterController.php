@@ -28,7 +28,7 @@ class FooterController extends Controller
     {
         # code...
         $footer = Footer::where('footer_type', 'faq')->first();
-
+        
         return view("admin.footer.faq", compact("footer"));
     }
 

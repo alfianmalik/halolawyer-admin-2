@@ -8,7 +8,7 @@
         </div>
     </div>
     <div style="border-top: 1px solid #eee;" class="container">
-        <form action="{{ route("admin.footer.update", ["id" => $footer->id]) }}" method="post">
+        <form action="{{ route("footer.update", ["id" => $footer->id]) }}" method="post">
             @csrf
             <input type="hidden" name="footer_type" value="aboutus">
             <div class="row">
