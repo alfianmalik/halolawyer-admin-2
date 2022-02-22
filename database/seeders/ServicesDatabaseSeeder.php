@@ -39,7 +39,7 @@ class ServicesDatabaseSeeder extends Seeder
 
         $k5 = [ "service_name" => "Konsultasi Chat",
              "details" => [
-                 ["price" => "300000", 'time' => '', 'tax' => 0, 'discount' => 0]
+                 ["price" => "30000", 'time' => '', 'tax' => 0, 'discount' => 30000]
               ]
           ];
 
