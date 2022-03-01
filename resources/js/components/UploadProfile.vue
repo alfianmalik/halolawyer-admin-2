@@ -6,7 +6,7 @@
         <div class="">
             <button type="button" id="upload" class="btn btn-outline-primary" @click="selectFile">Upload Foto</button>
         </div>
-        <input type="file" @change="onFileChange" ref="file" class="d-none"/>
+        <input type="file" @change="onFileChange" ref="file" class="d-none" name="profile_picture"/>
     </div>
 </template>
 

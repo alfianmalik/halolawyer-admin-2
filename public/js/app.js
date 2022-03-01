@@ -52065,7 +52065,7 @@ var render = function () {
     _c("input", {
       ref: "file",
       staticClass: "d-none",
-      attrs: { type: "file" },
+      attrs: { type: "file", name: "profile_picture" },
       on: { change: _vm.onFileChange },
     }),
   ])

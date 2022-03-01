@@ -95,27 +95,27 @@
 
                                                 <div class="my-2 row">
                                                     <div class="col-md-6">No Hp</div>
-                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->phone }}</div>
                                                 </div>
 
                                                 <div class="my-2 row">
                                                     <div class="col-md-6">Email</div>
-                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->email }}</div>
                                                 </div>
 
                                                 <div class="my-2 row">
                                                     <div class="col-md-6">Jenis Kelamin</div>
-                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->gender }}</div>
                                                 </div>
 
                                                 <div class="my-2 row">
                                                     <div class="col-md-6">Tanggal Lahir</div>
-                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->dob }} {{ $user->last_name }}</div>
                                                 </div>
 
                                                 <div class="my-2 row">
                                                     <div class="col-md-6">Status</div>
-                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->is_active }}</div>
                                                 </div>
 
                                                 <hr class="my-3">
@@ -126,17 +126,17 @@
 
                                                 <div class="my-2 row">
                                                     <div class="col-md-6">Nama Bank</div>
-                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->account_number?$user->account_number->bank_name:"" }}</div>
                                                 </div>
 
                                                 <div class="my-2 row">
                                                     <div class="col-md-6">Nomor Rekening</div>
-                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->account_number?$user->account_number->no_rekening:"" }}</div>
                                                 </div>
 
                                                 <div class="my-2 row">
                                                     <div class="col-md-6">Nama Penerima</div>
-                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->first_name }} {{ $user->last_name }}</div>
+                                                    <div class="col-md-6 text-reset font-weight-normal">{{ $user->account_number?$user->account_number->nama_penerima:"" }}</div>
                                                 </div>
                                             </div>
                                         </div>

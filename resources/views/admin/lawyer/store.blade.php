@@ -36,7 +36,7 @@
                 Pengalaman
                 Perkara</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-none">
             <a class="nav-link" data-toggle="tab" href="#f" role="tab" aria-controls="f" aria-selected="false">
                 <span class="badge badge-primary p-2 ">6</span>
                 Layanan Mitra</a>
@@ -60,7 +60,7 @@
             <div class="tab-pane fade" id="e" role="tabpanel" aria-labelledby="profile-tab">
                 @include('admin.lawyer.store.case_experience')
             </div>
-            <div class="tab-pane fade" id="f" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="tab-pane fade d-none" id="f" role="tabpanel" aria-labelledby="contact-tab">
                 @include('admin.lawyer.store.layanan')
             </div> 
         </div>

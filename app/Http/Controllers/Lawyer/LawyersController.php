@@ -22,7 +22,7 @@ class LawyersController extends Controller
 								->orWhere("last_name", "like", "%".$request->q."%");
 		}
 
-		$lawyers = $lawyers->paginate(15);
+		$lawyers = $lawyers->orderBy('id', 'desc')->paginate(15);
 
 		return view('admin.lawyer.index', compact("lawyers"));
 	}
@@ -49,7 +49,7 @@ class LawyersController extends Controller
 			'email' => $request->email,
 			'password' => Hash::make($request->password_generate),
 			'phone' => $request->phone,
-			'bod_place' => $request->bod_place,
+			'bod_place' => $request->place_of_birth,
 			'uuid' => Str::uuid(),
 			'slug' => Str::slug($request->name),
 			'bod' => $request->bod,

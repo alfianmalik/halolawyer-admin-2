@@ -35,11 +35,11 @@
                 <label for="gender" class="col-sm-3 col-form-label">Jenis Kelamin</label>
                 <div class="col-sm-9 mt-2">
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="male" name="gender" class="custom-control-input" checked>
+                        <input type="radio" id="male" name="gender" class="custom-control-input" checked value="male">
                         <label class="custom-control-label" for="male">Pria</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="female" name="gender" class="custom-control-input">
+                        <input type="radio" id="female" name="gender" class="custom-control-input" value="female">
                         <label class="custom-control-label" for="female">Wanita</label>
                     </div>
                 </div>
@@ -70,14 +70,14 @@
             <div class="form-group row">
                 <label for="no_rek" class="col-sm-3 col-form-label">No Rekening</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="no_rek" aria-describedby="basic-addon3" name="no_rek" placeholder="No Rekening">
+                    <input type="text" class="form-control" id="no_rek" aria-describedby="basic-addon3" name="no_rekening" placeholder="No Rekening">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="recipient_name" class="col-sm-3 col-form-label">Nama Penerima</label>
+                <label for="nama_penerima" class="col-sm-3 col-form-label">Nama Penerima</label>
                 <div class="col-sm-9">
-                    <input type="text" id="recipient_name" class="form-control" name="recipient_name" aria-describedby="basic-addon3" placeholder="Nama Penerima">
+                    <input type="text" id="nama_penerima" class="form-control" name="nama_penerima" aria-describedby="basic-addon3" placeholder="Nama Penerima">
                 </div>
             </div>
 
