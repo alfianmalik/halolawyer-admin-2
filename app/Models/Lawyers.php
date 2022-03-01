@@ -48,6 +48,9 @@ class Lawyers extends Model
         return $this->hasMany(LawyerSpecialization::class, 'lawyers_id');
     }
 
+    /**
+     * 
+     */
     public function lawyers_case_experience()
     {
         return $this->hasMany(LawyerCaseExperiences::class, 'lawyers_id');
@@ -83,6 +86,15 @@ class Lawyers extends Model
     public function lawyers_workarea()
     {
         return $this->hasMany(LawyerWorkArea::class, 'lawyers_id');
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lawyers_law_firm()
+    {
+        return $this->hasOne(LawyersLawFirm::class, 'lawyers_id');
     }
 
     /**

@@ -68,6 +68,16 @@ class LawyersController extends Controller
 			'nama_penerima' => $request->nama_penerima,
 		]);
 
+		$lawyer->lawyers_workarea->create([
+			'province' => $request->province_work_area,
+            'city' => $request->city_work_area
+		]);
+
+		$lawyer->lawyers_workarea->create([
+			'province' => $request->province_work_area,
+            'city' => $request->city_work_area
+		]);
+
 		return redirect()->route("lawyers");
 	}	
 
