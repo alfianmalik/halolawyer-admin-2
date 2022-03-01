@@ -56,7 +56,7 @@ class ServicesDatabaseSeeder extends Seeder
                     'service_id' => $serviceId,
                     'price' => $array[$i]['details'][$j]['price'],
                     'time' => $array[$i]['details'][$j]['time'],
-                    'management_fee' => 30000,
+                    'management_fee' => 0,
                     'discount' => $array[$i]['details'][$j]['discount'],
                     'tax' => $array[$i]['details'][$j]['tax'],
                     'created_at' => now(),
