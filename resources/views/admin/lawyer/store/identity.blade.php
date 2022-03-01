@@ -4,6 +4,13 @@
             <h5 class="text-black font-weight-bold">Identitas Mitra</h5>
 
             <div class="form-group row mt-5">
+                <label for="name" class="col-sm-3 col-form-label">Foto</label>
+                <div class="col-sm-9">
+                    <upload-profile></upload-profile>
+                </div>
+            </div>
+
+            <div class="form-group row mt-5">
                 <label for="name" class="col-sm-3 col-form-label">Nama Lengkap</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" name="name" placeholder="Nama Lengkap">
@@ -13,7 +20,7 @@
             <div class="form-group row">
                 <label for="email" class="col-sm-3 col-form-label">Email</label>
                 <div class="col-sm-9">
-                    <input type="text" id="email" class="form-control" name="email" aria-describedby="basic-addon3" placeholder="Email">
+                    <input type="email" id="email" class="form-control" name="email" aria-describedby="basic-addon3" placeholder="Email">
                 </div>
             </div>
 
@@ -28,7 +35,7 @@
                 <label for="gender" class="col-sm-3 col-form-label">Jenis Kelamin</label>
                 <div class="col-sm-9 mt-2">
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="male" name="gender" class="custom-control-input">
+                        <input type="radio" id="male" name="gender" class="custom-control-input" checked>
                         <label class="custom-control-label" for="male">Pria</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
@@ -48,7 +55,7 @@
             <div class="form-group row">
                 <label for="dob" class="col-sm-3 col-form-label">Tanggal Lahir</label>
                 <div class="col-sm-9">
-                    <input type="text" id="dob" class="form-control" name="dob" aria-describedby="basic-addon3" placeholder="Tanggal Lahir">
+                    <input type="date" id="dob" class="form-control" name="dob" aria-describedby="basic-addon3" placeholder="Tanggal Lahir">
                 </div>
             </div>
             <hr>
@@ -78,7 +85,7 @@
             <div class="form-group row mt-5">
                 <label for="password" class="col-sm-3 col-form-label">Password</label>
                 <div class="col-sm-9">
-                    <button type="button" id="password" class="btn btn-outline-primary">Generate Password</button>
+                    <generate-password></generate-password>
                 </div>
             </div>
             <hr class="mt-5">

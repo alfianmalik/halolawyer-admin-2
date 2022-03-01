@@ -11,7 +11,7 @@ class Lawyers extends Model
 {
     use HasFactory, Notifiable, Messageable;
 
-    protected $guarded = [];
+    protected $guarded = ["created_at", "updated_at"];
 
     protected $hidden = ['id', 'user_id'];
 
@@ -83,6 +83,14 @@ class Lawyers extends Model
     public function lawyers_workarea()
     {
         return $this->hasMany(LawyerWorkArea::class, 'lawyers_id');
+    }
+
+    /**
+     * 
+     */
+    public function account_number()
+    {
+        return $this->hasOne(LawyersAccountNumber::class, 'lawyers_id');
     }
     
     /**

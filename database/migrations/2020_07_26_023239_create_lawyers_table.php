@@ -22,6 +22,7 @@ class CreateLawyersTable extends Migration
             $table->uuid('uuid');
             $table->rememberToken();
             $table->string('phone')->nullable();
+            $table->string('bod_place')->nullable();
             $table->date('bod')->nullable();
             $table->string('gender')->nullable();
             $table->string('work')->nullable();

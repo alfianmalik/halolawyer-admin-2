@@ -83,3 +83,15 @@ body {
 .text-dark-color {
     color: black !important;
 }
+
+.accordion > .card:not(:last-of-type) {
+    border-bottom-color: rgb(227, 230, 240) !important;
+    border-bottom-style: solid !important;
+    border-bottom-width: 1px !important;
+}
+
+.accordion > .card > .card-header {
+    padding: 0px !important;
+    background-color: white !important;
+    border-bottom: 1px solid white !important;
+}

@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/chat/start/{chat_id}', [ChatController::class, 'startTime'])->name('start.chat');
 Route::post('/chat/end/{chat_id}', [ChatController::class, 'endTime'])->name('end.chat');
+Route::get("get/provinces", [App\Http\Controllers\ToolsController::class, 'getProvinces'])->name('api.get.provinces');
+Route::get("get/cities", [App\Http\Controllers\ToolsController::class, 'getCities'])->name('api.get.cities');

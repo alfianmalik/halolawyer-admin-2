@@ -1,0 +1,69 @@
+<template>
+    <div>
+        <div class="accordion" id="accordionExample">
+            <div class="card mt-2" v-for="(item, index) in items" :key="index">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <img src="/images/accordion.png" alt="">
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Jenis Pendidikan</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="jenis_pendidikan" aria-describedby="basic-addon3" name="jenis_pendidikan[]" placeholder="Jenis Pendidikan">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Tema Pendidikan</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="tema_pendidikan" aria-describedby="basic-addon3" name="tema_pendidikan[]" placeholder="Tema Pendidikan">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Tahun</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="tahun" aria-describedby="basic-addon3" name="tahun[]" placeholder="Tahun">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="status" class="col-sm-3 col-form-label">Sertifikat Dokumen</label>
+                        <div class="form-group files">
+                            <label>Upload Your File </label>
+                            <input type="file" class="form-control" multiple="">
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+        <button type="button" name="" id="" class="btn btn-outline-primary btn-block mt-5" @click="addNew">+ Add New</button>        
+    </div>
+</template>
+
+<script>
+export default {
+    name: "PendidikanFormal",
+    data: function () {
+        return {
+            items : 1
+        }
+    },
+    mounted() {
+    },
+    methods : {
+        addNew() {
+            this.items++
+        }
+    }
+}
+</script>

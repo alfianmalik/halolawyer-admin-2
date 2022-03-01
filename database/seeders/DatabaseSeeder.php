@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
         	RolesTableSeeder::class,
             ServicesDatabaseSeeder::class,
             SpecializationTableSeeder::class,
-            FooterTableSeeder::class
+            FooterTableSeeder::class,
+            
         ]);
     }
 }

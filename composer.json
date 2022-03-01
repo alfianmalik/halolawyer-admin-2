@@ -58,6 +58,9 @@
         }
     },
     "autoload-dev": {
+        "files": [
+            "app/Utilities/Helpers.php"
+        ],
         "psr-4": {
             "Tests\\": "tests/"
         }

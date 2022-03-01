@@ -8,6 +8,14 @@ Vue.component('chat-conversations', require('./components/ChatConversations.vue'
 Vue.component('chat-form', require('./components/ChatForm.vue').default);
 Vue.component('chat-messages', require('./components/ChatMessages.vue').default);
 Vue.component('conversation-participants', require('./components/ConversationParticipants.vue').default);
+Vue.component('generate-password', require('./components/GeneratePassword.vue').default);
+Vue.component('upload-profile', require('./components/UploadProfile.vue').default);
+Vue.component('upload-file', require('./components/UploadFile.vue').default);
+Vue.component('work-area', require('./components/WorkArea.vue').default);
+Vue.component('pendidikan-formal', require('./components/PendidikanFormal.vue').default);
+Vue.component('pendidikan-non-formal', require('./components/PendidikanNonFormal.vue').default);
+Vue.component('spesialisasi', require('./components/Spesialisasi.vue').default);
+Vue.component('case-experience', require('./components/CaseExperience.vue').default);
 
 const app = new Vue({
     el: '#wrapper',
