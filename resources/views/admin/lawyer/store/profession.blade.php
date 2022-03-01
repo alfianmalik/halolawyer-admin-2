@@ -41,7 +41,7 @@
             <div class="form-group row">
                 <label for="office_email" class="col-sm-4 col-form-label">Email Kantor</label>
                 <div class="col-sm-8">
-                    <input type="text" id="office_email" class="form-control" name="office_email" aria-describedby="basic-addon3" placeholder="Email Kantor">
+                    <input type="email" id="office_email" class="form-control" name="office_email" aria-describedby="basic-addon3" placeholder="Email Kantor">
                 </div>
             </div>
 
@@ -104,7 +104,7 @@
                 <div class="col-sm-8">
                     <!-- Rounded switch -->
                     <label class="switch mt-2">
-                        <input type="checkbox">
+                        <input type="checkbox" name="probono">
                         <span class="slider round"></span>
                     </label>
                 </div>

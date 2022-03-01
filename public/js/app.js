@@ -50782,7 +50782,10 @@ var render = function () {
                       "select",
                       {
                         staticClass: "form-control",
-                        attrs: { name: "case[]", id: "" },
+                        attrs: {
+                          name: "caseexperience[case][" + index + "]",
+                          id: "",
+                        },
                       },
                       _vm._l(_vm.cases, function (item, index) {
                         return _c(
@@ -50796,7 +50799,29 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(1, true),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "judul_perkara" },
+                    },
+                    [_vm._v("Judul Perkara")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "judul_perkara",
+                        "aria-describedby": "basic-addon3",
+                        name: "caseexperience[judul_perkara][" + index + "]",
+                        placeholder: "Judul Perkara",
+                      },
+                    }),
+                  ]),
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
                   _c(
@@ -50813,7 +50838,10 @@ var render = function () {
                       "select",
                       {
                         staticClass: "form-control",
-                        attrs: { name: "year[]", id: "" },
+                        attrs: {
+                          name: "caseexperience[year][" + index + "]",
+                          id: "",
+                        },
                       },
                       _vm._l(_vm.years, function (year) {
                         return _c(
@@ -50827,9 +50855,52 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(2, true),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "name" },
+                    },
+                    [_vm._v("Jenis")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "name",
+                        "aria-describedby": "basic-addon3",
+                        name: "caseexperience[jenis][" + index + "]",
+                        placeholder: "Contoh: Wanprestasi, PMH, dll.",
+                      },
+                    }),
+                  ]),
+                ]),
                 _vm._v(" "),
-                _vm._m(3, true),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "status" },
+                    },
+                    [_vm._v("Alasan Perkaranya Menarik")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9" }, [
+                    _c("textarea", {
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "caseexperience[reason][" + index + "]",
+                        id: "",
+                        cols: "30",
+                        rows: "10",
+                      },
+                    }),
+                  ]),
+                ]),
               ]),
             ]
           ),
@@ -50876,78 +50947,6 @@ var staticRenderFns = [
         ]),
       ]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-sm-3 col-form-label",
-          attrs: { for: "judul_perkara" },
-        },
-        [_vm._v("Judul Perkara")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "judul_perkara",
-            "aria-describedby": "basic-addon3",
-            name: "judul_perkara[]",
-            placeholder: "Judul Perkara",
-          },
-        }),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        { staticClass: "col-sm-3 col-form-label", attrs: { for: "name" } },
-        [_vm._v("Jenis")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "name",
-            "aria-describedby": "basic-addon3",
-            name: "jenis[]",
-            placeholder: "Contoh: Wanprestasi, PMH, dll.",
-          },
-        }),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        { staticClass: "col-sm-3 col-form-label", attrs: { for: "status" } },
-        [_vm._v("Alasan Perkaranya Menarik")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-9" }, [
-        _c("textarea", {
-          staticClass: "form-control",
-          attrs: { name: "", id: "", cols: "30", rows: "10" },
-        }),
-      ]),
-    ])
   },
 ]
 render._withStripped = true
@@ -51472,7 +51471,118 @@ var render = function () {
         return _c("div", { key: index, staticClass: "card mt-2" }, [
           _vm._m(0, true),
           _vm._v(" "),
-          _vm._m(1, true),
+          _c(
+            "div",
+            {
+              staticClass: "collapse show",
+              attrs: {
+                id: "collapseOne",
+                "aria-labelledby": "headingOne",
+                "data-parent": "#accordionExample",
+              },
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "name" },
+                    },
+                    [_vm._v("Nama Universitas")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "name",
+                        "aria-describedby": "basic-addon3",
+                        name: "pendidikanformal[" + index + "][university]",
+                        placeholder: "Nama Universitas",
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "name" },
+                    },
+                    [_vm._v("Jurusan")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "name",
+                        "aria-describedby": "basic-addon3",
+                        name: "pendidikanformal[" + index + "][jurusan]",
+                        placeholder: "Jurusan",
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "name" },
+                    },
+                    [_vm._v("Tingkat Pendidikan")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "name",
+                        "aria-describedby": "basic-addon3",
+                        name:
+                          "pendidikanformal[" + index + "][level_education]",
+                        placeholder: "Tingkat Pendidikan",
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "status" },
+                    },
+                    [_vm._v("Status")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8" }, [
+                    _c("label", { staticClass: "switch mt-2" }, [
+                      _c("input", {
+                        attrs: {
+                          type: "checkbox",
+                          name: "pendidikanformal[" + index + "][status]",
+                          checked: "",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "slider round" }),
+                    ]),
+                  ]),
+                ]),
+              ]),
+            ]
+          ),
         ])
       }),
       0
@@ -51513,116 +51623,6 @@ var staticRenderFns = [
             },
             [_c("img", { attrs: { src: "/images/accordion.png", alt: "" } })]
           ),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "collapse show",
-        attrs: {
-          id: "collapseOne",
-          "aria-labelledby": "headingOne",
-          "data-parent": "#accordionExample",
-        },
-      },
-      [
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-sm-3 col-form-label",
-                attrs: { for: "name" },
-              },
-              [_vm._v("Nama Universitas")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "name",
-                  "aria-describedby": "basic-addon3",
-                  name: "univercity[]",
-                  placeholder: "Nama Universitas",
-                },
-              }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-sm-3 col-form-label",
-                attrs: { for: "name" },
-              },
-              [_vm._v("Jurusan")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "name",
-                  "aria-describedby": "basic-addon3",
-                  name: "jurusan[]",
-                  placeholder: "Jurusan",
-                },
-              }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-sm-3 col-form-label",
-                attrs: { for: "name" },
-              },
-              [_vm._v("Tingkat Pendidikan")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "name",
-                  "aria-describedby": "basic-addon3",
-                  name: "level_education[]",
-                  placeholder: "Tingkat Pendidikan",
-                },
-              }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-sm-3 col-form-label",
-                attrs: { for: "status" },
-              },
-              [_vm._v("Status")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-8" }, [
-              _c("label", { staticClass: "switch mt-2" }, [
-                _c("input", { attrs: { type: "checkbox", name: "status[]" } }),
-                _vm._v(" "),
-                _c("span", { staticClass: "slider round" }),
-              ]),
-            ]),
-          ]),
         ]),
       ]
     )
@@ -51658,7 +51658,118 @@ var render = function () {
         return _c("div", { key: index, staticClass: "card mt-2" }, [
           _vm._m(0, true),
           _vm._v(" "),
-          _vm._m(1, true),
+          _c(
+            "div",
+            {
+              staticClass: "collapse show",
+              attrs: {
+                id: "collapseOne",
+                "aria-labelledby": "headingOne",
+                "data-parent": "#accordionExample",
+              },
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "name" },
+                    },
+                    [_vm._v("Jenis Pendidikan")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "jenis_pendidikan",
+                        "aria-describedby": "basic-addon3",
+                        name:
+                          "pendidikanonformal[" + index + "][jenis_pendidikan]",
+                        placeholder: "Jenis Pendidikan",
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "name" },
+                    },
+                    [_vm._v("Tema Pendidikan")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "tema_pendidikan",
+                        "aria-describedby": "basic-addon3",
+                        name:
+                          "pendidikanonformal[" + index + "][tema_pendidikan]",
+                        placeholder: "Tema Pendidikan",
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "name" },
+                    },
+                    [_vm._v("Tahun")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "tahun",
+                        "aria-describedby": "basic-addon3",
+                        name: "pendidikanonformal[" + index + "][tahun]",
+                        placeholder: "Tahun",
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-form-label",
+                      attrs: { for: "status" },
+                    },
+                    [_vm._v("Sertifikat Dokumen")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group files" }, [
+                    _c("label", [_vm._v("Upload Your File ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "file",
+                        multiple: "",
+                        name: "pendidikanonformal[" + index + "][certificate]",
+                      },
+                    }),
+                  ]),
+                ]),
+              ]),
+            ]
+          ),
         ])
       }),
       0
@@ -51699,117 +51810,6 @@ var staticRenderFns = [
             },
             [_c("img", { attrs: { src: "/images/accordion.png", alt: "" } })]
           ),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "collapse show",
-        attrs: {
-          id: "collapseOne",
-          "aria-labelledby": "headingOne",
-          "data-parent": "#accordionExample",
-        },
-      },
-      [
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-sm-3 col-form-label",
-                attrs: { for: "name" },
-              },
-              [_vm._v("Jenis Pendidikan")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "jenis_pendidikan",
-                  "aria-describedby": "basic-addon3",
-                  name: "jenis_pendidikan[]",
-                  placeholder: "Jenis Pendidikan",
-                },
-              }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-sm-3 col-form-label",
-                attrs: { for: "name" },
-              },
-              [_vm._v("Tema Pendidikan")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "tema_pendidikan",
-                  "aria-describedby": "basic-addon3",
-                  name: "tema_pendidikan[]",
-                  placeholder: "Tema Pendidikan",
-                },
-              }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-sm-3 col-form-label",
-                attrs: { for: "name" },
-              },
-              [_vm._v("Tahun")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "tahun",
-                  "aria-describedby": "basic-addon3",
-                  name: "tahun[]",
-                  placeholder: "Tahun",
-                },
-              }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-sm-3 col-form-label",
-                attrs: { for: "status" },
-              },
-              [_vm._v("Sertifikat Dokumen")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group files" }, [
-              _c("label", [_vm._v("Upload Your File ")]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "file", multiple: "" },
-              }),
-            ]),
-          ]),
         ]),
       ]
     )
@@ -51872,7 +51872,10 @@ var render = function () {
                       "select",
                       {
                         staticClass: "form-control",
-                        attrs: { name: "case[]", id: "" },
+                        attrs: {
+                          name: "specialization[" + index + "][case]",
+                          id: "",
+                        },
                       },
                       _vm._l(_vm.cases, function (item, index) {
                         return _c(
@@ -51901,7 +51904,10 @@ var render = function () {
                       "select",
                       {
                         staticClass: "form-control",
-                        attrs: { name: "specialization[]", id: "" },
+                        attrs: {
+                          name: "specialization[" + index + "][specialization]",
+                          id: "",
+                        },
                       },
                       _vm._l(_vm.specialization, function (item, index) {
                         return _c(

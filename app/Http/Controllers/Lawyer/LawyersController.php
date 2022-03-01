@@ -8,6 +8,7 @@ use App\Models\Lawyers;
 use App\Models\LawyersAccountNumber;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -27,6 +28,9 @@ class LawyersController extends Controller
 		return view('admin.lawyer.index', compact("lawyers"));
 	}
 
+	/**
+	 * 
+	 */
 	public function new(Request $request)
 	{
 		# code...
@@ -37,46 +41,94 @@ class LawyersController extends Controller
 		return view('admin.lawyer.store', compact('case_categories', "specialization"));
 	}	
 
+	/**
+	 * 
+	 */
 	public function newPost(Request $request)
 	{
-		$lawyer = new Lawyers();
-		$first_name = split_name($request->name)[0];
-		$last_name = split_name($request->name)[1];
 
-		$lawyer = $lawyer->create([
-			'first_name' => $first_name,
-			'last_name' => $last_name,
-			'email' => $request->email,
-			'password' => Hash::make($request->password_generate),
-			'phone' => $request->phone,
-			'bod_place' => $request->place_of_birth,
-			'uuid' => Str::uuid(),
-			'slug' => Str::slug($request->name),
-			'bod' => $request->bod,
-			'gender' => $request->gender,
-			'work' => $request->work,
-			'religion' => $request->religion,
-			'profile_picture' => $request->profile_picture,
-			'location' => $request->location,
-			'province_id' => $request->province_id,
-			'city_id' => $request->city_id,
-		]);
+		DB::transaction(function() use ($request)
+		{
+		
+			$lawyer = new Lawyers();
+			$first_name = split_name($request->name)[0];
+			$last_name = split_name($request->name)[1];
 
-		$lawyer->account_number()->create([
-			'bank_name' => $request->bank_name,
-			'no_rekening' => $request->no_rekening,
-			'nama_penerima' => $request->nama_penerima,
-		]);
+			
+			$lawyer = $lawyer->create([
+				'first_name' => $first_name,
+				'last_name' => $last_name,
+				'email' => $request->email,
+				'password' => Hash::make($request->password_generate),
+				'phone' => $request->phone,
+				'bod_place' => $request->place_of_birth,
+				'uuid' => Str::uuid(),
+				'slug' => Str::slug($request->name),
+				'bod' => $request->bod,
+				'gender' => $request->gender,
+				'work' => $request->work,
+				'religion' => $request->religion,
+				'profile_picture' => $request->profile_picture,
+				'location' => $request->location,
+				'province_id' => $request->province_id,
+				'city_id' => $request->city_id,
+			]);
 
-		$lawyer->lawyers_workarea->create([
-			'province' => $request->province_work_area,
-            'city' => $request->city_work_area
-		]);
+			$lawyer->account_number()->create([
+				'bank_name' => $request->bank_name,
+				'no_rekening' => $request->no_rekening,
+				'nama_penerima' => $request->nama_penerima,
+			]);
 
-		$lawyer->lawyers_workarea->create([
-			'province' => $request->province_work_area,
-            'city' => $request->city_work_area
-		]);
+			$law_firm = $lawyer->lawyers_law_firm()->create([
+				'law_firm_name' => $request->office_name,
+				'address' => $request->alamat,
+				'city' => $request->city,
+				'province' => $request->province,
+				'postal_code' => $request->postal_code,
+				'email_law_firm' => $request->office_email,
+				'phone' => $request->office_phone,
+				'id_card_number' => $request->no_izin_advokat,
+				'years_of_advocate_swearing' => $request->advokat_year,
+				'long_working_years' => $request->long_work_experience,
+				'probono' => $request->probono
+			]);
+
+			$law_firm->lawyers_law_firm_files()->create([
+				'files' => $request->files
+			]);
+
+
+			foreach ($request->pendidikanformal as $keys => $items) {
+				$lawyer->educations()->create([
+					'education_university' => $items['university'],
+					'education_university_department' => $items['jurusan'],
+					'education_level_education' => $items['level_education']
+				]);
+			}
+
+			foreach ($request->pendidikanonformal as $keys => $items) {
+				$lawyer->lawyers_unformal_educations()->create([
+					'education_type' => $items['jenis_pendidikan'],
+					'education_title' => $items['tema_pendidikan'],
+					'education_year' => $items['tahun'],
+					'certificate' => $items['certificate']
+				]);
+			}
+
+			foreach ($request->specialization as $keys => $items) {
+				$lawyer->lawyers_specialization()->create([
+					'case_category_id' => $items['case'],
+					'specialization_id' => $items['specialization']
+				]);
+			}
+
+			$lawyer->lawyers_workarea()->create([
+				'province' => $request->province_work_area,
+				'city' => $request->city_work_area
+			]);
+
+		});
 
 		return redirect()->route("lawyers");
 	}	

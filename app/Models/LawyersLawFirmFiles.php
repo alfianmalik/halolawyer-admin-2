@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class LawyersLawFirmFiles extends Model
 {
     use HasFactory;
+
+    protected $guarded = ["created_at"];
 }

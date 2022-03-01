@@ -88,7 +88,6 @@ class Lawyers extends Model
         return $this->hasMany(LawyerWorkArea::class, 'lawyers_id');
     }
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

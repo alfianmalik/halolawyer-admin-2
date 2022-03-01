@@ -15,21 +15,21 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Jenis Pendidikan</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="jenis_pendidikan" aria-describedby="basic-addon3" name="jenis_pendidikan[]" placeholder="Jenis Pendidikan">
+                            <input type="text" class="form-control" id="jenis_pendidikan" aria-describedby="basic-addon3" :name="'pendidikanonformal['+ index +'][jenis_pendidikan]'" placeholder="Jenis Pendidikan">
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Tema Pendidikan</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="tema_pendidikan" aria-describedby="basic-addon3" name="tema_pendidikan[]" placeholder="Tema Pendidikan">
+                            <input type="text" class="form-control" id="tema_pendidikan" aria-describedby="basic-addon3" :name="'pendidikanonformal['+ index +'][tema_pendidikan]'" placeholder="Tema Pendidikan">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Tahun</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="tahun" aria-describedby="basic-addon3" name="tahun[]" placeholder="Tahun">
+                            <input type="text" class="form-control" id="tahun" aria-describedby="basic-addon3" :name="'pendidikanonformal['+ index +'][tahun]'" placeholder="Tahun">
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@
                         <label for="status" class="col-sm-3 col-form-label">Sertifikat Dokumen</label>
                         <div class="form-group files">
                             <label>Upload Your File </label>
-                            <input type="file" class="form-control" multiple="">
+                            <input type="file" class="form-control" multiple="" :name="'pendidikanonformal['+ index +'][certificate]'">
                         </div>
                     </div>
                 </div>

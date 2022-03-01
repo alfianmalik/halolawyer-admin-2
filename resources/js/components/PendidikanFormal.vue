@@ -15,21 +15,21 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Nama Universitas</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" name="univercity[]" placeholder="Nama Universitas">
+                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" :name="'pendidikanformal['+ index +'][university]'" placeholder="Nama Universitas">
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Jurusan</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" name="jurusan[]" placeholder="Jurusan">
+                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" :name="'pendidikanformal['+ index +'][jurusan]'" placeholder="Jurusan">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Tingkat Pendidikan</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" name="level_education[]" placeholder="Tingkat Pendidikan">
+                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" :name="'pendidikanformal['+ index +'][level_education]'" placeholder="Tingkat Pendidikan">
                         </div>
                     </div>
 
@@ -38,7 +38,7 @@
                         <div class="col-sm-8">
                             <!-- Rounded switch -->
                             <label class="switch mt-2">
-                                <input type="checkbox" name="status[]">
+                                <input type="checkbox" :name="'pendidikanformal['+ index +'][status]'" checked>
                                 <span class="slider round"></span>
                             </label>
                         </div>

@@ -15,7 +15,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Kategori Kasus</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="case[]" id="">
+                                <select class="form-control" :name="'specialization['+ index +'][case]'" id="">
                                     <option v-for="(item, index) in cases" :key="index" :value="item.id">{{ item.name }}</option>
                                 </select>
                             </div>
@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Spesialisasi</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="specialization[]" id="">
+                                <select class="form-control" :name="'specialization['+ index +'][specialization]'" id="">
                                     <option v-for="(item, index) in specialization" :key="index" :value="item.id">{{ item.name }}</option>
                                 </select>
                             </div>

@@ -15,7 +15,7 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Kategori Kasus</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="case[]" id="">
+                            <select class="form-control" :name="'caseexperience[case]['+ index +']'" id="">
                                 <option v-for="(item, index) in cases" :key="index" :value="item.id">{{ item.name }}</option>
                             </select>
                         </div>
@@ -24,14 +24,14 @@
                     <div class="form-group row">
                         <label for="judul_perkara" class="col-sm-3 col-form-label">Judul Perkara</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="judul_perkara" aria-describedby="basic-addon3" name="judul_perkara[]" placeholder="Judul Perkara">
+                            <input type="text" class="form-control" id="judul_perkara" aria-describedby="basic-addon3" :name="'caseexperience[judul_perkara]['+ index +']'" placeholder="Judul Perkara">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Tahun</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="year[]" id="">
+                            <select class="form-control" :name="'caseexperience[year]['+ index +']'" id="">
                                 <option v-for="year in years" :value="year" :key="year">{{ year }}</option>
                             </select>
                         </div>
@@ -40,7 +40,7 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Jenis</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" name="jenis[]" placeholder="Contoh: Wanprestasi, PMH, dll.">
+                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" :name="'caseexperience[jenis]['+ index +']'" placeholder="Contoh: Wanprestasi, PMH, dll.">
                         </div>
                     </div>
 
@@ -48,7 +48,7 @@
                         <label for="status" class="col-sm-3 col-form-label">Alasan Perkaranya Menarik</label>
                         <div class="col-sm-9">
                             <!-- Rounded switch -->
-                            <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                            <textarea class="form-control" :name="'caseexperience[reason]['+ index +']'" id="" cols="30" rows="10"></textarea>
                         </div>
                     </div>
                 </div>

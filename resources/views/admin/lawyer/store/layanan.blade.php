@@ -6,21 +6,21 @@
             <div class="form-group row mt-5">
                 <label for="inputPassword" class="col-sm-3 col-form-label">Nama Kantor</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" id="password_old" aria-describedby="basic-addon3" name="password_old" placeholder="Password">
+                    <input type="password" class="form-control" id="nama_kantor" aria-describedby="basic-addon3" name="nama_kantor" placeholder="Password">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="inputPassword" class="col-sm-3 col-form-label">Email</label>
                 <div class="col-sm-9">
-                    <input type="password" id="password" class="form-control" id="basic-url" name="password" aria-describedby="basic-addon3">
+                    <input type="password" id="email_law_firm" class="form-control" id="basic-url" name="email_law_firm" aria-describedby="basic-addon3">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="inputPassword" class="col-sm-3 col-form-label">No Hp</label>
                 <div class="col-sm-9">
-                    <input type="password" id="password" class="form-control" id="basic-url" name="password" aria-describedby="basic-addon3">
+                    <input type="password" id="phone" class="form-control" id="basic-url" name="phone" aria-describedby="basic-addon3">
                 </div>
             </div>
 
