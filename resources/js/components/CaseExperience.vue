@@ -3,11 +3,18 @@
         <div class="accordion" id="accordionExample">
             <div class="card mt-2" v-for="(item, index) in items" :key="index">
                 <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <img src="/images/accordion.png" alt="">
-                        </button>
-                    </h5>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5 class="w-75">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <img src="/images/accordion.png" alt="">
+                                </button>
+                            </h5>
+                        </div>
+                        <div class="col-md-2 float-right text-right">
+                            <i class="fa fa-trash mt-3 mr-4" @click="deleteItem(index)"></i>    
+                        </div>
+                    </div>
                 </div>
 
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">

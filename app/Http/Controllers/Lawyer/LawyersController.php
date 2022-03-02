@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Laravel\Ui\Presets\React;
 
 class LawyersController extends Controller
 {
@@ -70,7 +71,7 @@ class LawyersController extends Controller
 				'gender' => $request->gender,
 				'work' => $request->work,
 				'religion' => $request->religion,
-			'profile_picture' => $request->hasFile('profile_picture')?(new ImageProcessor($request->profile_picture, "", ""))->upload()->url():"",
+				'profile_picture' => $request->hasFile('profile_picture')?(new ImageProcessor($request->profile_picture, Lawyers::APP_URL_PROFILE_PICTURE))->upload()->url():"",
 				'location' => $request->location,
 				'province_id' => $request->province_id,
 				'city_id' => $request->city_id,
@@ -93,12 +94,17 @@ class LawyersController extends Controller
 				'id_card_number' => $request->no_izin_advokat,
 				'years_of_advocate_swearing' => $request->advokat_year,
 				'long_working_years' => $request->long_work_experience,
-				'probono' => $request->probono
+				'probono' => $request->probono=="on"?true:false
 			]);
-
-			$law_firm->lawyers_law_firm_files()->create([
-				'files' =>  $request->hasFile('law_firm_file')?(new ImageFileProcessor($request->law_firm_file, "", ""))->upload()->url():""
-			]);
+			
+			if ($request->law_firm_file) {
+				foreach ($request->law_firm_file as $key => $fileuploadlaw) {
+					$law_firm->lawyers_law_firm_files()->create([
+						'files' => (new ImageFileProcessor($fileuploadlaw, Lawyers::APP_URL_LAW_FIRM_FILE, $fileuploadlaw->getClientOriginalExtension()))->upload()->url()
+					]);
+				}
+				
+			}
 
 			if ($request->pendidikanformal) {
 				foreach ($request->pendidikanformal as $keys => $items) {
@@ -116,7 +122,7 @@ class LawyersController extends Controller
 						'education_type' => $items['jenis_pendidikan'],
 						'education_title' => $items['tema_pendidikan'],
 						'education_year' => $items['tahun'],
-						// 'certificate' => $request->hasFile($items['certificate'])?(new ImageFileProcessor($items['certificate'], "", ""))->upload()->url():""
+						'certificate' => $request->hasFile($items['certificate'])?(new ImageFileProcessor($items['certificate'], "", ""))->upload()->url():""
 					]);
 				}
 			}
@@ -134,6 +140,10 @@ class LawyersController extends Controller
 				'province' => $request->province_work_area,
 				'city' => $request->city_work_area
 			]);
+
+			// $lawyer->lawyers_case_experience()->create([
+
+			// ]);
 
 		});
 
@@ -153,4 +163,12 @@ class LawyersController extends Controller
 
 		// return view('admin.lawyer.index', compact("lawyers"));
 	}	
+
+	public function delete(Request $request)
+	{
+		$lawyer = Lawyers::whereUuid($request->uuid)->first();
+		$lawyer->delete();
+
+		return redirect()->route("lawyers");
+	}
 }

@@ -59,7 +59,7 @@
                           </td>
                           <td>{{ $user->id }}</td>
                           
-                          <td></td>
+                          <td><img src="{{ $user->profile_picture }}" alt="" width="50" height="50"></td>
                           <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                           <td>{{ $user->email }}</td>
                           <td></td>
@@ -155,18 +155,22 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Modal title</h5>
+                                            <h5 class="modal-title">Delete</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                         </div>
-                                        <div class="modal-body">
-                                            Body
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save</button>
-                                        </div>
+                                        <form action="{{ route("lawyers.delete", ['uuid' => $user->uuid]) }}" method="post">
+                                            @method('delete')
+                                            @csrf
+                                            <div class="modal-body">
+                                                Are you sure want to delete this data?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Yes</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

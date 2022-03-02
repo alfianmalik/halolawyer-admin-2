@@ -8,7 +8,7 @@
         <div class="">
             <button type="button" class="btn btn-outline-primary mt-3" @click="selectFile">Add Upload File</button>
         </div>
-        <input type="file" @change="onFileChange" ref="file" class="d-none" multiple name="law_firm_file"/>
+        <input type="file" @change="onFileChange" ref="file" class="d-none" multiple name="law_firm_file[]"/>
     </div>
 </template>
 

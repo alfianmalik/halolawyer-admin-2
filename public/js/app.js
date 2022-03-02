@@ -1872,6 +1872,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["cases"],
   name: "PendidikanFormal",
@@ -2507,6 +2514,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PendidikanFormal",
   data: function data() {
@@ -2539,6 +2553,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50772,7 +50793,26 @@ var render = function () {
       { staticClass: "accordion", attrs: { id: "accordionExample" } },
       _vm._l(_vm.items, function (item, index) {
         return _c("div", { key: index, staticClass: "card mt-2" }, [
-          _vm._m(0, true),
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "headingOne" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _vm._m(0, true),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-2 float-right text-right" }, [
+                  _c("i", {
+                    staticClass: "fa fa-trash mt-3 mr-4",
+                    on: {
+                      click: function ($event) {
+                        return _vm.deleteItem(index)
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -50944,28 +50984,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header", attrs: { id: "headingOne" } },
-      [
-        _c("h5", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseOne",
-                "aria-expanded": "true",
-                "aria-controls": "collapseOne",
-              },
+    return _c("div", { staticClass: "col-md-10" }, [
+      _c("h5", { staticClass: "w-75" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-link",
+            attrs: {
+              type: "button",
+              "data-toggle": "collapse",
+              "data-target": "#collapseOne",
+              "aria-expanded": "true",
+              "aria-controls": "collapseOne",
             },
-            [_c("img", { attrs: { src: "/images/accordion.png", alt: "" } })]
-          ),
-        ]),
-      ]
-    )
+          },
+          [_c("img", { attrs: { src: "/images/accordion.png", alt: "" } })]
+        ),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
@@ -51693,7 +51729,26 @@ var render = function () {
       { staticClass: "accordion", attrs: { id: "accordionExample" } },
       _vm._l(_vm.items, function (item, index) {
         return _c("div", { key: index, staticClass: "card mt-2" }, [
-          _vm._m(0, true),
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "headingOne" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _vm._m(0, true),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-2 float-right text-right" }, [
+                  _c("i", {
+                    staticClass: "fa fa-trash mt-3 mr-4",
+                    on: {
+                      click: function ($event) {
+                        return _vm.deleteItem(index)
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -51831,28 +51886,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header", attrs: { id: "headingOne" } },
-      [
-        _c("h5", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseOne",
-                "aria-expanded": "true",
-                "aria-controls": "collapseOne",
-              },
+    return _c("div", { staticClass: "col-md-10" }, [
+      _c("h5", { staticClass: "w-75" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-link",
+            attrs: {
+              type: "button",
+              "data-toggle": "collapse",
+              "data-target": "#collapseOne",
+              "aria-expanded": "true",
+              "aria-controls": "collapseOne",
             },
-            [_c("img", { attrs: { src: "/images/accordion.png", alt: "" } })]
-          ),
-        ]),
-      ]
-    )
+          },
+          [_c("img", { attrs: { src: "/images/accordion.png", alt: "" } })]
+        ),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
@@ -51883,7 +51934,26 @@ var render = function () {
       { staticClass: "accordion", attrs: { id: "accordionExample" } },
       _vm._l(_vm.items, function (item, index) {
         return _c("div", { key: index, staticClass: "card mt-2" }, [
-          _vm._m(0, true),
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "headingOne" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _vm._m(0, true),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-2 float-right text-right" }, [
+                  _c("i", {
+                    staticClass: "fa fa-trash mt-3 mr-4",
+                    on: {
+                      click: function ($event) {
+                        return _vm.deleteItem(index)
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -51984,28 +52054,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header", attrs: { id: "headingOne" } },
-      [
-        _c("h5", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseOne",
-                "aria-expanded": "true",
-                "aria-controls": "collapseOne",
-              },
+    return _c("div", { staticClass: "col-md-10" }, [
+      _c("h5", { staticClass: "w-75" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-link",
+            attrs: {
+              type: "button",
+              "data-toggle": "collapse",
+              "data-target": "#collapseOne",
+              "aria-expanded": "true",
+              "aria-controls": "collapseOne",
             },
-            [_c("img", { attrs: { src: "/images/accordion.png", alt: "" } })]
-          ),
-        ]),
-      ]
-    )
+          },
+          [_c("img", { attrs: { src: "/images/accordion.png", alt: "" } })]
+        ),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
@@ -52061,7 +52127,7 @@ var render = function () {
     _c("input", {
       ref: "file",
       staticClass: "d-none",
-      attrs: { type: "file", multiple: "", name: "law_firm_file" },
+      attrs: { type: "file", multiple: "", name: "law_firm_file[]" },
       on: { change: _vm.onFileChange },
     }),
   ])
