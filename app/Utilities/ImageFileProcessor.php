@@ -11,8 +11,9 @@ namespace App\Utilities;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-use Str;
+
 
 class ImageFileProcessor
 {

@@ -15,21 +15,21 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Jenis Pendidikan</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="jenis_pendidikan" aria-describedby="basic-addon3" :name="'pendidikanonformal['+ index +'][jenis_pendidikan]'" placeholder="Jenis Pendidikan">
+                            <input type="text" class="form-control" id="jenis_pendidikan" aria-describedby="basic-addon3" :name="'pendidikanonformal['+ index +'][jenis_pendidikan]'" placeholder="Jenis Pendidikan" required>
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Tema Pendidikan</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="tema_pendidikan" aria-describedby="basic-addon3" :name="'pendidikanonformal['+ index +'][tema_pendidikan]'" placeholder="Tema Pendidikan">
+                            <input type="text" class="form-control" id="tema_pendidikan" aria-describedby="basic-addon3" :name="'pendidikanonformal['+ index +'][tema_pendidikan]'" placeholder="Tema Pendidikan" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Tahun</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="tahun" aria-describedby="basic-addon3" :name="'pendidikanonformal['+ index +'][tahun]'" placeholder="Tahun">
+                            <input type="text" class="form-control" id="tahun" aria-describedby="basic-addon3" :name="'pendidikanonformal['+ index +'][tahun]'" placeholder="Tahun" required>
                         </div>
                     </div>
 
@@ -55,14 +55,18 @@ export default {
     name: "PendidikanFormal",
     data: function () {
         return {
-            items : 1
+            items : [],
+            count : 0
         }
     },
     mounted() {
     },
     methods : {
         addNew() {
-            this.items++
+            this.items.push([this.count++])
+        },
+        deleteItem(index){
+            this.items.splice(index, 1);
         }
     }
 }

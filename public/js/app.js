@@ -1872,19 +1872,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["cases"],
   name: "PendidikanFormal",
   data: function data() {
     return {
-      items: 1
+      items: [],
+      count: 0
     };
   },
   mounted: function mounted() {},
   methods: {
     addNew: function addNew() {
-      this.items++;
+      this.items.push([this.count++]);
+    },
+    deleteItem: function deleteItem(index) {
+      this.items.splice(index, 1);
     }
   },
   computed: {
@@ -2413,17 +2416,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PendidikanFormal",
   data: function data() {
     return {
-      items: 1
+      items: [],
+      count: 0
     };
   },
   mounted: function mounted() {},
   methods: {
     addNew: function addNew() {
-      this.items++;
+      this.items.push([this.count++]);
+    },
+    deleteItem: function deleteItem(index) {
+      this.items.splice(index, 1);
     }
   }
 });
@@ -2497,13 +2511,17 @@ __webpack_require__.r(__webpack_exports__);
   name: "PendidikanFormal",
   data: function data() {
     return {
-      items: 1
+      items: [],
+      count: 0
     };
   },
   mounted: function mounted() {},
   methods: {
     addNew: function addNew() {
-      this.items++;
+      this.items.push([this.count++]);
+    },
+    deleteItem: function deleteItem(index) {
+      this.items.splice(index, 1);
     }
   }
 });
@@ -2567,16 +2585,17 @@ __webpack_require__.r(__webpack_exports__);
   name: "Spesialisasi",
   data: function data() {
     return {
-      items: 1
+      items: [],
+      count: 0
     };
   },
-  mounted: function mounted() {
-    console.log(this.specialization);
-    console.log(this.cases);
-  },
+  mounted: function mounted() {},
   methods: {
     addNew: function addNew() {
-      this.items++;
+      this.items.push([this.count++]);
+    },
+    deleteItem: function deleteItem(index) {
+      this.items.splice(index, 1);
     }
   }
 });
@@ -50783,7 +50802,7 @@ var render = function () {
                       {
                         staticClass: "form-control",
                         attrs: {
-                          name: "caseexperience[case][" + index + "]",
+                          name: "caseexperience[" + index + "][case]",
                           id: "",
                         },
                       },
@@ -50816,7 +50835,7 @@ var render = function () {
                         type: "text",
                         id: "judul_perkara",
                         "aria-describedby": "basic-addon3",
-                        name: "caseexperience[judul_perkara][" + index + "]",
+                        name: "caseexperience[" + index + "][judul_perkara]",
                         placeholder: "Judul Perkara",
                       },
                     }),
@@ -50839,7 +50858,7 @@ var render = function () {
                       {
                         staticClass: "form-control",
                         attrs: {
-                          name: "caseexperience[year][" + index + "]",
+                          name: "caseexperience[" + index + "][year]",
                           id: "",
                         },
                       },
@@ -50872,7 +50891,7 @@ var render = function () {
                         type: "text",
                         id: "name",
                         "aria-describedby": "basic-addon3",
-                        name: "caseexperience[jenis][" + index + "]",
+                        name: "caseexperience[" + index + "][jenis]",
                         placeholder: "Contoh: Wanprestasi, PMH, dll.",
                       },
                     }),
@@ -50893,7 +50912,7 @@ var render = function () {
                     _c("textarea", {
                       staticClass: "form-control",
                       attrs: {
-                        name: "caseexperience[reason][" + index + "]",
+                        name: "caseexperience[" + index + "][reason]",
                         id: "",
                         cols: "30",
                         rows: "10",
@@ -51469,7 +51488,26 @@ var render = function () {
       { staticClass: "accordion", attrs: { id: "accordionExample" } },
       _vm._l(_vm.items, function (item, index) {
         return _c("div", { key: index, staticClass: "card mt-2" }, [
-          _vm._m(0, true),
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "headingOne" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _vm._m(0, true),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-2 float-right text-right" }, [
+                  _c("i", {
+                    staticClass: "fa fa-trash mt-3 mr-4",
+                    on: {
+                      click: function ($event) {
+                        return _vm.deleteItem(index)
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -51502,6 +51540,7 @@ var render = function () {
                         "aria-describedby": "basic-addon3",
                         name: "pendidikanformal[" + index + "][university]",
                         placeholder: "Nama Universitas",
+                        required: "",
                       },
                     }),
                   ]),
@@ -51526,6 +51565,7 @@ var render = function () {
                         "aria-describedby": "basic-addon3",
                         name: "pendidikanformal[" + index + "][jurusan]",
                         placeholder: "Jurusan",
+                        required: "",
                       },
                     }),
                   ]),
@@ -51551,6 +51591,7 @@ var render = function () {
                         name:
                           "pendidikanformal[" + index + "][level_education]",
                         placeholder: "Tingkat Pendidikan",
+                        required: "",
                       },
                     }),
                   ]),
@@ -51604,28 +51645,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header", attrs: { id: "headingOne" } },
-      [
-        _c("h5", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseOne",
-                "aria-expanded": "true",
-                "aria-controls": "collapseOne",
-              },
+    return _c("div", { staticClass: "col-md-10" }, [
+      _c("h5", { staticClass: "w-75" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-link",
+            attrs: {
+              type: "button",
+              "data-toggle": "collapse",
+              "data-target": "#collapseOne",
+              "aria-expanded": "true",
+              "aria-controls": "collapseOne",
             },
-            [_c("img", { attrs: { src: "/images/accordion.png", alt: "" } })]
-          ),
-        ]),
-      ]
-    )
+          },
+          [_c("img", { attrs: { src: "/images/accordion.png", alt: "" } })]
+        ),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
@@ -51690,6 +51727,7 @@ var render = function () {
                         name:
                           "pendidikanonformal[" + index + "][jenis_pendidikan]",
                         placeholder: "Jenis Pendidikan",
+                        required: "",
                       },
                     }),
                   ]),
@@ -51715,6 +51753,7 @@ var render = function () {
                         name:
                           "pendidikanonformal[" + index + "][tema_pendidikan]",
                         placeholder: "Tema Pendidikan",
+                        required: "",
                       },
                     }),
                   ]),
@@ -51739,6 +51778,7 @@ var render = function () {
                         "aria-describedby": "basic-addon3",
                         name: "pendidikanonformal[" + index + "][tahun]",
                         placeholder: "Tahun",
+                        required: "",
                       },
                     }),
                   ]),
@@ -52021,7 +52061,7 @@ var render = function () {
     _c("input", {
       ref: "file",
       staticClass: "d-none",
-      attrs: { type: "file", multiple: "" },
+      attrs: { type: "file", multiple: "", name: "law_firm_file" },
       on: { change: _vm.onFileChange },
     }),
   ])

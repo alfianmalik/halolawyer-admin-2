@@ -45,16 +45,19 @@ export default {
     name: "Spesialisasi",
     data: function () {
         return {
-            items : 1
+            items : [],
+            count : 0
         }
     },
     mounted() {
-        console.log(this.specialization)
-        console.log(this.cases)
+        
     },
     methods : {
         addNew() {
-            this.items++
+            this.items.push([this.count++])
+        },
+        deleteItem(index){
+            this.items.splice(index, 1);
         }
     }
 }

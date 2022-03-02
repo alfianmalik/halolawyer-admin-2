@@ -7,6 +7,8 @@ use App\Models\CaseCategory;
 use App\Models\Lawyers;
 use App\Models\LawyersAccountNumber;
 use App\Models\Specialization;
+use App\Utilities\ImageFileProcessor;
+use App\Utilities\ImageProcessor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -68,7 +70,7 @@ class LawyersController extends Controller
 				'gender' => $request->gender,
 				'work' => $request->work,
 				'religion' => $request->religion,
-				'profile_picture' => $request->profile_picture,
+			'profile_picture' => $request->hasFile('profile_picture')?(new ImageProcessor($request->profile_picture, "", ""))->upload()->url():"",
 				'location' => $request->location,
 				'province_id' => $request->province_id,
 				'city_id' => $request->city_id,
@@ -95,32 +97,37 @@ class LawyersController extends Controller
 			]);
 
 			$law_firm->lawyers_law_firm_files()->create([
-				'files' => $request->files
+				'files' =>  $request->hasFile('law_firm_file')?(new ImageFileProcessor($request->law_firm_file, "", ""))->upload()->url():""
 			]);
 
-
-			foreach ($request->pendidikanformal as $keys => $items) {
-				$lawyer->educations()->create([
-					'education_university' => $items['university'],
-					'education_university_department' => $items['jurusan'],
-					'education_level_education' => $items['level_education']
-				]);
+			if ($request->pendidikanformal) {
+				foreach ($request->pendidikanformal as $keys => $items) {
+					$lawyer->educations()->create([
+						'education_university' => $items['university'],
+						'education_university_department' => $items['jurusan'],
+						'education_level_education' => $items['level_education']
+					]);
+				}
 			}
 
-			foreach ($request->pendidikanonformal as $keys => $items) {
-				$lawyer->lawyers_unformal_educations()->create([
-					'education_type' => $items['jenis_pendidikan'],
-					'education_title' => $items['tema_pendidikan'],
-					'education_year' => $items['tahun'],
-					'certificate' => $items['certificate']
-				]);
+			if ($request->pendidikanonformal) {
+				foreach ($request->pendidikanonformal as $keys => $items) {
+					$lawyer->lawyers_unformal_educations()->create([
+						'education_type' => $items['jenis_pendidikan'],
+						'education_title' => $items['tema_pendidikan'],
+						'education_year' => $items['tahun'],
+						// 'certificate' => $request->hasFile($items['certificate'])?(new ImageFileProcessor($items['certificate'], "", ""))->upload()->url():""
+					]);
+				}
 			}
 
-			foreach ($request->specialization as $keys => $items) {
-				$lawyer->lawyers_specialization()->create([
-					'case_category_id' => $items['case'],
-					'specialization_id' => $items['specialization']
-				]);
+			if ($request->specialization) {
+				foreach ($request->specialization as $keys => $items) {
+					$lawyer->lawyers_specialization()->create([
+						'case_category_id' => $items['case'],
+						'specialization_id' => $items['specialization']
+					]);
+				}
 			}
 
 			$lawyer->lawyers_workarea()->create([

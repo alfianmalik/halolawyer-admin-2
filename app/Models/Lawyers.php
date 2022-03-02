@@ -15,6 +15,10 @@ class Lawyers extends Model
 
     protected $hidden = ['id', 'user_id'];
 
+    const APP_URL_PROFILE_PICTURE = 'profile_pictures';
+    const APP_URL_CERTIFICATE = 'certificate';
+    const APP_URL_LAW_FIRM_FILE = 'law_firm_file';
+
     /**
      * The attributes that should be cast.
      *

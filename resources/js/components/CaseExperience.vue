@@ -15,7 +15,7 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Kategori Kasus</label>
                         <div class="col-sm-9">
-                            <select class="form-control" :name="'caseexperience[case]['+ index +']'" id="">
+                            <select class="form-control" :name="'caseexperience['+ index +'][case]'" id="">
                                 <option v-for="(item, index) in cases" :key="index" :value="item.id">{{ item.name }}</option>
                             </select>
                         </div>
@@ -24,14 +24,14 @@
                     <div class="form-group row">
                         <label for="judul_perkara" class="col-sm-3 col-form-label">Judul Perkara</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="judul_perkara" aria-describedby="basic-addon3" :name="'caseexperience[judul_perkara]['+ index +']'" placeholder="Judul Perkara">
+                            <input type="text" class="form-control" id="judul_perkara" aria-describedby="basic-addon3" :name="'caseexperience['+ index +'][judul_perkara]'" placeholder="Judul Perkara">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Tahun</label>
                         <div class="col-sm-9">
-                            <select class="form-control" :name="'caseexperience[year]['+ index +']'" id="">
+                            <select class="form-control" :name="'caseexperience['+ index +'][year]'" id="">
                                 <option v-for="year in years" :value="year" :key="year">{{ year }}</option>
                             </select>
                         </div>
@@ -40,7 +40,7 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Jenis</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" :name="'caseexperience[jenis]['+ index +']'" placeholder="Contoh: Wanprestasi, PMH, dll.">
+                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" :name="'caseexperience['+ index +'][jenis]'" placeholder="Contoh: Wanprestasi, PMH, dll.">
                         </div>
                     </div>
 
@@ -48,13 +48,12 @@
                         <label for="status" class="col-sm-3 col-form-label">Alasan Perkaranya Menarik</label>
                         <div class="col-sm-9">
                             <!-- Rounded switch -->
-                            <textarea class="form-control" :name="'caseexperience[reason]['+ index +']'" id="" cols="30" rows="10"></textarea>
+                            <textarea class="form-control" :name="'caseexperience['+ index +'][reason]'" id="" cols="30" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
                 </div>
             </div>
-
         </div>
 
         <button type="button" name="" id="" class="btn btn-outline-primary btn-block mt-5" @click="addNew">+ Add New</button>        
@@ -67,14 +66,18 @@ export default {
     name: "PendidikanFormal",
     data: function () {
         return {
-            items : 1
+            items : [],
+            count : 0
         }
     },
     mounted() {
     },
     methods : {
         addNew() {
-            this.items++
+            this.items.push([this.count++])
+        },
+        deleteItem(index){
+            this.items.splice(index, 1);
         }
     },
     computed: {
