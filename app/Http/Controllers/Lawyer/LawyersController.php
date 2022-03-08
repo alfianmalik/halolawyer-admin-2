@@ -157,6 +157,9 @@ class LawyersController extends Controller
 		// return view('admin.lawyer.index', compact("lawyers"));
 	}	
 
+	/**
+	 * 
+	 */
 	public function editPost(Request $request)
 	{
 		# code...
@@ -164,10 +167,23 @@ class LawyersController extends Controller
 		// return view('admin.lawyer.index', compact("lawyers"));
 	}	
 
+	/**
+	 * 
+	 */
 	public function delete(Request $request)
 	{
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();
 		$lawyer->delete();
+
+		return redirect()->route("lawyers");
+	}
+
+	/**
+	 * 
+	 */
+	public function suspend(Request $request)
+	{
+		$lawyer = Lawyers::whereUuid($request->uuid)->first();
 
 		return redirect()->route("lawyers");
 	}

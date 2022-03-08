@@ -63,7 +63,7 @@
                 <label for="long_work_experience" class="col-sm-4 col-form-label">Lama Pengalaman Kerja </label>
                 <div class="col-sm-8">
                     <select class="form-control" name="long_work_experience" id="long_work_experience">
-                        @for ($i = 1; $i < 20 ; $i++)
+                        @for ($i = 1; $i < 50 ; $i++)
                             <option value="{{ $i }}">{{ $i }} Tahun</option>
                         @endfor
                     </select>

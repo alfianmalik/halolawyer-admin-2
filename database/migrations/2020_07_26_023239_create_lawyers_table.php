@@ -40,6 +40,7 @@ class CreateLawyersTable extends Migration
             $table->date('lawyers_since')->nullable();
             $table->integer('is_favorite')->length(1)->default(0);
             $table->integer('is_special')->length(1)->default(0);
+            $table->integer('is_suspend')->length(1)->default(0);
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
 

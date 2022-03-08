@@ -18,6 +18,7 @@ class CreateDocumentMakingTable extends Migration
             $table->string('title');
             $table->string('making_by');
             $table->string('needed');
+            $table->text('description');
             $table->integer('price');
             $table->integer('discount');
             $table->string('finished');
