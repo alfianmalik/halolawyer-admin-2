@@ -2922,12 +2922,26 @@ var app = new Vue({
   data: {
     checked: false,
     message: [],
-    finished: false
+    finished: false,
+    selectedLawyers: [],
+    selected: [],
+    allSelected: false
   },
   created: function created() {
-    this.startChatPusher();
+    if (typeof conversation !== 'undefined') {
+      this.startChatPusher();
+    }
   },
   methods: {
+    selectAll: function selectAll() {
+      this.selectedLawyers = [];
+
+      if (!this.allSelected) {
+        for (user in this.users) {
+          this.selectedLawyers.push(this.users[user].id);
+        }
+      }
+    },
     showPassword: function showPassword(id) {
       var password = document.querySelector("#" + id); // toggle the type attribute
 
@@ -2971,7 +2985,7 @@ var app = new Vue({
         },
         authEndpoint: "/broadcasting/auth"
       });
-      var channel = pusher.subscribe("private-mc-start-chat-conversation.".concat(conversation.id));
+      var channel = pusher.subscribe("private-m\n              c-start-chat-conversation.".concat(conversation.id));
       channel.bind("App\\Events\\StartTimeChat", function (data) {
         // console.log(new Date().getTime() + 10000)
         _this.$refs.start.startCountdown(true); // this.$refs.start.timeObj.endTime(new Date().getTime() + 1800000)

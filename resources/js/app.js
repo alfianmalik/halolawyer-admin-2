@@ -22,12 +22,26 @@ const app = new Vue({
     data: {
         checked: false,
         message: [],
-        finished: false
+        finished: false,
+        selectedLawyers: [],
+        selected: [],
+        allSelected: false,
     },
     created() {
-        this.startChatPusher()
+        if (typeof conversation !== 'undefined') {
+            this.startChatPusher()
+        }
     },
     methods : {
+        selectAll: function() {
+            this.selectedLawyers = [];
+
+            if (!this.allSelected) {
+                for (user in this.users) {
+                    this.selectedLawyers.push(this.users[user].id);
+                }
+            }
+        },
         showPassword(id) {
             const password = document.querySelector("#"+id);
             // toggle the type attribute
@@ -70,7 +84,8 @@ const app = new Vue({
             });
       
             let channel = pusher.subscribe(
-              `private-mc-start-chat-conversation.${conversation.id}`
+              `private-m
+              c-start-chat-conversation.${conversation.id}`
             );
             channel.bind("App\\Events\\StartTimeChat", data => {
                 // console.log(new Date().getTime() + 10000)

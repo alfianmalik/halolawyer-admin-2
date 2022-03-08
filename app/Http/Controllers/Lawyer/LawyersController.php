@@ -181,6 +181,20 @@ class LawyersController extends Controller
 	/**
 	 * 
 	 */
+	public function deletes(Request $request)
+	{
+		$manies = explode(",", $request->deletemany);
+        foreach ($manies as $many) {
+            $lawyer = Lawyers::find($many);
+			$lawyer->delete();
+        }
+
+        return redirect()->back()->with("status", "Successfully delete Mitra");
+	}
+
+	/**
+	 * 
+	 */
 	public function suspend(Request $request)
 	{
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();

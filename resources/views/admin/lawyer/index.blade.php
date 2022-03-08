@@ -22,6 +22,40 @@
                     </form>
               </div>
           </div>
+
+          <div class="col-md-6 mt-3 float-right">
+              <!-- Button trigger modal -->
+              <a href="#" class="btn btn-danger btn-sm float-right mr-4" v-if="selectedLawyers > 0" data-toggle="modal" data-target="#modelDeleteManyEmp">Delete</a>
+              <!-- Modal -->
+              <div class="modal modal-black fade" id="modelDeleteManyEmp" tabindex="-1" role="dialog"
+                   aria-labelledby="modelTitleId" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title">Delete</h5>
+                              <button type="button" class="close" data-dismiss="modal"
+                                      aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                              Are you sure want to delete this all data?
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary"
+                                      data-dismiss="modal" id="empClose">Close
+                              </button>
+                              <form action="{{ route("lawyers.deletes") }}" method="post">
+                                  @csrf
+                                  @method("delete")
+                                  <input name="deletemany" :value="selectedLawyers" type="hidden">
+                                  <button type="submit" class="btn btn-primary" >Delete</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
       <div class="table-responsive">
           <table class="table" id="dataTable" width="100%" cellspacing="0">
@@ -41,7 +75,7 @@
               <tfoot>
                   <tr>
                     <th>
-                        <input type="checkbox" class="" name="" id="" value="checkedValue">
+                        <input type="checkbox" class="" name="" id="" @click="selectAll" v-model="allSelected">
                     </th>
                     <th>No</th>
                     <th>Photo</th>
@@ -55,7 +89,7 @@
                   @foreach ($lawyers as $user)
                       <tr>
                           <td>
-                            <input type="checkbox" class="" name="" id="" value="checkedValue">
+                            <input type="checkbox" class="" value="{{ $user->id }}" v-model="selectedLawyers">
                           </td>
                           <td>{{ $user->id }}</td>
                           

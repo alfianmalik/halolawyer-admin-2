@@ -68,6 +68,7 @@ Route::group(['namespace' => 'Lawyer','middleware' => 'auth' ,'prefix' => 'lawye
 	Route::get('/{uuid}',[LawyersController::class,'edit'])->name('lawyers.edit');
 	Route::post('/{uuid}',[LawyersController::class,'editPost'])->name('lawyers.edit.post');
 	Route::delete('/{uuid}',[LawyersController::class, 'delete'])->name('lawyers.delete');
+	Route::delete('/',[LawyersController::class, 'deletes'])->name('lawyers.deletes');
 });
 
 
