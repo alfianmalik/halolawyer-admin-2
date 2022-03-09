@@ -19,7 +19,7 @@ class CreateDocumentMakingTable extends Migration
             $table->string('making_by')->nullable();
             $table->string('needed')->nullable();
             $table->text('description')->nullable();
-            $table->integer('price'->nullable());
+            $table->integer('price')->nullable();
             $table->integer('discount')->nullable();
             $table->string('finished')->nullable();
             $table->timestamps();
