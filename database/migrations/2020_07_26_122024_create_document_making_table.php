@@ -16,12 +16,12 @@ class CreateDocumentMakingTable extends Migration
         Schema::create('document_makings', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('making_by');
-            $table->string('needed');
-            $table->text('description');
-            $table->integer('price');
-            $table->integer('discount');
-            $table->string('finished');
+            $table->string('making_by')->nullable();
+            $table->string('needed')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('price'->nullable());
+            $table->integer('discount')->nullable();
+            $table->string('finished')->nullable();
             $table->timestamps();
         });
     }
