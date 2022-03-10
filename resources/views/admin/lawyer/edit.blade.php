@@ -42,26 +42,26 @@
                 Layanan Mitra</a>
         </li>
     </ul>
-    <form action="{{ route("lawyers.new.post") }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route("lawyers.edit.post", ["uuid" => $lawyer->uuid]) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="tab-content bg-white" id="nav-tabContent">
             <div class="tab-pane fade show active" id="a" role="tabpanel" aria-labelledby="home-tab">
-                @include('admin.lawyer.store.identity')
+                @include('admin.lawyer.edit.identity')
             </div>
             <div class="tab-pane fade" id="b" role="tabpanel" aria-labelledby="profile-tab">
-                @include('admin.lawyer.store.profession')
+                @include('admin.lawyer.edit.profession')
             </div>
             <div class="tab-pane fade" id="c" role="tabpanel" aria-labelledby="contact-tab">
-                @include('admin.lawyer.store.workarea')
+                @include('admin.lawyer.edit.workarea')
             </div>
             <div class="tab-pane fade " id="d" role="tabpanel" aria-labelledby="home-tab">
-                @include('admin.lawyer.store.specialization')
+                @include('admin.lawyer.edit.specialization')
             </div>
             <div class="tab-pane fade" id="e" role="tabpanel" aria-labelledby="profile-tab">
-                @include('admin.lawyer.store.case_experience')
+                @include('admin.lawyer.edit.case_experience')
             </div>
             <div class="tab-pane fade d-none" id="f" role="tabpanel" aria-labelledby="contact-tab">
-                @include('admin.lawyer.store.layanan')
+                @include('admin.lawyer.edit.layanan')
             </div> 
         </div>
     </form>

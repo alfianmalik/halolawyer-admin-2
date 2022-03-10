@@ -78,7 +78,8 @@ class FooterController extends Controller
         $footer = Footer::find($request->id);
         
         $footer->update([
-            'contents' => $request->contents
+            'contents' => $request->contents,
+            'title' => $request->title,
         ]);
 
         if (!$footer) {
