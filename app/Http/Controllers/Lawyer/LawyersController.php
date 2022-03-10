@@ -62,12 +62,13 @@ class LawyersController extends Controller
 			$first_name = split_name($request->name)[0];
 			$last_name = split_name($request->name)[1];
 
-			
+			$password = $request->password_generate?$request->password_generate:"secret";
+
 			$lawyer = $lawyer->create([
 				'first_name' => $first_name,
 				'last_name' => $last_name,
 				'email' => $request->email,
-				'password' => Hash::make($request->password_generate),
+				'password' => Hash::make($password),
 				'phone' => $request->phone,
 				'bod_place' => $request->place_of_birth,
 				'uuid' => Str::uuid(),
@@ -212,7 +213,7 @@ class LawyersController extends Controller
 	{
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();
 		$lawyer->update([
-			'is_suspended' => true
+			'is_suspend' => true
 		]);
 
 		return redirect()->back()->with("status", "Successfully suspend Mitra");

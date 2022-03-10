@@ -13,21 +13,21 @@
             <div class="form-group row mt-5">
                 <label for="name" class="col-sm-3 col-form-label">Nama Lengkap</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" name="name" placeholder="Nama Lengkap" required>
+                    <input type="text" class="form-control" id="name" aria-describedby="basic-addon3" value="{{ old("name") }}" name="name" placeholder="Nama Lengkap" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="email" class="col-sm-3 col-form-label">Email</label>
                 <div class="col-sm-9">
-                    <input type="email" id="email" class="form-control" name="email" aria-describedby="basic-addon3" placeholder="Email" required>
+                    <input type="email" id="email" class="form-control" name="email" aria-describedby="basic-addon3" placeholder="Email" required value="{{ old("email") }}">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="phone" class="col-sm-3 col-form-label">No Hp</label>
                 <div class="col-sm-9">
-                    <input type="text" id="phone" class="form-control" name="phone" aria-describedby="basic-addon3" placeholder="No Handphone" required>
+                    <input type="text" id="phone" class="form-control" name="phone" aria-describedby="basic-addon3" placeholder="No Handphone" required value="{{ old("phone") }}">
                 </div>
             </div>
 

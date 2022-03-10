@@ -182,7 +182,7 @@
                             </div>
 
                             <!-- Button trigger modal -->
-                            <i class="fa fa-ban ml-2 cursor-pointer" data-toggle="modal" data-target="#modelDel{{ $user->id }}"></i>
+                            <i class="fa fa-ban ml-2 cursor-pointer" style="color:{{ $user->is_suspend?"red":"black" }}" data-toggle="modal" data-target="#modelDel{{ $user->id }}"></i>
                             
                             <!-- Modal -->
                             <div class="modal fade" id="modelDel{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -194,8 +194,7 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                         </div>
-                                        <form action="{{ route("lawyers.delete", ['uuid' => $user->uuid]) }}" method="post">
-                                            @method('delete')
+                                        <form action="{{ route("lawyers.suspend", ['uuid' => $user->uuid]) }}" method="post">
                                             @csrf
                                             <div class="modal-body">
                                                 Are you sure want to Suspend this Mitra?
@@ -213,7 +212,19 @@
                   @endforeach
               </tbody>
           </table>
-          <div>{{ $lawyers->links('vendor.pagination.custom') }}</div>
+          
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        Showing {{ ($lawyers->currentPage() * $lawyers->perPage()) - ($lawyers->perPage()-1) }} - {{ $lawyers->perPage() }} of {{ $lawyers->total() }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="float-right">
+                        {{ $lawyers->links('vendor.pagination.custom') }}
+                    </div>
+                </div>
+            </div>
       </div>
   </div>
 </div>
