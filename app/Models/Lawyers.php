@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Musonza\Chat\Traits\Messageable;
 use Illuminate\Notifications\Notifiable;
 
 class Lawyers extends Model
 {
-    use HasFactory, Notifiable, Messageable;
+    use HasFactory, Notifiable, Messageable, SoftDeletes;
 
     protected $guarded = ["created_at", "updated_at"];
 

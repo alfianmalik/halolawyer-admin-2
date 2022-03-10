@@ -198,7 +198,10 @@ class LawyersController extends Controller
 	public function suspend(Request $request)
 	{
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();
+		$lawyer->update([
+			'is_suspended' => true
+		]);
 
-		return redirect()->route("lawyers");
+		return redirect()->back()->with("status", "Successfully suspend Mitra");
 	}
 }
