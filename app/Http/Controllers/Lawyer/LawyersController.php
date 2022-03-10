@@ -167,8 +167,11 @@ class LawyersController extends Controller
 	public function edit(Request $request)
 	{
 		# code...
+		$case_categories = CaseCategory::all();
+		$specialization = Specialization::all();
+		$lawyer = Lawyers::whereUuid($request->uuid)->first();
 
-		// return view('admin.lawyer.index', compact("lawyers"));
+		return view('admin.lawyer.edit', compact("lawyer", "case_categories", "specialization"));
 	}	
 
 	/**

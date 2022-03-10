@@ -98,7 +98,9 @@
                           <td>{{ $user->email }}</td>
                           <td></td>
                           <th>
-                            <i class="fa fa-pencil-alt mr-2"></i>
+                            <a href="{{ route("lawyers.edit", ['uuid' => $user->uuid]) }}">
+                                <i class="fa fa-pencil-alt mr-2"></i>
+                            </a>
                             <!-- Button trigger modal -->
                             <i class="fa fa-eye cursor-pointer" data-toggle="modal" data-target="#modelUser{{ $user->id }}"></i>
                             <!-- Modal -->
