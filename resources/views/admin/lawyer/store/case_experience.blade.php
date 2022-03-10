@@ -6,7 +6,6 @@
             <case-experience :cases="{{ $case_categories }}"></case-experience>
             <hr>
             <div class="justify-content-end row">
-                {{-- <a class="btn btn-primary" data-toggle="tab" href="#f" role="tab" aria-controls="home" aria-selected="true">Next</a> --}}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>

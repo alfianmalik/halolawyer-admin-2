@@ -12,7 +12,7 @@
                             </h5>
                         </div>
                         <div class="col-md-2 float-right text-right">
-                            <i class="fa fa-trash mt-3 mr-4" @click="deleteItem(index)"></i>    
+                            <i class="fa fa-trash mt-3 mr-4 cursor-pointer" @click="deleteItem(index)"></i>    
                         </div>
                     </div>
                 </div>

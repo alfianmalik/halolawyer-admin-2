@@ -93,7 +93,7 @@
                           </td>
                           <td>{{ $user->id }}</td>
                           
-                          <td><img src="{{ $user->profile_picture }}" alt="" width="50" height="50"></td>
+                          <td><img src="{{ $user->profile_picture?$user->profile_picture:"https://ui-avatars.com/api/?name=$user->first_name" }}" alt="" width="50" height="50"></td>
                           <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                           <td>{{ $user->email }}</td>
                           <td></td>

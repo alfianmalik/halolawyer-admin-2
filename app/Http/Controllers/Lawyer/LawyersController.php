@@ -50,6 +50,11 @@ class LawyersController extends Controller
 	public function newPost(Request $request)
 	{
 
+		$validated = $request->validate([
+			'email' => 'required|unique:lawyers|max:255',
+			'name' => 'required',
+		]);
+
 		DB::transaction(function() use ($request)
 		{
 		
@@ -141,13 +146,21 @@ class LawyersController extends Controller
 				'city' => $request->city_work_area
 			]);
 
-			// $lawyer->lawyers_case_experience()->create([
-
-			// ]);
+			if ($request->caseexperience) {
+				foreach ($request->caseexperience as $keys => $items) {
+					$lawyer->lawyers_case_experience()->create([
+						'case_category_id' => $items['case'],
+						'title' => $items['judul_perkara'],
+						'year' => $items['year'],
+						'type' => $items['jenis'],
+						'reason' => $items['reason'],
+					]);
+				}
+			}
 
 		});
 
-		return redirect()->route("lawyers");
+		return redirect()->route("lawyers")->with("status", "Successfully adding Mitra");;
 	}	
 
 	public function edit(Request $request)
