@@ -47,14 +47,21 @@
 </template>
 
 <script>
+
+import { ListSelect } from 'vue-search-select'
+
 export default {
     props: ["specialization","cases"],
     name: "Spesialisasi",
     data: function () {
         return {
             items : [],
-            count : 0
+            count : 0,
+            specializations: []
         }
+    },
+    component : {
+        ListSelect
     },
     mounted() {
         
@@ -65,6 +72,16 @@ export default {
         },
         deleteItem(index){
             this.items.splice(index, 1);
+        },
+        async getSpesialization(category) {
+            axios.get("/api/get/specialization/"+category)
+                .then(res => {
+                    this.specializations = res.data
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.error(err); 
+                })
         }
     }
 }

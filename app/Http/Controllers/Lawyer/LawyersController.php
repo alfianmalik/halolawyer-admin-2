@@ -139,6 +139,12 @@ class LawyersController extends Controller
 						'case_category_id' => $items['case'],
 						'specialization_id' => $items['specialization']
 					]);
+					
+					$case = CaseCategory::find($items['case']);
+					$lawyer->lawyers_category()->create([
+						'case_category_id' => $items['case'],
+						'name' => $case->name,
+					]);
 				}
 			}
 
