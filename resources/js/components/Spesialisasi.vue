@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Kategori Kasus</label>
                             <div class="col-sm-9">
-                                <select class="form-control" :name="'specialization['+ index +'][case]'" id="">
+                                <select class="form-control" :name="'specialization['+ index +'][case]'" id="" @change="getSpesialization()">
                                     <option v-for="(item, index) in cases" :key="index" :value="item.id">{{ item.name }}</option>
                                 </select>
                             </div>
