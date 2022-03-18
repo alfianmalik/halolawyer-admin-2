@@ -9,6 +9,7 @@ class LawyersCategory extends Model
 {
     protected $table = 'lawyers_category';
 
+    protected $guarded = [];
     /**
      * Get the post that owns the comment.
      */
