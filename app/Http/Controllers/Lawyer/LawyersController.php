@@ -221,9 +221,15 @@ class LawyersController extends Controller
 	public function suspend(Request $request)
 	{
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();
-		$lawyer->update([
-			'is_suspend' => true
-		]);
+		if($lawyer->is_suspend) {
+			$lawyer->update([
+				'is_suspend' => false
+			]);
+		} else {
+			$lawyer->update([
+				'is_suspend' => true
+			]);
+		}
 
 		return redirect()->back()->with("status", "Successfully suspend Mitra");
 	}

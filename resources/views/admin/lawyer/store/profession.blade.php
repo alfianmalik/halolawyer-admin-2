@@ -10,19 +10,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="province" class="col-sm-4 col-form-label">Provinsi</label>
-                <div class="col-sm-8">
-                    <input type="text" id="province" class="form-control" name="province" aria-describedby="basic-addon3" placeholder="Provinsi">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="city" class="col-sm-4 col-form-label">Kabupaten / Kota</label>
-                <div class="col-sm-8">
-                    <input type="text" id="city" class="form-control" name="city" aria-describedby="basic-addon3" placeholder="Kabupaten / Kota">
-                </div>
-            </div>
+            <location-profession></location-profession>
 
             <div class="form-group row">
                 <label for="postal_code" class="col-sm-4 col-form-label">Kode Pos</label>

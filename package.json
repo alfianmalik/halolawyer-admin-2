@@ -31,6 +31,7 @@
         "moment": "^2.29.1",
         "socket.io-client": "^4.4.1",
         "vue-awesome-countdown": "^1.1.4",
+        "vue-multiselect": "^2.1.6",
         "vue-search-select": "^2.9.5"
     }
 }

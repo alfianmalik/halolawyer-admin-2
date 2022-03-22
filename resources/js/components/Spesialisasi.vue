@@ -49,18 +49,29 @@
 <script>
 
 import { ListSelect } from 'vue-search-select'
+import 'vue-search-select/dist/VueSearchSelect.css'
 
 export default {
     props: ["specialization","cases"],
     name: "Spesialisasi",
     data: function () {
         return {
-            items : [],
+            items : [1],
+            itemss: [],
             count : 0,
-            specializations: []
+            specializations: [],
+            options: [
+                { value: '1', text: 'aa' + ' - ' + '1' },
+                { value: '2', text: 'ab' + ' - ' + '2' },
+                { value: '3', text: 'bc' + ' - ' + '3' },
+                { value: '4', text: 'cd' + ' - ' + '4' },
+                { value: '5', text: 'de' + ' - ' + '5' }
+            ],
+            searchText: '', // If value is falsy, reset searchText & searchItem
+            lastSelectItem: {}
         }
     },
-    component : {
+    components : {
         ListSelect
     },
     mounted() {
@@ -82,6 +93,18 @@ export default {
                 .catch(err => {
                     console.error(err); 
                 })
+        },
+        onSelect (items, lastSelectItem) {
+            this.items = items
+            this.lastSelectItem = lastSelectItem
+        },
+        // deselect option
+        reset () {
+            this.items = [] // reset
+        },
+        // select option from parent component
+        selectFromParentComponent () {
+            this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
         }
     }
 }

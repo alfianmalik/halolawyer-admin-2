@@ -184,14 +184,14 @@
                             </div>
 
                             <!-- Button trigger modal -->
-                            <i class="fa fa-ban ml-2 cursor-pointer" style="color:{{ $user->is_suspend?"red":"black" }}" data-toggle="modal" data-target="#modelDel{{ $user->id }}"></i>
+                            <i class="fa fa-ban ml-2 cursor-pointer" style="color:{{ $user->is_suspend?"red":"black" }}" data-toggle="modal" data-target="#modelSuspend{{ $user->id }}"></i>
                             
                             <!-- Modal -->
-                            <div class="modal fade" id="modelDel{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                            <div class="modal fade" id="modelSuspend{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Suspend</h5>
+                                            <h5 class="modal-title"> {{ $user->is_suspend?"UnSuspend":"Suspend" }}</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -199,7 +199,7 @@
                                         <form action="{{ route("lawyers.suspend", ['uuid' => $user->uuid]) }}" method="post">
                                             @csrf
                                             <div class="modal-body">
-                                                Are you sure want to Suspend this Mitra?
+                                                Are you sure want to {{ $user->is_suspend?"UnSuspend":"Suspend" }} this Mitra?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
