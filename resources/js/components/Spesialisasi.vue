@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Kategori Kasus</label>
                             <div class="col-sm-9">
-                                <select class="form-control" :name="'specialization['+ index +'][case]'" id="" @change="getSpesialization()">
+                                <select class="form-control" :name="'specialization['+ index +'][case]'" id="" @change="getSpesialization(category)" v-model="category">
                                     <option v-for="(item, index) in cases" :key="index" :value="item.id">{{ item.name }}</option>
                                 </select>
                             </div>
@@ -31,9 +31,8 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Spesialisasi</label>
                             <div class="col-sm-9">
-                                <select class="form-control" :name="'specialization['+ index +'][specialization]'" id="">
-                                    <option v-for="(item, index) in specialization" :key="index" :value="item.id">{{ item.name }}</option>
-                                </select>
+                                <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="id" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
+                                <input type="hidden" :name="'specialization['+ index +'][specialization]'" v-model="tagging">
                             </div>
                         </div>
                     </div>
@@ -48,8 +47,7 @@
 
 <script>
 
-import { ListSelect } from 'vue-search-select'
-import 'vue-search-select/dist/VueSearchSelect.css'
+import Multiselect from 'vue-multiselect'
 
 export default {
     props: ["specialization","cases"],
@@ -57,22 +55,16 @@ export default {
     data: function () {
         return {
             items : [1],
-            itemss: [],
             count : 0,
+            category: "",
             specializations: [],
-            options: [
-                { value: '1', text: 'aa' + ' - ' + '1' },
-                { value: '2', text: 'ab' + ' - ' + '2' },
-                { value: '3', text: 'bc' + ' - ' + '3' },
-                { value: '4', text: 'cd' + ' - ' + '4' },
-                { value: '5', text: 'de' + ' - ' + '5' }
-            ],
-            searchText: '', // If value is falsy, reset searchText & searchItem
-            lastSelectItem: {}
+            tagging: [],
+            value: [],
+            options: []
         }
     },
     components : {
-        ListSelect
+        Multiselect
     },
     mounted() {
         
@@ -87,8 +79,8 @@ export default {
         async getSpesialization(category) {
             axios.get("/api/get/specialization/"+category)
                 .then(res => {
-                    this.specializations = res.data
-                    console.log(res)
+                    this.options = res.data
+                    console.log(res.data)
                 })
                 .catch(err => {
                     console.error(err); 
@@ -105,7 +97,27 @@ export default {
         // select option from parent component
         selectFromParentComponent () {
             this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
+        },
+        addTag (newTag) {
+            const tag = {
+                name: newTag
+            }
+            this.options.push(tag)
+            this.value.push(tag)
+        }
+    },
+    watch:{
+        value (val) {
+            // my new value in val. Perform your
+            // select update methods here
+            let list = Object.keys(val).map((key) => {
+                return val[key]
+            });
+            console.log(JSON.stringify(val))
+            this.tagging = JSON.stringify(val)
         }
     }
 }
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

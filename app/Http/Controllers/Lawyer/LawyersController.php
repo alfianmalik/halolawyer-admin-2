@@ -50,6 +50,7 @@ class LawyersController extends Controller
 	public function newPost(Request $request)
 	{
 
+		// dd($request->all());
 		$validated = $request->validate([
 			'email' => 'required|unique:lawyers|max:255',
 			'name' => 'required',
@@ -135,10 +136,13 @@ class LawyersController extends Controller
 
 			if ($request->specialization) {
 				foreach ($request->specialization as $keys => $items) {
-					$lawyer->lawyers_specialization()->create([
-						'case_category_id' => $items['case'],
-						'specialization_id' => $items['specialization']
-					]);
+					$specializations = json_decode($items['specialization']);
+					foreach($specializations as $list) {
+						$lawyer->lawyers_specialization()->create([
+							'case_category_id' => $items['case'],
+							'specialization_id' => $list->id
+						]);
+					}
 					
 					$case = CaseCategory::find($items['case']);
 					$lawyer->lawyers_category()->create([

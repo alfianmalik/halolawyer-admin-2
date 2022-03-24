@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cities;
 use App\Models\Districts;
 use App\Models\Province;
+use App\Models\Specialization;
 
 class ToolsController extends Controller
 {
@@ -36,5 +37,10 @@ class ToolsController extends Controller
     {
 
         return Districts::where("city_id", $request->city)->get();
+    }
+
+    public function getSpesialization(Request $request)
+    {
+        return Specialization::where("case_category_id", $request->category)->get();
     }
 }

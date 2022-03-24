@@ -24,6 +24,9 @@
                         <textarea name="contents" id="" cols="30" rows="10" class="summernote">{{ $footer->contents }}</textarea>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">Simpan Data</button>
+                </div>
             </div>
         </form>
     </div>
