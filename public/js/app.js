@@ -2788,7 +2788,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       items: [1],
       count: 0,
-      category: "",
+      category: [],
       specializations: [],
       tagging: [],
       value: [],
@@ -52523,8 +52523,8 @@ var render = function () {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.category,
-                            expression: "category",
+                            value: _vm.category[index],
+                            expression: "category[index]",
                           },
                         ],
                         staticClass: "form-control",
@@ -52543,20 +52543,24 @@ var render = function () {
                                   var val = "_value" in o ? o._value : o.value
                                   return val
                                 })
-                              _vm.category = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
+                              _vm.$set(
+                                _vm.category,
+                                index,
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
                             },
                             function ($event) {
-                              return _vm.getSpesialization(_vm.category)
+                              return _vm.getSpesialization(_vm.category[index])
                             },
                           ],
                         },
                       },
-                      _vm._l(_vm.cases, function (item, index) {
+                      _vm._l(_vm.cases, function (item, idxi) {
                         return _c(
                           "option",
-                          { key: index, domProps: { value: item.id } },
+                          { key: idxi, domProps: { value: item.id } },
                           [_vm._v(_vm._s(item.name))]
                         )
                       }),
@@ -52591,11 +52595,11 @@ var render = function () {
                         },
                         on: { tag: _vm.addTag },
                         model: {
-                          value: _vm.value,
+                          value: _vm.value[index],
                           callback: function ($$v) {
-                            _vm.value = $$v
+                            _vm.$set(_vm.value, index, $$v)
                           },
-                          expression: "value",
+                          expression: "value[index]",
                         },
                       }),
                       _vm._v(" "),

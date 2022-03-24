@@ -22,16 +22,16 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Kategori Kasus</label>
                             <div class="col-sm-9">
-                                <select class="form-control" :name="'specialization['+ index +'][case]'" id="" @change="getSpesialization(category)" v-model="category">
-                                    <option v-for="(item, index) in cases" :key="index" :value="item.id">{{ item.name }}</option>
+                                <select class="form-control" :name="'specialization['+ index +'][case]'" id="" @change="getSpesialization(category[index])" v-model="category[index]">
+                                    <option v-for="(item, idxi) in cases" :key="idxi" :value="item.id">{{ item.name }}</option>
                                 </select>
-                            </div>
+                            </div>  
                         </div>
                         
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Spesialisasi</label>
                             <div class="col-sm-9">
-                                <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="id" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
+                                <multiselect v-model="value[index]" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="id" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
                                 <input type="hidden" :name="'specialization['+ index +'][specialization]'" v-model="tagging">
                             </div>
                         </div>
@@ -56,7 +56,7 @@ export default {
         return {
             items : [1],
             count : 0,
-            category: "",
+            category: [],
             specializations: [],
             tagging: [],
             value: [],
