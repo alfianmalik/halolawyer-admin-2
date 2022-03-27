@@ -2786,7 +2786,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: "Spesialisasi",
   data: function data() {
     return {
-      items: [1],
+      items: [],
       count: 0,
       category: [],
       specializations: [],

@@ -54,7 +54,7 @@ export default {
     name: "Spesialisasi",
     data: function () {
         return {
-            items : [1],
+            items : [],
             count : 0,
             category: [],
             specializations: [],
