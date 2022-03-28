@@ -135,20 +135,20 @@ class LawyersController extends Controller
 
 			if ($request->specialization) {
 				
-				foreach ($request->specialization as $keys => $items) {
-					$specializations = json_decode($items['specialization']);
-					foreach($specializations as $idx => $lists) {
-						foreach($lists as $idx => $list) {
-							$lawyer->lawyers_specialization()->create([
-								'case_category_id' => $list->case_category_id,
-								'specialization_id' => $list->id
-							]);
-						}
+				$specializations = json_decode($request->specialization['list']);
+				foreach($specializations as $idx => $lists) {
+					foreach($lists as $idx => $list) {
+						$lawyer->lawyers_specialization()->create([
+							'case_category_id' => $list->case_category_id,
+							'specialization_id' => $list->id
+						]);
 					}
-					
-					$case = CaseCategory::find($items['case']);
+				}
+
+				foreach ($request->case as $keys => $items) {
+					$case = CaseCategory::find($items);
 					$lawyer->lawyers_category()->create([
-						'case_category_id' => $items['case'],
+						'case_category_id' => $items,
 						'name' => $case->name,
 					]);
 				}

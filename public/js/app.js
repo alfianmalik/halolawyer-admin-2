@@ -2779,7 +2779,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["specialization", "cases"],
@@ -2845,6 +2844,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var tag = {
         name: newTag
       };
+      console.log(newTag);
       this.options.push(tag);
       this.value.push(tag);
     }
@@ -2853,10 +2853,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     value: function value(val) {
       // my new value in val. Perform your
       // select update methods here
-      var list = Object.keys(val).map(function (key) {
-        return val[key];
-      });
-      console.log(JSON.stringify(val));
+      // let list = Object.keys(val).map((key) => {
+      //     return val[key]
+      // });
+      // console.log(list);
+      // console.log(idx);
+      // console.log(JSON.stringify(val))
       this.tagging = JSON.stringify(val);
     }
   }
@@ -52470,172 +52472,178 @@ var render = function () {
     _c(
       "div",
       { staticClass: "accordion", attrs: { id: "accordionExample" } },
-      _vm._l(_vm.items, function (item, index) {
-        return _c("div", { key: index, staticClass: "card mt-2" }, [
-          _c(
-            "div",
-            { staticClass: "card-header", attrs: { id: "headingOne" } },
-            [
-              _c("div", { staticClass: "row" }, [
-                _vm._m(0, true),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-2 float-right text-right" }, [
-                  _c("i", {
-                    staticClass: "fa fa-trash mt-3 mr-4",
-                    on: {
-                      click: function ($event) {
-                        return _vm.deleteItem(index)
-                      },
-                    },
-                  }),
-                ]),
-              ]),
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "collapse show",
-              attrs: {
-                id: "collapseOne",
-                "aria-labelledby": "headingOne",
-                "data-parent": "#accordionExample",
-              },
-            },
-            [
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-3 col-form-label",
-                      attrs: { for: "name" },
-                    },
-                    [_vm._v("Kategori Kasus")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-9" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.category[index],
-                            expression: "category[index]",
-                          },
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "specialization[" + index + "][case]",
-                          id: "",
-                        },
-                        on: {
-                          change: [
-                            function ($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function (o) {
-                                  return o.selected
-                                })
-                                .map(function (o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.category,
-                                index,
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            },
-                            function ($event) {
-                              return _vm.getSpesialization(_vm.category[index])
-                            },
-                          ],
-                        },
-                      },
-                      _vm._l(_vm.cases, function (item, idxi) {
-                        return _c(
-                          "option",
-                          { key: idxi, domProps: { value: item.id } },
-                          [_vm._v(_vm._s(item.name))]
-                        )
-                      }),
-                      0
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-3 col-form-label",
-                      attrs: { for: "name" },
-                    },
-                    [_vm._v("Spesialisasi")]
-                  ),
+      [
+        _vm._l(_vm.items, function (item, index) {
+          return _c("div", { key: index, staticClass: "card mt-2" }, [
+            _c(
+              "div",
+              { staticClass: "card-header", attrs: { id: "headingOne" } },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(0, true),
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "col-sm-9" },
+                    { staticClass: "col-md-2 float-right text-right" },
                     [
-                      _c("multiselect", {
-                        attrs: {
-                          "tag-placeholder": "Add this as new tag",
-                          placeholder: "Search or add a tag",
-                          label: "name",
-                          "track-by": "id",
-                          options: _vm.options,
-                          multiple: true,
-                          taggable: true,
-                        },
-                        on: { tag: _vm.addTag },
-                        model: {
-                          value: _vm.value[index],
-                          callback: function ($$v) {
-                            _vm.$set(_vm.value, index, $$v)
-                          },
-                          expression: "value[index]",
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.tagging,
-                            expression: "tagging",
-                          },
-                        ],
-                        attrs: {
-                          type: "hidden",
-                          name: "specialization[" + index + "][specialization]",
-                        },
-                        domProps: { value: _vm.tagging },
+                      _c("i", {
+                        staticClass: "fa fa-trash mt-3 mr-4",
                         on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.tagging = $event.target.value
+                          click: function ($event) {
+                            return _vm.deleteItem(index)
                           },
                         },
                       }),
-                    ],
-                    1
+                    ]
                   ),
                 ]),
-              ]),
-            ]
-          ),
-        ])
-      }),
-      0
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse show",
+                attrs: {
+                  id: "collapseOne",
+                  "aria-labelledby": "headingOne",
+                  "data-parent": "#accordionExample",
+                },
+              },
+              [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-sm-3 col-form-label",
+                        attrs: { for: "name" },
+                      },
+                      [_vm._v("Kategori Kasus")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-9" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.category[index],
+                              expression: "category[index]",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: { name: "case[" + index + "]", id: "" },
+                          on: {
+                            change: [
+                              function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.category,
+                                  index,
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function ($event) {
+                                return _vm.getSpesialization(
+                                  _vm.category[index]
+                                )
+                              },
+                            ],
+                          },
+                        },
+                        _vm._l(_vm.cases, function (item, idxi) {
+                          return _c(
+                            "option",
+                            { key: idxi, domProps: { value: item.id } },
+                            [_vm._v(_vm._s(item.name))]
+                          )
+                        }),
+                        0
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-sm-3 col-form-label",
+                        attrs: { for: "name" },
+                      },
+                      [_vm._v("Spesialisasi")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-sm-9" },
+                      [
+                        _c("multiselect", {
+                          attrs: {
+                            "tag-placeholder": "Add this as new tag",
+                            placeholder: "Search or add a tag",
+                            label: "name",
+                            "track-by": "id",
+                            options: _vm.options,
+                            multiple: true,
+                            taggable: true,
+                          },
+                          on: {
+                            tag: function ($event) {
+                              return _vm.addTag(index)
+                            },
+                          },
+                          model: {
+                            value: _vm.value[index],
+                            callback: function ($$v) {
+                              _vm.$set(_vm.value, index, $$v)
+                            },
+                            expression: "value[index]",
+                          },
+                        }),
+                      ],
+                      1
+                    ),
+                  ]),
+                ]),
+              ]
+            ),
+          ])
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.tagging,
+              expression: "tagging",
+            },
+          ],
+          attrs: { type: "text", name: "specialization[list]" },
+          domProps: { value: _vm.tagging },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.tagging = $event.target.value
+            },
+          },
+        }),
+      ],
+      2
     ),
     _vm._v(" "),
     _c(

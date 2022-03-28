@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Kategori Kasus</label>
                             <div class="col-sm-9">
-                                <select class="form-control" :name="'specialization['+ index +'][case]'" id="" @change="getSpesialization(category[index])" v-model="category[index]">
+                                <select class="form-control" :name="'case['+ index +']'" id="" @change="getSpesialization(category[index])" v-model="category[index]">
                                     <option v-for="(item, idxi) in cases" :key="idxi" :value="item.id">{{ item.name }}</option>
                                 </select>
                             </div>  
@@ -31,14 +31,13 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Spesialisasi</label>
                             <div class="col-sm-9">
-                                <multiselect v-model="value[index]" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="id" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
-                                <input type="hidden" :name="'specialization['+ index +'][specialization]'" v-model="tagging">
+                                <multiselect v-model="value[index]" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="id" :options="options" :multiple="true" :taggable="true" @tag="addTag(index)"></multiselect>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <input type="text" :name="'specialization[list]'" v-model="tagging">
         </div>
 
         <button type="button" name="" id="" class="btn btn-outline-primary btn-block mt-5" @click="addNew">+ Add New</button>        
@@ -102,6 +101,7 @@ export default {
             const tag = {
                 name: newTag
             }
+            console.log(newTag)
             this.options.push(tag)
             this.value.push(tag)
         }
@@ -110,10 +110,12 @@ export default {
         value (val) {
             // my new value in val. Perform your
             // select update methods here
-            let list = Object.keys(val).map((key) => {
-                return val[key]
-            });
-            console.log(JSON.stringify(val))
+            // let list = Object.keys(val).map((key) => {
+            //     return val[key]
+            // });
+            // console.log(list);
+            // console.log(idx);
+            // console.log(JSON.stringify(val))
             this.tagging = JSON.stringify(val)
         }
     }
