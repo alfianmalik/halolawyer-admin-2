@@ -146,7 +146,7 @@
                 <a class="collapse-item" href="{{ route('user') }}">
                     <span>Semua User</span>
                 </a>
-                <a class="collapse-item" href="{{ route('lawyers') }}">
+                <a class="collapse-item" href="{{ route('profile') }}">
                     <span>Profile Saya</span>
                 </a>
                 <a class="collapse-item" href="{{ route('lawyers') }}">

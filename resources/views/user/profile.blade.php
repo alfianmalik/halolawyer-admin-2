@@ -4,57 +4,62 @@
 ])
 @section('content')
 @include('layout.component.alert-dismissible')
-
 <div class="row">
-	<div class="col-lg-6">
-		<div class="card">
-			<div class="card-header">
-				Email : {{ Auth::user()->email }}
-			</div>
-			<div class="card-body">
-				  <div class="card mb-3" style="max-width: 540px;">
-					  <div class="row no-gutters">
-					    <div class="col-md-4">
-					      <img src="{{ asset('images/backend/laravel.jpg') }}" class="card-img" alt="">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">{{ Auth::user()->name }}</h5>
-					        
-					        <p class="card-text"><small class="text-muted">{{ 'updated at '.\Carbon\Carbon::parse(Auth::user()->updated_at)->diffForHumans() }}</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+	<div class="col-xl-4">
+		<!-- Profile picture card-->
+		<div class="card mb-4 mb-xl-0">
+			<div class="card-header">Profile Picture</div>
+			<div class="card-body text-center">
+				<!-- Profile picture image-->
+				<img class="img-account-profile rounded-circle mb-2" src="assets/img/illustrations/profiles/profile-1.png" alt="">
+				<!-- Profile picture help block-->
+				<div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+				<!-- Profile picture upload button-->
+				<button class="btn btn-primary" type="button">Upload new image</button>
 			</div>
 		</div>
 	</div>
-
-	<div class="col-lg-6">
-		<div class="card">
-			<div class="card-header">
-				Edit Profile
-			</div>
-			<div class="card-body">
-				<form method="POST" action="{{ route('profile.update',Auth::user()->id) }}">
+	<div class="col-xl-8">
+		<!-- Account details card-->
+		<div class="card mb-4">
+			<div class="card-header">Account Details</div>
+			<form method="POST" action="{{ route('profile.update',Auth::user()->id) }}">
 				@csrf
 				@method('PATCH')
-					<div class="form-group">
-						<label for="name">Name</label>
-						<input required="" value="{{ Auth::user()->name }}" class="form-control" type="" id="name" name="name">
-					</div>
-					<div class="form-group">
-						<label for="password">Password</label>
-						<input required="" value="{{ Auth::user()->password }}" class="form-control" type="hidden" id="old_password" name="old_password">
-						<input type="password" id="password" name="password" class="form-control">
-						<small class="text-secondary">kosongkan kolom password jika tidak ingin mengubah password</small>
-					</div>
-					<div class="form-group">
-						<button class="btn btn-primary btn-sm">Update</button>
-					</div>
-				</form>
-			</div>
-			<div class="card-footer"></div>
+				<div class="card-body">
+					<form>
+						<!-- Form Row-->
+						<div class="row gx-3 mb-3">
+							<!-- Form Group (first name)-->
+							<div class="col-md-6">
+								<label class="small mb-1" for="inputFirstName">First name</label>
+								<input class="form-control" id="inputFirstName" type="text" name="first_name" placeholder="Enter your first name" value="{{ auth()->user()->first_name }}">
+							</div>
+							<!-- Form Group (last name)-->
+							<div class="col-md-6">
+								<label class="small mb-1" for="inputLastName">Last name</label>
+								<input class="form-control" id="inputLastName" type="text" name="last_name" placeholder="Enter your last name" value="{{ Auth::user()->last_name }}">
+							</div>
+						</div>
+						<!-- Form Row        -->
+						<!-- Form Group (email address)-->
+						<div class="mb-3">
+							<label class="small mb-1" for="inputEmailAddress">Email address</label>
+							<input class="form-control" id="inputEmailAddress" name="email" type="email" placeholder="Enter your email address" value="{{ Auth::user()->email }}">
+						</div>
+						<!-- Form Row-->
+						<div class="row gx-3 mb-3 d-none">
+							<!-- Form Group (phone number)-->
+							<div class="col-md-6">
+								<label class="small mb-1" for="inputPhone">Password</label>
+								<input class="form-control" id="inputPhone" type="password" placeholder="Enter your phone number" value="">
+							</div>
+						</div>
+						<!-- Save changes button-->
+						<button class="btn btn-primary" type="submit">Save changes</button>
+					</form>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

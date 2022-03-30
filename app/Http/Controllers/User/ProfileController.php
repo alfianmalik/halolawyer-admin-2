@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use Hash;
 
-use App\Models\User;
+use App\Models\Administrator;
 
 class ProfileController extends Controller
 {
@@ -16,15 +16,16 @@ class ProfileController extends Controller
     	return view('user.profile');
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, Administrator $user)
     {
-    	if ($request->password) {
-    		$password = Hash::make($request->password);
-    	}else{
-    		$password = $request->old_password;
-    	}
+    	// if ($request->password) {
+    	// 	$password = Hash::make($request->password);
+    	// }else{
+    	// 	$password = $request->old_password;
+    	// }
 
-    	$request->request->add(['password' => $password]);
+    	// $request->request->add(['password' => $password]);
+		// dd($user);
     	$user->update($request->all());
     	return back()->with('success','Proflie updated successfully');
     }

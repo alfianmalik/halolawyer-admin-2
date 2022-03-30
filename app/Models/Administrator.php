@@ -14,6 +14,25 @@ class Administrator extends Authenticatable
     protected $table = 'admin';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'phone',
+        'uuid',
+        'bod',
+        'gender',
+        'slug',
+        'provider',
+        'provider_id',
+    ];
+
+    /**
      * 
      */
     public function getParticipantDetails()

@@ -72,6 +72,38 @@ class FooterController extends Controller
         return view("admin.footer.brand", compact("footer"));
     }
 
+    public function mitraagreement()
+    {
+        # code...
+        $footer = Footer::where('footer_type', 'mitraagreement')->first();
+
+        return view("admin.footer.mitraagreement", compact("footer"));
+    }
+
+    public function gabunghalolawyer()
+    {
+        # code...
+        $footer = Footer::where('footer_type', 'gabunghalolawyer')->first();
+
+        return view("admin.footer.gabunghalolawyer", compact("footer"));
+    }
+
+    public function kontributorhalolawyer()
+    {
+        # code...
+        $footer = Footer::where('footer_type', 'kontributorhalolawyer')->first();
+
+        return view("admin.footer.gabunghalolawyer", compact("footer"));
+    }
+
+    public function cooperation()
+    {
+        # code...
+        $footer = Footer::where('footer_type', 'cooperation')->first();
+
+        return view("admin.footer.cooperation", compact("footer"));
+    }
+
     public function update(Request $request)
     {
         # code...
