@@ -5,14 +5,26 @@
 @section('content')
 <div class="bg-white mb-4">
   <div class="py-3 p-2 row">
-      <div class="col-md-6">
-        <h5 class="m-0 font-weight-bold text-dark ml-2">Manajemen Kasus</h5>
-      </div>
-      <div class="col-md-6">
-        <a href="{{ route("casecategory.store") }}" class="btn btn-primary btn-sm float-right mt-1">Add New</a>
-      </div>
+        <div class="col-md-12">
+            <h5 class="m-0 font-weight-bold text-dark ml-2">Manajemen Kasus</h5>
+        </div>
+        <div class="col-md-12 row pt-3" style="border-bottom: 1px solid #eee;">
+            <div class="col-md-6">
+                <ul class="nav nav-pills">
+                    <li class="nav-item active">
+                        <a class="nav-link color-primary" href="{{ route("casecategory.index") }}">Kategori Kasus</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-primary" href="{{ route("specialization.index") }}">Spesialisasi</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 float-right">
+                <a href="{{ route("casecategory.store") }}" class="btn btn-primary btn-sm float-right mt-1">Add New</a>
+            </div>
+        </div>
   </div>
-  <div style="border-top: 1px solid #eee;">
+  <div>
       <div class="row">
           <div class="col-md-6 mt-3">
               <div class="form-group has-search ml-3">

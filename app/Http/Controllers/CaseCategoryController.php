@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\CaseCategory;
 use App\Utilities\ImageProcessor;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Case_;
 
 class CaseCategoryController extends Controller
 {
