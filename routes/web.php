@@ -46,6 +46,25 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin
 		Route::get('/show/{order_uuid}',[App\Http\Controllers\Admin\CaseController::class, 'show'])->name('case.show');
 	});
 
+	Route::group(['prefix' => 'casemanagement'],function(){
+		Route::group(['prefix' => 'casecategory'],function(){
+			Route::get('/',[App\Http\Controllers\CaseCategoryController::class, 'index'])->name('casecategory.index');
+			Route::get('/store',[App\Http\Controllers\CaseCategoryController::class, 'store'])->name('casecategory.store');
+			Route::post('/store',[App\Http\Controllers\CaseCategoryController::class, 'storePost'])->name('casecategory.store.post');
+			Route::get('/edit/{id}',[App\Http\Controllers\CaseCategoryController::class, 'edit'])->name('casecategory.edit');
+			Route::post('/edit/{id}',[App\Http\Controllers\CaseCategoryController::class, 'editPost'])->name('casecategory.edit.post');
+			
+		});
+		Route::group(['prefix' => 'specialization'],function(){
+			Route::get('/',[App\Http\Controllers\SpecializationController::class, 'index'])->name('specialization.index');
+			Route::get('/',[App\Http\Controllers\SpecializationController::class, 'index'])->name('specialization.index');
+			Route::get('/store',[App\Http\Controllers\SpecializationController::class, 'store'])->name('specialization.store');
+			Route::post('/store',[App\Http\Controllers\SpecializationController::class, 'storePost'])->name('specialization.store.post');
+			Route::get('/edit/{id}',[App\Http\Controllers\SpecializationController::class, 'edit'])->name('specialization.edit');
+			Route::post('/edit/{id}',[App\Http\Controllers\SpecializationController::class, 'editPost'])->name('specialization.edit.post');
+		});
+	});
+
 	//Route Rescource
 	Route::resource('/user','UserController');
 

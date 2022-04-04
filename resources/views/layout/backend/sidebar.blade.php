@@ -35,7 +35,7 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin') }}">
+        <a class="nav-link" href="{{ route('casecategory.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Manajemen Kasus</span>
         </a>

@@ -17,6 +17,8 @@ class CaseCategory extends Model
      */
     protected $guarded = [];
 
+    const APP_URL_ICON = 'icon';
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
