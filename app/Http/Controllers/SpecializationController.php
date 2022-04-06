@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Specialization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SpecializationController extends Controller
 {
@@ -12,8 +13,8 @@ class SpecializationController extends Controller
     public function index()
     {
         # code...
-        $specializations = Specialization::groupBy('name')->paginate(10);
-
+        $specializations = Specialization::paginate(10);
+        
         return view('admin.specialization.index', compact('specializations'));
     }
 
