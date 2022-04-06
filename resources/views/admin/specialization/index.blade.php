@@ -51,8 +51,8 @@
                   <tr>
                       <th><input type="checkbox" class="" name="" id="" value="checkedValue"></th>
                       <th>No</th>
+                      <th>Specialization</th>
                       <th>Kategori Kasus</th>
-                      <th>Deskripsi</th>
                       <th>Status</th>
                       <th>Tindakan</th>
                   </tr>
@@ -65,7 +65,9 @@
                             </td>
                             <td>{{ $specialization->id }}</td>
                             <td>{{ $specialization->name }}</td>
-                            <td>{{ $specialization->description }}</td>
+                            <td>
+                                
+                            </td>
                             <td> 
                                 <span class="badge badge-secondary">
                                     {{ $specialization->is_activated?"Active":"Not Active" }}

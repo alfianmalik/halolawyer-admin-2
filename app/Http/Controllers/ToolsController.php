@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CaseCategory;
 use Illuminate\Http\Request;
 use App\Models\Cities;
 use App\Models\Districts;
@@ -36,11 +37,16 @@ class ToolsController extends Controller
     public function getDistricts(Request $request)
     {
 
-        return Districts::where("city_id", $request->city)->get();
+        // return Districts::where("city_id", $request->city)->get();
     }
 
     public function getSpesialization(Request $request)
     {
         return Specialization::where("case_category_id", $request->category)->get();
+    }
+
+    public function getCategories(Request $request)
+    {
+        return CaseCategory::all();
     }
 }

@@ -12,7 +12,7 @@ class SpecializationController extends Controller
     public function index()
     {
         # code...
-        $specializations = Specialization::paginate(10);
+        $specializations = Specialization::grouBy('name')->paginate(10);
 
         return view('admin.specialization.index', compact('specializations'));
     }
@@ -26,12 +26,14 @@ class SpecializationController extends Controller
     public function storePost(Request $request)
     {
         $specialization = new Specialization();
-
-        $specialization->create([
-            'name' => $request->name,
-            'case_category_id' => $request->description,
-            'is_activated' => $request->is_activated=="on"?1:0
-        ]);
+        $categories = json_decode($request->categories);
+        foreach($categories as $category) {
+            $specialization->create([
+                'name' => $request->name,
+                'case_category_id' => $category->id,
+                'is_activated' => $request->is_activated=="on"?1:0
+            ]);
+        }
 
         return redirect()->route("specialization.index");
     }
@@ -54,11 +56,14 @@ class SpecializationController extends Controller
     {
         $specialization = Specialization::find($request->id);
 
-        $specialization->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'is_activated' => $request->is_activated=="on"?1:0
-        ]);
+        $categories = json_decode($request->categories);
+        foreach($categories as $category) {
+            $specialization->create([
+                'name' => $request->name,
+                'case_category_id' => $category->id,
+                'is_activated' => $request->is_activated=="on"?1:0
+            ]);
+        }
 
         return redirect()->route("specialization.index");
     }

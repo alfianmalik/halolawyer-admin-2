@@ -15,6 +15,7 @@ Vue.component('work-area', require('./components/WorkArea.vue').default);
 Vue.component('pendidikan-formal', require('./components/PendidikanFormal.vue').default);
 Vue.component('pendidikan-non-formal', require('./components/PendidikanNonFormal.vue').default);
 Vue.component('spesialisasi', require('./components/Spesialisasi.vue').default);
+Vue.component('store-spesialisasi', require('./components/StoreSpesialisasi.vue').default);
 Vue.component('case-experience', require('./components/CaseExperience.vue').default);
 Vue.component('location-profession', require('./components/LocationProfession.vue').default);
 

@@ -24,3 +24,4 @@ Route::post('/chat/end/{chat_id}', [ChatController::class, 'endTime'])->name('en
 Route::get("get/provinces", [App\Http\Controllers\ToolsController::class, 'getProvinces'])->name('api.get.provinces');
 Route::get("get/cities", [App\Http\Controllers\ToolsController::class, 'getCities'])->name('api.get.cities');
 Route::get("get/specialization/{category}", [App\Http\Controllers\ToolsController::class, 'getSpesialization'])->name('api.get.specialization');
+Route::get("get/categories", [App\Http\Controllers\ToolsController::class, 'getCategories'])->name('api.get.categories');
