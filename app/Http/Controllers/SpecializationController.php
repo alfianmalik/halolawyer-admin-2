@@ -12,7 +12,7 @@ class SpecializationController extends Controller
     public function index()
     {
         # code...
-        $specializations = Specialization::grouBy('name')->paginate(10);
+        $specializations = Specialization::groupBy('name')->paginate(10);
 
         return view('admin.specialization.index', compact('specializations'));
     }
