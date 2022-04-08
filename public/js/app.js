@@ -2899,7 +2899,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["specialization", "cases"],
+  props: ["specialization", "casecategories"],
   name: "Spesialisasi",
   data: function data() {
     return {
@@ -52818,7 +52818,7 @@ var render = function () {
               expression: "tagging",
             },
           ],
-          attrs: { type: "text", name: "specialization[list]" },
+          attrs: { type: "hidden", name: "specialization[list]" },
           domProps: { value: _vm.tagging },
           on: {
             input: function ($event) {
@@ -52938,7 +52938,7 @@ var render = function () {
               expression: "tagging",
             },
           ],
-          attrs: { type: "text", name: "categories" },
+          attrs: { type: "hidden", name: "categories" },
           domProps: { value: _vm.tagging },
           on: {
             input: function ($event) {

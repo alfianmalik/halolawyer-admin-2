@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <input type="text" :name="'specialization[list]'" v-model="tagging">
+            <input type="hidden" :name="'specialization[list]'" v-model="tagging">
         </div>
 
         <button type="button" name="" id="" class="btn btn-outline-primary btn-block mt-5" @click="addNew">+ Add New</button>        

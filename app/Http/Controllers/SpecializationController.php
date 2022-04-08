@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SpecializationController extends Controller
 {
@@ -67,5 +68,19 @@ class SpecializationController extends Controller
         }
 
         return redirect()->route("specialization.index");
+    }
+
+    public function delete(Request $request)
+    {
+        $hash = Hash::make($request->password);
+        
+        if (Hash::check($hash,auth()->user()->password)) {
+            return redirect()->back()->with("error", "");
+        }
+
+        $specialization = Specialization::find($request->id);
+        $specialization->delete();
+
+        return redirect()->back()->with("success", "");
     }
 }

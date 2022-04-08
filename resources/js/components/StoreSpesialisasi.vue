@@ -3,7 +3,7 @@
        <div class="form-group">
             <h6 for="title" class="text-dark font-weight-bolder">Kategori Kasus</h6>
             <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="id" :options="options" :multiple="true" :taggable="true" @tag="addTag(index)"></multiselect>
-            <input type="text" name="categories" v-model="tagging">
+            <input type="hidden" name="categories" v-model="tagging">
         </div>
     </div>
 </template>
@@ -13,7 +13,7 @@
 import Multiselect from 'vue-multiselect'
 
 export default {
-    props: ["specialization","cases"],
+    props: ["specialization","casecategories"],
     name: "Spesialisasi",
     data: function () {
         return {

@@ -62,6 +62,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin
 			Route::post('/store',[App\Http\Controllers\SpecializationController::class, 'storePost'])->name('specialization.store.post');
 			Route::get('/edit/{id}',[App\Http\Controllers\SpecializationController::class, 'edit'])->name('specialization.edit');
 			Route::post('/edit/{id}',[App\Http\Controllers\SpecializationController::class, 'editPost'])->name('specialization.edit.post');
+			Route::post('/delete/{id}',[App\Http\Controllers\SpecializationController::class, 'delete'])->name('specialization.delete');
 		});
 	});
 

@@ -74,7 +74,7 @@
                                 </span>
                             </td>
                           <th>
-                              <a class="text-reset" href="{{ route("casecategory.edit", ['id' => $specialization->id]) }}">
+                              <a class="text-reset" href="{{ route("specialization.edit", ['id' => $specialization->id]) }}">
                                 <i class="fa fa-pencil-alt mr-2"></i>
                               </a>
 
@@ -111,7 +111,37 @@
                                   </div>
                               </div>
 
-                              <i class="fa fa-trash ml-2"></i>
+                              <i class="fa fa-trash ml-2 cursor-pointer"  data-toggle="modal" data-target="#modelId-{{ $specialization->id }}"></i>
+                              
+                              <!-- Modal -->
+                              <div class="modal fade" id="modelId-{{ $specialization->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h5 class="modal-title"></h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                          </div>
+                                            <form action="{{ route("specialization.delete", ["id" => $specialization->id]) }}" method="post">
+                                                @csrf
+                                                <div class="modal-body container">
+                                                    <h3 class="col-md-12 text-center">
+                                                        Hapus Spesialisasi
+                                                    </h3>
+                                                    <div class="form-group">
+                                                        <label for="">Konfirmasi Password</label>
+                                                        <input type="password" class="form-control" name="password" id="" aria-describedby="helpId" placeholder="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer text-center" style="margin: 0px auto">
+                                                    <button type="submit" class="btn btn-danger" >Hapus</button>
+                                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Batal</button>
+                                                </div>
+                                            </form>
+                                      </div>
+                                  </div>
+                              </div>
                           </th>
                       </tr>
                   @endforeach
