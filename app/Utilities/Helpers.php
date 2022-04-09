@@ -286,3 +286,30 @@ if (! function_exists('strip_word_html')) {
         return $text;
     }
 }
+
+if (! function_exists('generateRandomString')) {
+
+    /**
+     * 
+     */
+    function generateRandomString($length) {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+}
+
+if (! function_exists('unique_code')) {
+
+    /**
+     * 
+     */
+    function unique_code($limit)
+    {
+        return substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, $limit);
+    }
+}

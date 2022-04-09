@@ -43,13 +43,17 @@ class SpecializationTableSeeder extends Seeder
             9 => $hutang
         ];
 
+        DB::table("specialization")->truncate();
+
         for ($i=1;$i<=count($data);$i++)
         {
             for ($j=0; $j<count($data[$i]);$j++)
             {
+                $external_id = !DB::table("specialization")->where('name', '=', $data[$i][$j])->first()?unique_code(6):DB::table("specialization")->where('name', '=', $data[$i][$j])->first()->external_id;
                 DB::table('specialization')->insert([
                     'case_category_id' => $i,
                     'name' => $data[$i][$j],
+                    'external_id' => $external_id
                 ]);
             }
         }

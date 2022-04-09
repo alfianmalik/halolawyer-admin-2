@@ -63,30 +63,30 @@
                             <td>
                                 <input type="checkbox" class="" name="" id="" value="checkedValue">
                             </td>
-                            <td>{{ $specialization->id }}</td>
-                            <td>{{ $specialization->name }}</td>
+                            <td>{{ $specialization['external_id'] }}</td>
+                            <td>{{ $specialization['name'] }}</td>
                             <td>
                                 
                             </td>
                             <td> 
                                 <span class="badge badge-secondary">
-                                    {{ $specialization->is_activated?"Active":"Not Active" }}
+                                    {{ $specialization['is_activated']?"Active":"Not Active" }}
                                 </span>
                             </td>
                           <th>
-                              <a class="text-reset" href="{{ route("specialization.edit", ['id' => $specialization->id]) }}">
+                              <a class="text-reset" href="{{ route("specialization.edit", ['id' => $specialization['external_id']]) }}">
                                 <i class="fa fa-pencil-alt mr-2"></i>
                               </a>
 
                               <!-- Button trigger modal -->
-                              <i class="fa fa-eye cursor-pointer" data-toggle="modal" data-target="#modelUser{{ $specialization->id }}"></i>
+                              <i class="fa fa-eye cursor-pointer" data-toggle="modal" data-target="#modelUser{{ $specialization['external_id'] }}"></i>
                                                             
                               <!-- Modal -->
-                              <div class="modal fade" id="modelUser{{ $specialization->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                              <div class="modal fade" id="modelUser{{ $specialization['external_id'] }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
                                       <div class="modal-content">
                                           <div class="modal-header">
-                                              <h5 class="modal-title font-weight-bold">Detail Kategori Kasus</h5>
+                                              <h5 class="modal-title font-weight-bold">Detail Spesialisasi</h5>
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                       <span aria-hidden="true">&times;</span>
                                                   </button>
@@ -94,13 +94,17 @@
                                           <div class="modal-body row">
                                               <div class="col-md-12">
                                                 <div class="my-2">
-                                                    <div>Kategori Kasus</div>
-                                                    <div class="text-reset font-weight-normal">{{ $specialization->name }}</div>
+                                                    <div>Nama</div>
+                                                    <div class="text-reset font-weight-normal">{{ $specialization['name'] }}</div>
                                                 </div>
 
                                                 <div class="my-2">
-                                                    <div>Deskripsi</div>
-                                                    <div class="font-weight-normal">{{ $specialization->description }}</div>
+                                                    <div>Kategori Kasus</div>
+                                                    <div class="font-weight-normal">
+                                                        @foreach($specialization['case_category'] as $case_category)
+                                                            {{ $case_category['case_category_id'] }}
+                                                        @endforeach
+                                                    </div>
                                                 </div>
                                               </div>
                                           </div>
@@ -111,10 +115,10 @@
                                   </div>
                               </div>
 
-                              <i class="fa fa-trash ml-2 cursor-pointer"  data-toggle="modal" data-target="#modelId-{{ $specialization->id }}"></i>
+                              <i class="fa fa-trash ml-2 cursor-pointer"  data-toggle="modal" data-target="#modelId-{{ $specialization['external_id'] }}"></i>
                               
                               <!-- Modal -->
-                              <div class="modal fade" id="modelId-{{ $specialization->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                              <div class="modal fade" id="modelId-{{ $specialization['external_id'] }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
                                       <div class="modal-content">
                                           <div class="modal-header">
@@ -123,7 +127,7 @@
                                                       <span aria-hidden="true">&times;</span>
                                                   </button>
                                           </div>
-                                            <form action="{{ route("specialization.delete", ["id" => $specialization->id]) }}" method="post">
+                                            <form action="{{ route("specialization.delete", ["id" => $specialization['external_id']]) }}" method="post">
                                                 @csrf
                                                 <div class="modal-body container">
                                                     <h3 class="col-md-12 text-center">
@@ -147,7 +151,7 @@
                   @endforeach
               </tbody>
           </table>
-          <div>{{ $specializations->links('vendor.pagination.custom') }}</div>
+          {{-- <div>{{ $specializations->links('vendor.pagination.custom') }}</div> --}}
       </div>
   </div>
 </div>
