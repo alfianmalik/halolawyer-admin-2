@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\CaseCategory;
 
 if (! function_exists('obfuscate_email')) {
 
@@ -311,5 +312,18 @@ if (! function_exists('unique_code')) {
     function unique_code($limit)
     {
         return substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, $limit);
+    }
+}
+
+
+if (! function_exists('category_name')) {
+
+    /**
+     * @param $name
+     * @return array
+     */
+    function category_name($id) {
+        
+        return CaseCategory::find($id)->name;
     }
 }

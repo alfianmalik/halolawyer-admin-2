@@ -28,9 +28,9 @@
       <div class="row">
           <div class="col-md-6 mt-3">
               <div class="form-group has-search ml-3">
-                <form action="{{ route("user") }}" method="get">
+                <form action="{{ route("casecategory.index") }}" method="get">
                     <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" name="q" class="form-control" placeholder="Cari Nama Customer atau Mitra">
+                    <input type="text" name="q" class="form-control" placeholder="Cari Nama Kategori Kasus">
                 </form>
               </div>
           </div>

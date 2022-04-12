@@ -182,8 +182,17 @@ class LawyersController extends Controller
 		$case_categories = CaseCategory::all();
 		$specialization = Specialization::all();
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();
+		$lawyer_specializations = $lawyer->lawyers_specialization->groupBy("case_category_id");
+		
+        $lawyer_specializations = $lawyer_specializations->map(function ($specialization) {
+            return collect([
+                'case_category_id' 	=> $specialization,
+            ]);
+        });
 
-		return view('admin.lawyer.edit', compact("lawyer", "case_categories", "specialization"));
+        $lawyer_specializations = collect($lawyer_specializations);
+
+		return view('admin.lawyer.edit', compact("lawyer", "case_categories", "specialization", "lawyer_specializations"));
 	}	
 
 	/**

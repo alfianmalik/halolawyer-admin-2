@@ -3,7 +3,7 @@
         <div id="preview">
             <img v-if="url" :src="url" height="150" width="150"/>
         </div>
-        <div class="">
+        <div class="ml-2">
             <button type="button" id="upload" class="btn btn-outline-primary" @click="selectFile">Upload Foto</button>
         </div>
         <input type="file" @change="onFileChange" ref="file" class="d-none" name="profile_picture"/>
@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  props: ['url'],
   name: "UploadProfile",
   data() {
     return {

@@ -58,9 +58,10 @@ class SpecializationController extends Controller
     public function edit(Request $request)
     {
         # code...
-        $specialization = Specialization::find($request->id);
+        $categories = Specialization::where("external_id", $request->id)->pluck("case_category_id");
+        $specialization = Specialization::where("external_id", $request->id)->first();
 
-        return view('admin.specialization.edit', compact('specialization'));
+        return view('admin.specialization.edit', compact('specialization', "categories"));
     }
 
     /**

@@ -30,7 +30,7 @@
               <div class="form-group has-search ml-3">
                 <form action="{{ route("user") }}" method="get">
                     <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" name="q" class="form-control" placeholder="Cari Nama Customer atau Mitra">
+                    <input type="text" name="q" class="form-control" placeholder="Cari Nama Spesialisasi">
                 </form>
               </div>
           </div>
@@ -66,7 +66,9 @@
                             <td>{{ $specialization['external_id'] }}</td>
                             <td>{{ $specialization['name'] }}</td>
                             <td>
-                                
+                                @foreach($specialization['case_category'] as $case_category)
+                                    {{ category_name($case_category['case_category_id']) }},
+                                @endforeach
                             </td>
                             <td> 
                                 <span class="badge badge-secondary">
@@ -102,7 +104,7 @@
                                                     <div>Kategori Kasus</div>
                                                     <div class="font-weight-normal">
                                                         @foreach($specialization['case_category'] as $case_category)
-                                                            {{ $case_category['case_category_id'] }}
+                                                            {{ category_name($case_category['case_category_id']) }},
                                                         @endforeach
                                                     </div>
                                                 </div>

@@ -93,7 +93,8 @@
                 </label>
                 
                 <div class="col-sm-8">
-                    <upload-file></upload-file>
+                    {{ $lawyer->lawyers_law_firm->lawyers_law_firm_files }}
+                    <upload-file :names="{{ $lawyer->lawyers_law_firm->lawyers_law_firm_files }}"></upload-file>
                 </div>
             </div>
 

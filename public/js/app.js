@@ -2601,6 +2601,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['educations'],
   name: "PendidikanFormal",
   data: function data() {
     return {
@@ -2608,7 +2609,9 @@ __webpack_require__.r(__webpack_exports__);
       count: 0
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.items = this.educations;
+  },
   methods: {
     addNew: function addNew() {
       this.items.push([this.count++]);
@@ -2692,6 +2695,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["nonformaleducations"],
   name: "PendidikanFormal",
   data: function data() {
     return {
@@ -2699,7 +2703,9 @@ __webpack_require__.r(__webpack_exports__);
       count: 0
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.items = this.nonformaleducations;
+  },
   methods: {
     addNew: function addNew() {
       this.items.push([this.count++]);
@@ -2781,7 +2787,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["specialization", "cases"],
+  props: ["specialization", "cases", "lawyerspecialization"],
   name: "Spesialisasi",
   data: function data() {
     return {
@@ -2797,7 +2803,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   components: {
     Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default())
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    console.log(this.lawyerspecialization);
+    this.items = this.lawyerspecialization;
+  },
   methods: {
     addNew: function addNew() {
       this.items.push([this.count++]);
@@ -2917,6 +2926,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     this.getCategories();
+    console.log(this.casecategories);
   },
   methods: {
     addNew: function addNew() {
@@ -3004,6 +3014,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['names'],
   name: "UploadProfile",
   data: function data() {
     return {
@@ -3056,6 +3067,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['url'],
   name: "UploadProfile",
   data: function data() {
     return {
@@ -3139,6 +3151,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     this.province = this.userprovince;
+    console.log(this.province);
 
     if (this.usercity) {
       this.city = this.usercity;
@@ -53043,7 +53056,7 @@ var render = function () {
         : _vm._e(),
     ]),
     _vm._v(" "),
-    _c("div", {}, [
+    _c("div", { staticClass: "ml-2" }, [
       _c(
         "button",
         {

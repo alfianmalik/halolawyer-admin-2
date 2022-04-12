@@ -10,10 +10,15 @@ class CaseCategoryController extends Controller
 {
     //
 
-    public function index()
+    public function index(Request $request)
     {
         # code...
-        $casecategories = CaseCategory::paginate(10);
+        $casecategories = new CaseCategory();
+        if ($request->q) {
+            $casecategories = $casecategories->where("name", "like", "%".$request->q."%");
+        }   
+
+        $casecategories = $casecategories->paginate(10);
 
         return view('admin.casecategory.index', compact('casecategories'));
     }

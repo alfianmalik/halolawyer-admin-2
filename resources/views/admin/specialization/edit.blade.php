@@ -18,7 +18,7 @@
             </div>
 
             <div class="col-md-12 mt-3">
-            <store-spesialisasi casecategories=""></store-spesialisasi>
+            <store-spesialisasi casecategories="{{ $categories }}"></store-spesialisasi>
             </div>
 
             <div class="col-md-12 mt-3">

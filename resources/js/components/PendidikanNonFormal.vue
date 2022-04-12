@@ -59,6 +59,7 @@
 
 <script>
 export default {
+    props: ["nonformaleducations"],
     name: "PendidikanFormal",
     data: function () {
         return {
@@ -67,6 +68,7 @@ export default {
         }
     },
     mounted() {
+        this.items = this.nonformaleducations
     },
     methods : {
         addNew() {

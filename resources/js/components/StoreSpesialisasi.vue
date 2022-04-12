@@ -13,7 +13,7 @@
 import Multiselect from 'vue-multiselect'
 
 export default {
-    props: ["specialization","casecategories"],
+    props: ["specialization", "casecategories"],
     name: "Spesialisasi",
     data: function () {
         return {
@@ -31,6 +31,7 @@ export default {
     },
     mounted() {
         this.getCategories();
+        console.log(this.casecategories)
     },
     methods : {
         addNew() {

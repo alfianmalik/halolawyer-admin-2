@@ -49,7 +49,7 @@
 import Multiselect from 'vue-multiselect'
 
 export default {
-    props: ["specialization","cases"],
+    props: ["specialization","cases", "lawyerspecialization"],
     name: "Spesialisasi",
     data: function () {
         return {
@@ -66,7 +66,8 @@ export default {
         Multiselect
     },
     mounted() {
-        
+        console.log(this.lawyerspecialization)
+        this.items = this.lawyerspecialization
     },
     methods : {
         addNew() {

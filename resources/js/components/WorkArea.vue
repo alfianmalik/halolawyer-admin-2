@@ -42,6 +42,7 @@ export default {
     },
     mounted() {
         this.province = this.userprovince
+        console.log(this.province)
         if (this.usercity) {
             this.city = this.usercity
             this.getCities()

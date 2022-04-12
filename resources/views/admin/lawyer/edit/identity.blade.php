@@ -6,7 +6,7 @@
             <div class="form-group row mt-5">
                 <label for="name" class="col-sm-3 col-form-label">Foto</label>
                 <div class="col-sm-9">
-                    <upload-profile></upload-profile>
+                    <upload-profile url="{{ $lawyer->profile_picture }}"></upload-profile>
                 </div>
             </div>
 
