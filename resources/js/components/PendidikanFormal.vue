@@ -73,7 +73,7 @@ export default {
         }
     },
     mounted() {
-        this.items = this.educations;
+        // this.items = this.educations;
     },
     methods : {
         addNew() {

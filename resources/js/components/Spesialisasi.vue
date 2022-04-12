@@ -67,7 +67,7 @@ export default {
     },
     mounted() {
         console.log(this.lawyerspecialization)
-        this.items = this.lawyerspecialization
+        // this.items = this.lawyerspecialization
     },
     methods : {
         addNew() {

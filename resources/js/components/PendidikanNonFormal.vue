@@ -68,7 +68,7 @@ export default {
         }
     },
     mounted() {
-        this.items = this.nonformaleducations
+        // this.items = this.nonformaleducations
     },
     methods : {
         addNew() {
