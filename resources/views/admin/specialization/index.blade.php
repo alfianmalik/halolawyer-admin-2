@@ -67,7 +67,7 @@
                             <td>{{ $specialization['name'] }}</td>
                             <td>
                                 @foreach($specialization['case_category'] as $case_category)
-                                    {{ category_name($case_category['case_category_id']) }},
+                                    {{ $case_category['case_category_id'] }},
                                 @endforeach
                             </td>
                             <td> 
@@ -104,7 +104,7 @@
                                                     <div>Kategori Kasus</div>
                                                     <div class="font-weight-normal">
                                                         @foreach($specialization['case_category'] as $case_category)
-                                                            {{ category_name($case_category['case_category_id']) }},
+                                                            {{ $case_category['case_category_id'] }},
                                                         @endforeach
                                                     </div>
                                                 </div>

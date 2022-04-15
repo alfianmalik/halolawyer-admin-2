@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="">
-        <form action="{{ route("specialization.edit.post", ["id" => $specialization->id]) }}" method="post" class="">
+        <form action="{{ route("specialization.edit.post", ["id" => $specialization->external_id]) }}" method="post" class="">
             @csrf
             <div class="col-md-12 mt-3">
                 <div class="form-group">
@@ -25,7 +25,7 @@
                 <!-- Rounded switch -->
                 <h6 for="title" class="text-dark font-weight-bolder">Status</h6>
                 <label class="switch">
-                    <input type="checkbox" name="is_activated">
+                    <input type="checkbox" name="is_activated" {{ $specialization->is_activated?"checked":"" }}>
                     <span class="slider round"></span>
                 </label>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CaseCategory;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -59,6 +60,14 @@ class SpecializationController extends Controller
     {
         # code...
         $categories = Specialization::where("external_id", $request->id)->pluck("case_category_id");
+        $categories = $categories->map(function($category) {
+            $cat = CaseCategory::where("id", $category)->first();
+            return collect([
+                'name'          => $cat->name,
+                "id"            => $cat->id,
+            ]);
+        });
+
         $specialization = Specialization::where("external_id", $request->id)->first();
 
         return view('admin.specialization.edit', compact('specialization', "categories"));
@@ -69,14 +78,17 @@ class SpecializationController extends Controller
      */
     public function editPost(Request $request)
     {
-        $specialization = Specialization::find($request->id);
+        $specialization = Specialization::where("external_id", $request->id);
+        $specialization->forceDelete();
 
-        $categories = json_decode($request->categories);
+        $specialization = new Specialization();
+        $categories = json_decode($request->categories);        
         foreach($categories as $category) {
             $specialization->create([
                 'name' => $request->name,
                 'case_category_id' => $category->id,
-                'is_activated' => $request->is_activated=="on"?1:0
+                'is_activated' => $request->is_activated=="on"?1:0,
+                'external_id' => $request->id
             ]);
         }
 

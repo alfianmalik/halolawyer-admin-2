@@ -2609,8 +2609,7 @@ __webpack_require__.r(__webpack_exports__);
       count: 0
     };
   },
-  mounted: function mounted() {
-    this.items = this.educations;
+  mounted: function mounted() {// this.items = this.educations;
   },
   methods: {
     addNew: function addNew() {
@@ -2703,8 +2702,7 @@ __webpack_require__.r(__webpack_exports__);
       count: 0
     };
   },
-  mounted: function mounted() {
-    this.items = this.nonformaleducations;
+  mounted: function mounted() {// this.items = this.nonformaleducations
   },
   methods: {
     addNew: function addNew() {
@@ -2804,8 +2802,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default())
   },
   mounted: function mounted() {
-    console.log(this.lawyerspecialization);
-    this.items = this.lawyerspecialization;
+    console.log(this.lawyerspecialization); // this.items = this.lawyerspecialization
   },
   methods: {
     addNew: function addNew() {
@@ -2927,6 +2924,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     this.getCategories();
     console.log(this.casecategories);
+    this.value = JSON.parse(this.casecategories);
   },
   methods: {
     addNew: function addNew() {
