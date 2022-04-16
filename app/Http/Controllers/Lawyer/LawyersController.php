@@ -133,9 +133,9 @@ class LawyersController extends Controller
 				}
 			}
 
-			if ($request->specialization) {
-				
+			if ($request->specialization["list"]) {
 				$specializations = json_decode($request->specialization['list']);
+
 				foreach($specializations as $idx => $lists) {
 					foreach($lists as $idx => $list) {
 						$lawyer->lawyers_specialization()->create([
@@ -329,7 +329,7 @@ class LawyersController extends Controller
 	public function delete(Request $request)
 	{
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();
-		$lawyer->delete();
+		$lawyer->forceDelete();
 
 		return redirect()->route("lawyers");
 	}
@@ -342,7 +342,7 @@ class LawyersController extends Controller
 		$manies = explode(",", $request->deletemany);
         foreach ($manies as $many) {
             $lawyer = Lawyers::find($many);
-			$lawyer->delete();
+			$lawyer->forceDelete();
         }
 
         return redirect()->back()->with("status", "Successfully delete Mitra");
