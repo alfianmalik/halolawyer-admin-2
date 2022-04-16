@@ -14,7 +14,6 @@
 
 <script>
 export default {
-  props: ['names'],
   name: "UploadProfile",
   data() {
     return {

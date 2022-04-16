@@ -445,3 +445,7 @@ input:checked + .slider:before {
 .nav-pills > li > a{
     border-radius:0px;
 }
+
+.multiselect__content-wrapper {
+  position: static !important;
+}

@@ -3,7 +3,7 @@
         <div class="form-group row">
             <label for="province" class="col-sm-4 col-form-label">Provinsi</label>
             <div class="col-sm-8">
-                <select class="form-control" id="province" name="province" v-model="province" required autocomplete="province" autofocus @change="getCities">
+                <select class="form-control" id="province" name="province" v-model="province" autocomplete="province" autofocus @change="getCities">
                     <option style="color: black" :value=data.id v-for="(data, index) in provinces">{{ data.name }}</option>
                 </select>
             </div>
@@ -12,7 +12,7 @@
         <div class="form-group row">
             <label for="city" class="col-sm-4 col-form-label">Kabupaten / Kota</label>
             <div class="col-sm-8">
-                 <select class="form-control" id="city" name="city" v-model="city" required autocomplete="city" autofocus @change="getDistricts">
+                 <select class="form-control" id="city" name="city" v-model="city" autocomplete="city" autofocus @change="getDistricts">
                     <option style="color: black" :value=data.id v-for="(data, index) in cities">{{ data.name }}</option>
                 </select>
             </div>

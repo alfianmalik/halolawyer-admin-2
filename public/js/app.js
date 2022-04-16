@@ -3012,7 +3012,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['names'],
   name: "UploadProfile",
   data: function data() {
     return {
@@ -52139,7 +52138,6 @@ var render = function () {
             attrs: {
               id: "province",
               name: "province",
-              required: "",
               autocomplete: "province",
               autofocus: "",
             },
@@ -52197,7 +52195,6 @@ var render = function () {
             attrs: {
               id: "city",
               name: "city",
-              required: "",
               autocomplete: "city",
               autofocus: "",
             },
