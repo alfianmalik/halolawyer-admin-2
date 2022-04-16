@@ -329,7 +329,7 @@ class LawyersController extends Controller
 	public function delete(Request $request)
 	{
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();
-		$lawyer->educations->forceDelete();
+		$lawyer->educations()->forceDelete();
 		$lawyer->forceDelete();
 
 		return redirect()->route("lawyers");
@@ -343,7 +343,7 @@ class LawyersController extends Controller
 		$manies = explode(",", $request->deletemany);
         foreach ($manies as $many) {
             $lawyer = Lawyers::find($many);
-			$lawyer->educations->forceDelete();
+			$lawyer->educations()->forceDelete();
 			$lawyer->forceDelete();
         }
 
