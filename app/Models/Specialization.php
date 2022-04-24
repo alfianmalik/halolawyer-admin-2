@@ -25,6 +25,6 @@ class Specialization extends Model
      */
     public function case_category()
     {
-        return $this->belongsTo(CaseCategory::class, 'case_category_id');
+        return $this->belongsToMany(CaseCategory::class, 'category_specialization', 'specialization_id', 'case_category_id');
     }
 }

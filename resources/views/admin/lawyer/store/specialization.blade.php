@@ -9,7 +9,7 @@
             <pendidikan-non-formal></pendidikan-non-formal>
 
             <h5 class="text-black font-weight-bold mt-5">Spesialisasi</h5>
-            <spesialisasi :cases='{{ $case_categories }}' :specialization='{{ $specialization }}'></spesialisasi>
+            <spesialisasi :cases='{{ $case_categories }}'></spesialisasi>
 
             <hr>
             <div class="justify-content-end row">

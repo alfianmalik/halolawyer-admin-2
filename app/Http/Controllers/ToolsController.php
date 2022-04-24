@@ -42,7 +42,9 @@ class ToolsController extends Controller
 
     public function getSpesialization(Request $request)
     {
-        return Specialization::where("case_category_id", $request->category)->get();
+        $category = CaseCategory::find($request->category);
+
+        return $category->specializations;
     }
 
     public function getCategories(Request $request)

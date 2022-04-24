@@ -22,8 +22,8 @@ class CaseCategory extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function specialization()
+    public function specializations()
     {
-        return $this->hasMany(Specialization::class, 'case_category_id');
+        return $this->belongsToMany(Specialization::class, 'category_specialization', 'case_category_id', 'specialization_id');
     }
 }

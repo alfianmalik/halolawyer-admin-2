@@ -39,9 +39,8 @@ class LawyersController extends Controller
 		# code...
 
 		$case_categories = CaseCategory::all();
-		$specialization = Specialization::all();
 
-		return view('admin.lawyer.store', compact('case_categories', "specialization"));
+		return view('admin.lawyer.store', compact('case_categories'));
 	}	
 
 	/**
@@ -182,15 +181,7 @@ class LawyersController extends Controller
 		$case_categories = CaseCategory::all();
 		$specialization = Specialization::all();
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();
-		$lawyer_specializations = $lawyer->lawyers_specialization->groupBy("case_category_id");
-		
-        $lawyer_specializations = $lawyer_specializations->map(function ($specialization) {
-            return collect([
-                'case_category_id' 	=> $specialization,
-            ]);
-        });
-
-        $lawyer_specializations = collect($lawyer_specializations);
+		$lawyer_specializations = $lawyer->lawyers_specialization;
 
 		return view('admin.lawyer.edit', compact("lawyer", "case_categories", "specialization", "lawyer_specializations"));
 	}	
@@ -200,26 +191,28 @@ class LawyersController extends Controller
 	 */
 	public function editPost(Request $request)
 	{
+		// dd($request->all());
 		$validated = $request->validate([
-			'email' => 'required|unique:lawyers|max:255',
+			'email' => 'required|max:255',
 			'name' => 'required',
 		]);
-
+		
 		DB::transaction(function() use ($request)
 		{
 		
-			$lawyer = Lawyers::find($request->id);
+			$lawyer = Lawyers::where('uuid', $request->uuid)->first();
+			
 			$first_name = split_name($request->name)[0];
 			$last_name = split_name($request->name)[1];
 
 			$password = $request->password_generate?$request->password_generate:"secret";
-
-			$lawyer = $lawyer->update([
+			
+			$lawyer->update([
 				'first_name' => $first_name,
 				'last_name' => $last_name,
 				'email' => $request->email,
 				'password' => Hash::make($password),
-				'phone' => $request->phone,
+				'phone' => $request->phone_number,
 				'bod_place' => $request->place_of_birth,
 				'uuid' => Str::uuid(),
 				'slug' => Str::slug($request->name),
@@ -227,17 +220,26 @@ class LawyersController extends Controller
 				'gender' => $request->gender,
 				'work' => $request->work,
 				'religion' => $request->religion,
-				'profile_picture' => $request->hasFile('profile_picture')?(new ImageProcessor($request->profile_picture, Lawyers::APP_URL_PROFILE_PICTURE))->upload()->url():"",
+				'profile_picture' => $request->hasFile('profile_picture')?(new ImageProcessor($request->profile_picture, Lawyers::APP_URL_PROFILE_PICTURE))->upload()->url():$lawyer->profile_picture,
 				'location' => $request->location,
 				'province_id' => $request->province_id,
 				'city_id' => $request->city_id,
 			]);
 
-			$lawyer->account_number()->update([
-				'bank_name' => $request->bank_name,
-				'no_rekening' => $request->no_rekening,
-				'nama_penerima' => $request->nama_penerima,
-			]);
+			
+			if ($lawyer->account_number) {
+				$lawyer->account_number()->update([
+					'bank_name' => $request->bank_name,
+					'no_rekening' => $request->no_rekening,
+					'nama_penerima' => $request->nama_penerima,
+				]);
+			} else {
+				$lawyer->account_number()->create([
+					'bank_name' => $request->bank_name,
+					'no_rekening' => $request->no_rekening,
+					'nama_penerima' => $request->nama_penerima,
+				]);
+			}
 
 			$law_firm = $lawyer->lawyers_law_firm()->update([
 				'law_firm_name' => $request->office_name,
@@ -282,22 +284,25 @@ class LawyersController extends Controller
 					]);
 				}
 			}
-
+			
 			if ($request->specialization) {
+				
 				foreach ($request->specialization as $keys => $items) {
-					$specializations = json_decode($items['specialization']);
-					foreach($specializations as $list) {
-						$lawyer->lawyers_specialization()->create([
+					if ($items) {
+						$specializations = json_decode($items['specialization']);
+						foreach($specializations as $list) {
+							$lawyer->lawyers_specialization()->create([
+								'case_category_id' => $items['case'],
+								'specialization_id' => $list->id
+							]);
+						}
+						
+						$case = CaseCategory::find($items['case']);
+						$lawyer->lawyers_category()->create([
 							'case_category_id' => $items['case'],
-							'specialization_id' => $list->id
+							'name' => $case->name,
 						]);
 					}
-					
-					$case = CaseCategory::find($items['case']);
-					$lawyer->lawyers_category()->create([
-						'case_category_id' => $items['case'],
-						'name' => $case->name,
-					]);
 				}
 			}
 

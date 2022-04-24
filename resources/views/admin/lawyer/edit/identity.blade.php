@@ -27,7 +27,7 @@
             <div class="form-group row">
                 <label for="phone" class="col-sm-3 col-form-label">No Hp</label>
                 <div class="col-sm-9">
-                    <input type="text" id="phone" class="form-control" name="phone" aria-describedby="basic-addon3" placeholder="No Handphone" required value="{{ $lawyer->phone }}">
+                    <input type="text" id="phone" class="form-control" name="phone_number" aria-describedby="basic-addon3" placeholder="No Handphone" required value="{{ $lawyer->phone }}">
                 </div>
             </div>
 

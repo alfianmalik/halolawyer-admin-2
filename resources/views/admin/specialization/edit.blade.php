@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="">
-        <form action="{{ route("specialization.edit.post", ["id" => $specialization->external_id]) }}" method="post" class="">
+        <form action="{{ route("specialization.edit.post", ["id" => $specialization->id]) }}" method="post" class="">
             @csrf
             <div class="col-md-12 mt-3">
                 <div class="form-group">

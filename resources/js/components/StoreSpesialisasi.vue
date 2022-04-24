@@ -31,7 +31,6 @@ export default {
     },
     mounted() {
         this.getCategories();
-        console.log(this.casecategories)
         this.value = JSON.parse(this.casecategories);
     },
     methods : {

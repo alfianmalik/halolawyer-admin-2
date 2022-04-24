@@ -3,14 +3,14 @@
         <div class="col-md-8 offset-md-1">
             <h5 class="text-black font-weight-bold">Pendidikan Formal</h5>
             {{ $lawyer->educations }}
-            <pendidikan-formal :educations="{{ $lawyer->educations }}"></pendidikan-formal>
+            <edit-pendidikan-formal :educations="{{ $lawyer->educations }}"></edit-pendidikan-formal>
 
             <h5 class="text-black font-weight-bold mt-5">Pendidikan Non Formal</h5>
 
             <pendidikan-non-formal :nonformaleducations="{{ $lawyer->lawyers_unformal_educations }}"></pendidikan-non-formal>
 
             <h5 class="text-black font-weight-bold mt-5">Spesialisasi</h5>
-            <spesialisasi :cases='{{ $case_categories }}' :specialization='{{ $specialization }}' :lawyerspecialization="{{ $lawyer_specializations }}"></spesialisasi>
+            <edit-spesialisasi :cases='{{ $case_categories }}' :specialization='{{ $specialization }}' :lawyerspecialization="{{ $lawyer_specializations }}"></edit-spesialisasi>
 
             <hr>
             <div class="justify-content-end row">

@@ -15,17 +15,7 @@ class SpecializationController extends Controller
     public function index()
     {
         # code...
-        $specializations = Specialization::groupBy("name", "external_id", "is_activated")->select("name", "external_id", "is_activated")->get();
-        $specializations = $specializations->map(function ($specialization) {
-            return collect([
-                'external_id'  => $specialization->external_id,
-                'name'         => $specialization->name,
-                'is_activated'         => $specialization->is_activated,
-                'case_category'=> Specialization::where("name", "=", $specialization->name)->get(["case_category_id"])->toArray(),
-            ]);
-        });
-
-        $specializations = collect($specializations);
+        $specializations = Specialization::orderBy("id", "desc")->paginate(10);
     
         return view('admin.specialization.index', compact('specializations'));
     }
@@ -40,14 +30,14 @@ class SpecializationController extends Controller
     {
         $specialization = new Specialization();
         $categories = json_decode($request->categories);
-        $external_id = unique_code(6);
+        $specialization = $specialization->create([
+            'name' => $request->name,
+            'is_activated' => $request->is_activated=="on"?1:0,
+        ]);
+
         foreach($categories as $category) {
-            $specialization->create([
-                'name' => $request->name,
-                'case_category_id' => $category->id,
-                'is_activated' => $request->is_activated=="on"?1:0,
-                'external_id' => $external_id
-            ]);
+            $category = CaseCategory::where("id", "=", $category->id)->first();
+            $category->specializations()->save($specialization);
         }
 
         return redirect()->route("specialization.index");
@@ -59,17 +49,9 @@ class SpecializationController extends Controller
     public function edit(Request $request)
     {
         # code...
-        $categories = Specialization::where("external_id", $request->id)->pluck("case_category_id");
-        $categories = $categories->map(function($category) {
-            $cat = CaseCategory::where("id", $category)->first();
-            return collect([
-                'name'          => $cat->name,
-                "id"            => $cat->id,
-            ]);
-        });
-
-        $specialization = Specialization::where("external_id", $request->id)->first();
-
+        $specialization = Specialization::find($request->id);
+        $categories = $specialization->case_category;
+        
         return view('admin.specialization.edit', compact('specialization', "categories"));
     }
 
@@ -78,18 +60,17 @@ class SpecializationController extends Controller
      */
     public function editPost(Request $request)
     {
-        $specialization = Specialization::where("external_id", $request->id);
-        $specialization->forceDelete();
+        $specialization = Specialization::find($request->id);
+        $categories = json_decode($request->categories);    
 
-        $specialization = new Specialization();
-        $categories = json_decode($request->categories);        
+        $specialization->update([
+            'name' => $request->name,
+            'is_activated' => $request->is_activated=="on"?1:0,
+        ]);
+        
         foreach($categories as $category) {
-            $specialization->create([
-                'name' => $request->name,
-                'case_category_id' => $category->id,
-                'is_activated' => $request->is_activated=="on"?1:0,
-                'external_id' => $request->id
-            ]);
+            $category = CaseCategory::where("id", "=", $category->id)->first();
+            $category->specializations()->sync($specialization);
         }
 
         return redirect()->route("specialization.index");
@@ -103,7 +84,7 @@ class SpecializationController extends Controller
             return redirect()->back()->with("error", "");
         }
 
-        $specialization = Specialization::where('external_id', $request->id);
+        $specialization = Specialization::where('id', $request->id);
         $specialization->delete();
 
         return redirect()->back()->with("success", "");

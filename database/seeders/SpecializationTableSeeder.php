@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use \Illuminate\Support\Facades\DB;
-use \App\Model\CaseCategory;
+use \App\Models\CaseCategory;
+use App\Models\Specialization;
 
 class SpecializationTableSeeder extends Seeder
 {
@@ -43,18 +44,47 @@ class SpecializationTableSeeder extends Seeder
             9 => $hutang
         ];
 
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table("specialization")->truncate();
-
+        DB::table("category_specialization")->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        
+        // $case_category = CaseCategory::all();
+        // foreach ($case_category as $key => $value) {
+        //     $data_specialization = $data[$value->id];
+        //     foreach ($data_specialization as $key => $value) {
+        //         $specialization = Specialization::create([
+        //             'name' => $value
+        //         ]);
+        //         $value = $specialization->id;
+        //         $value = [
+        //             'category_id' => $value,
+        //             'specialization_id' => $value
+        //         ];
+        //         DB::table('category_specialization')->insert($value);
+        //     }
+        // }
         for ($i=1;$i<=count($data);$i++)
         {
             for ($j=0; $j<count($data[$i]);$j++)
             {
                 $external_id = !DB::table("specialization")->where('name', '=', $data[$i][$j])->first()?unique_code(6):DB::table("specialization")->where('name', '=', $data[$i][$j])->first()->external_id;
-                DB::table('specialization')->insert([
+                $id = DB::table('specialization')->insertGetId([
                     'case_category_id' => $i,
                     'name' => $data[$i][$j],
                     'external_id' => $external_id
                 ]);
+                DB::table('category_specialization')->insert([
+                    'case_category_id' => $i,
+                    'specialization_id' => $id
+                ]);
+                // $specialization = new Specialization();
+                // $specialization->saveMany([
+                //     [
+                //         'case_category_id' => $i,
+                //         'name' => $data[$i][$j]
+                //     ]
+                // ]);
             }
         }
     }
