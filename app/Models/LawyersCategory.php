@@ -18,4 +18,11 @@ class LawyersCategory extends Model
         return $this->belongsTo(Lawyers::class, 'lawyers_id');
     }
 
+    /**
+     * Get the post that owns the comment.
+     */
+    public function lawyers_specialization()
+    {
+        return $this->hasMany(LawyerSpecialization::class, 'lawyers_category_id');
+    }
 }

@@ -41,4 +41,12 @@ class LawyerSpecialization extends Model
     {
         return $this->belongsTo(Specialization::class, 'specialization_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function lawyer_category()
+    {
+        return $this->belongsTo(LawyersCategory::class, 'lawyers_category_id');
+    }
 }

@@ -132,24 +132,24 @@ class LawyersController extends Controller
 				}
 			}
 
+			
 			if ($request->specialization["list"]) {
 				$specializations = json_decode($request->specialization['list']);
-
+				
 				foreach($specializations as $idx => $lists) {
+					$case = CaseCategory::find($lists[0]->case_category_id);
+					$lawyer_category = $lawyer->lawyers_category()->create([
+						'case_category_id' => $lists[0]->case_category_id,
+						'name' => $case->name,
+					]);
+					
 					foreach($lists as $idx => $list) {
 						$lawyer->lawyers_specialization()->create([
 							'case_category_id' => $list->case_category_id,
+							'lawyers_category_id' => $lawyer_category->id,
 							'specialization_id' => $list->id
 						]);
 					}
-				}
-
-				foreach ($request->case as $keys => $items) {
-					$case = CaseCategory::find($items);
-					$lawyer->lawyers_category()->create([
-						'case_category_id' => $items,
-						'name' => $case->name,
-					]);
 				}
 			}
 
@@ -182,8 +182,9 @@ class LawyersController extends Controller
 		$specialization = Specialization::all();
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();
 		$lawyer_specializations = $lawyer->lawyers_specialization;
+		$lawyer_categories = $lawyer->lawyers_category;
 
-		return view('admin.lawyer.edit', compact("lawyer", "case_categories", "specialization", "lawyer_specializations"));
+		return view('admin.lawyer.edit', compact("lawyer", "case_categories", "specialization", "lawyer_specializations", "lawyer_categories"));
 	}	
 
 	/**
@@ -286,22 +287,26 @@ class LawyersController extends Controller
 			}
 			
 			if ($request->specialization) {
-				
+				dd($request->all());
 				foreach ($request->specialization as $keys => $items) {
 					if ($items) {
-						$specializations = json_decode($items['specialization']);
-						foreach($specializations as $list) {
-							$lawyer->lawyers_specialization()->create([
-								'case_category_id' => $items['case'],
-								'specialization_id' => $list->id
+						$specializations = json_decode($request->specialization['list']);
+						foreach($specializations as $idx => $lists) {
+							foreach($lists as $idx => $list) {
+								$lawyer->lawyers_specialization()->create([
+									'case_category_id' => $list->case_category_id,
+									'specialization_id' => $list->id
+								]);
+							}
+						}
+		
+						foreach ($request->case as $keys => $items) {
+							$case = CaseCategory::find($items);
+							$lawyer->lawyers_category()->create([
+								'case_category_id' => $items,
+								'name' => $case->name,
 							]);
 						}
-						
-						$case = CaseCategory::find($items['case']);
-						$lawyer->lawyers_category()->create([
-							'case_category_id' => $items['case'],
-							'name' => $case->name,
-						]);
 					}
 				}
 			}

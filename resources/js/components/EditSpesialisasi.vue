@@ -16,13 +16,14 @@
                         </div>
                     </div>
                 </div>
+                <input :value=items[index].id type="text" :name="'lawyer_category['+ index +'][id]'" />
 
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Kategori Kasus</label>
                             <div class="col-sm-9">
-                                <select class="form-control" :name="'case['+ index +']'" id="" @change="getSpesialization(category[index])" v-model="category[index]">
+                                <select class="form-control" :name="'specialization[case]['+ index +']'" id="" @change="getSpesialization(category[index])" v-model="items[index].case_category_id">
                                     <option v-for="(item, idxi) in cases" :key="idxi" :value="item.id">{{ item.name }}</option>
                                 </select>
                             </div>  
@@ -49,7 +50,7 @@
 import Multiselect from 'vue-multiselect'
 
 export default {
-    props: ["specialization","cases", "lawyerspecialization"],
+    props: ["specialization","cases", "lawyercategory"],
     name: "EditSpesialisasi",
     data: function () {
         return {
@@ -66,8 +67,9 @@ export default {
         Multiselect
     },
     mounted() {
-        console.log(this.lawyerspecialization)
-        // this.items = this.lawyerspecialization
+        console.log(this.lawyercategory)
+        this.items = this.lawyercategory
+
     },
     methods : {
         addNew() {

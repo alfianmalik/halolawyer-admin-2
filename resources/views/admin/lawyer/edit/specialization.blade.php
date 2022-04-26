@@ -10,7 +10,7 @@
             <pendidikan-non-formal :nonformaleducations="{{ $lawyer->lawyers_unformal_educations }}"></pendidikan-non-formal>
 
             <h5 class="text-black font-weight-bold mt-5">Spesialisasi</h5>
-            <edit-spesialisasi :cases='{{ $case_categories }}' :specialization='{{ $specialization }}' :lawyerspecialization="{{ $lawyer_specializations }}"></edit-spesialisasi>
+            <edit-spesialisasi :cases='{{ $case_categories }}' :specialization='{{ $specialization }}' :lawyercategory="{{ $lawyer_categories }}"></edit-spesialisasi>
 
             <hr>
             <div class="justify-content-end row">

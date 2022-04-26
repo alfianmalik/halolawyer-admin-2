@@ -12,6 +12,7 @@ Vue.component('generate-password', require('./components/GeneratePassword.vue').
 Vue.component('upload-profile', require('./components/UploadProfile.vue').default);
 Vue.component('upload-file', require('./components/UploadFile.vue').default);
 Vue.component('work-area', require('./components/WorkArea.vue').default);
+Vue.component('pendidikan-formal', require('./components/PendidikanFormal.vue').default);
 Vue.component('edit-pendidikan-formal', require('./components/EditPendidikanFormal.vue').default);
 Vue.component('pendidikan-non-formal', require('./components/PendidikanNonFormal.vue').default);
 Vue.component('spesialisasi', require('./components/Spesialisasi.vue').default);
