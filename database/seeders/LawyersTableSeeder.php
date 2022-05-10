@@ -66,6 +66,7 @@ class LawyersTableSeeder extends Seeder
 
             DB::table('lawyers_specialization')->insert([
                 'lawyers_id' => $lawyer,
+                'lawyers_category_id' => 1,
                 'case_category_id' => 1,
                 'specialization_id' => 2,
             ]);
