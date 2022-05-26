@@ -2163,8 +2163,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       var token = document.head.querySelector('meta[name="csrf-token"]');
-      var pusher = new Pusher("cf715e6aee39e960b6bd", {
-        cluster: "ap1",
+      var pusher = new Pusher("", {
+        cluster: "mt1",
         auth: {
           headers: {
             "X-CSRF-Token": token.content
@@ -3599,8 +3599,8 @@ var app = new Vue({
       var _this = this;
 
       var token = document.head.querySelector('meta[name="csrf-token"]');
-      var pusher = new Pusher("cf715e6aee39e960b6bd", {
-        cluster: "ap1",
+      var pusher = new Pusher("", {
+        cluster: "mt1",
         auth: {
           headers: {
             "X-CSRF-Token": token.content
@@ -3668,8 +3668,8 @@ window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/d
 
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "cf715e6aee39e960b6bd",
-  cluster: "ap1",
+  key: "",
+  cluster: "mt1",
   forceTLS: true // broadcaster: 'socket.io',
   // host: 'http://localhost:6001'
 

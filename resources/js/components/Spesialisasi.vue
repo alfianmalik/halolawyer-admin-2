@@ -12,7 +12,7 @@
                             </h5>
                         </div>
                         <div class="col-md-2 float-right text-right">
-                            <i class="fa fa-trash mt-3 mr-4" @click="deleteItem(index)"></i>    
+                            <i class="fa fa-trash mt-3 mr-4" @click="deleteItem(index)"></i>
                         </div>
                     </div>
                 </div>
@@ -25,9 +25,9 @@
                                 <select class="form-control" :name="'specialization[case]['+ index +']'" id="" @change="getSpesialization(category[index])" v-model="category[index]">
                                     <option v-for="(item, idxi) in cases" :key="idxi" :value="item.id">{{ item.name }}</option>
                                 </select>
-                            </div>  
+                            </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Spesialisasi</label>
                             <div class="col-sm-9">
@@ -40,7 +40,7 @@
             <input type="hidden" :name="'specialization[list]'" v-model="tagging">
         </div>
 
-        <button type="button" name="" id="" class="btn btn-outline-primary btn-block mt-5" @click="addNew">+ Add New</button>        
+        <button type="button" name="" id="" class="btn btn-outline-primary btn-block mt-5" @click="addNew">+ Add New</button>
     </div>
 </template>
 
@@ -83,7 +83,7 @@ export default {
                     console.log(res.data)
                 })
                 .catch(err => {
-                    console.error(err); 
+                    console.error(err);
                 })
         },
         onSelect (items, lastSelectItem) {

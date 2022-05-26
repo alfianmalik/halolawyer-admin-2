@@ -32,7 +32,7 @@ class LawyersController extends Controller
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public function new(Request $request)
 	{
@@ -41,10 +41,10 @@ class LawyersController extends Controller
 		$case_categories = CaseCategory::all();
 
 		return view('admin.lawyer.store', compact('case_categories'));
-	}	
+	}
 
 	/**
-	 * 
+	 *
 	 */
 	public function newPost(Request $request)
 	{
@@ -56,7 +56,7 @@ class LawyersController extends Controller
 
 		DB::transaction(function() use ($request)
 		{
-		
+
 			$lawyer = new Lawyers();
 			$first_name = split_name($request->name)[0];
 			$last_name = split_name($request->name)[1];
@@ -101,14 +101,14 @@ class LawyersController extends Controller
 				'long_working_years' => $request->long_work_experience,
 				'probono' => $request->probono=="on"?true:false
 			]);
-			
+
 			if ($request->law_firm_file) {
 				foreach ($request->law_firm_file as $key => $fileuploadlaw) {
 					$law_firm->lawyers_law_firm_files()->create([
 						'files' => (new ImageFileProcessor($fileuploadlaw, Lawyers::APP_URL_LAW_FIRM_FILE, $fileuploadlaw->getClientOriginalExtension()))->upload()->url()
 					]);
 				}
-				
+
 			}
 
 			if ($request->pendidikanformal) {
@@ -132,20 +132,21 @@ class LawyersController extends Controller
 				}
 			}
 
-			
+
 			if ($request->specialization["list"]) {
 				$specializations = json_decode($request->specialization['list']);
-				
+                // dd($specializations);
 				foreach($specializations as $idx => $lists) {
-					$case = CaseCategory::find($lists[0]->case_category_id);
-					$lawyer_category = $lawyer->lawyers_category()->create([
-						'case_category_id' => $lists[0]->case_category_id,
-						'name' => $case->name,
-					]);
-					
 					foreach($lists as $idx => $list) {
+                        $case = CaseCategory::find($list->pivot->case_category_id);
+                        // dd($case);
+                        $lawyer_category = $lawyer->lawyers_category()->create([
+                            'case_category_id' => $list->pivot->case_category_id,
+                            'name' => $case->name,
+                        ]);
+
 						$lawyer->lawyers_specialization()->create([
-							'case_category_id' => $list->case_category_id,
+							'case_category_id' => $list->pivot->case_category_id,
 							'lawyers_category_id' => $lawyer_category->id,
 							'specialization_id' => $list->id
 						]);
@@ -173,7 +174,7 @@ class LawyersController extends Controller
 		});
 
 		return redirect()->route("lawyers")->with("status", "Successfully adding Mitra");;
-	}	
+	}
 
 	public function edit(Request $request)
 	{
@@ -185,10 +186,10 @@ class LawyersController extends Controller
 		$lawyer_categories = $lawyer->lawyers_category;
 
 		return view('admin.lawyer.edit', compact("lawyer", "case_categories", "specialization", "lawyer_specializations", "lawyer_categories"));
-	}	
+	}
 
 	/**
-	 * 
+	 *
 	 */
 	public function editPost(Request $request)
 	{
@@ -197,17 +198,17 @@ class LawyersController extends Controller
 			'email' => 'required|max:255',
 			'name' => 'required',
 		]);
-		
+
 		DB::transaction(function() use ($request)
 		{
-		
+
 			$lawyer = Lawyers::where('uuid', $request->uuid)->first();
-			
+
 			$first_name = split_name($request->name)[0];
 			$last_name = split_name($request->name)[1];
 
 			$password = $request->password_generate?$request->password_generate:"secret";
-			
+
 			$lawyer->update([
 				'first_name' => $first_name,
 				'last_name' => $last_name,
@@ -227,7 +228,7 @@ class LawyersController extends Controller
 				'city_id' => $request->city_id,
 			]);
 
-			
+
 			if ($lawyer->account_number) {
 				$lawyer->account_number()->update([
 					'bank_name' => $request->bank_name,
@@ -255,14 +256,14 @@ class LawyersController extends Controller
 				'long_working_years' => $request->long_work_experience,
 				'probono' => $request->probono=="on"?true:false
 			]);
-			
+
 			if ($request->law_firm_file) {
 				foreach ($request->law_firm_file as $key => $fileuploadlaw) {
 					$law_firm->lawyers_law_firm_files()->create([
 						'files' => (new ImageFileProcessor($fileuploadlaw, Lawyers::APP_URL_LAW_FIRM_FILE, $fileuploadlaw->getClientOriginalExtension()))->upload()->url()
 					]);
 				}
-				
+
 			}
 
 			if ($request->pendidikanformal) {
@@ -285,7 +286,7 @@ class LawyersController extends Controller
 					]);
 				}
 			}
-			
+
 			if ($request->specialization) {
 				dd($request->all());
 				foreach ($request->specialization as $keys => $items) {
@@ -299,7 +300,7 @@ class LawyersController extends Controller
 								]);
 							}
 						}
-		
+
 						foreach ($request->case as $keys => $items) {
 							$case = CaseCategory::find($items);
 							$lawyer->lawyers_category()->create([
@@ -331,10 +332,10 @@ class LawyersController extends Controller
 		});
 
 		return redirect()->route("lawyers")->with("status", "Successfully edit Mitra");
-	}	
+	}
 
 	/**
-	 * 
+	 *
 	 */
 	public function delete(Request $request)
 	{
@@ -346,7 +347,7 @@ class LawyersController extends Controller
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public function deletes(Request $request)
 	{
@@ -361,7 +362,7 @@ class LawyersController extends Controller
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public function suspend(Request $request)
 	{

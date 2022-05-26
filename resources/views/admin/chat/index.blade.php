@@ -49,7 +49,7 @@
                                 </div>
                             </td>
                             <td>{{ $order->id }}</td>
-                            <td>{{ $order->user_first_name }} {{ $order->user_last_name }}</td>
+                            <td>{{ $order->user->first_name }} {{ $order->user->last_name }}</td>
                             <td>{{ $order->user_email }}</td>
                             <td>{{ $order->user_phone }}</td>
                             <td>{{ $order->lawyer_schedule }}</td>
@@ -62,7 +62,7 @@
                                 <button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#view{{ $order->id }}">
                                     <i class="fa fa-eye"></i>
                                 </button>
-                                
+
                                 <!-- Modal -->
                                 <div class="modal fade" id="view{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -75,32 +75,32 @@
                                             </div>
                                             <div class="modal-body row">
                                                 <div class="col-md-12">
-    
+
                                                     <div class="my-2 row">
                                                         <div class="col-md-6">Nama Customer</div>
                                                         <div class="col-md-6 text-reset font-weight-normal">: {{ $order->user_first_name }} {{ $order->user_last_name }}</div>
                                                     </div>
-    
+
                                                     <div class="my-2 row">
                                                         <div class="col-md-6">Email</div>
                                                         <div class="col-md-6 text-reset font-weight-normal">: {{ $order->user_email }}</div>
                                                     </div>
-    
+
                                                     <div class="my-2 row">
                                                         <div class="col-md-6">No Hp</div>
                                                         <div class="col-md-6 text-reset font-weight-normal">: {{ $order->user_phone }}</div>
                                                     </div>
-    
+
                                                     <div class="my-2 row">
                                                         <div class="col-md-6">Jadwal Konsultasi</div>
                                                         <div class="col-md-6 text-reset font-weight-normal">: {{ $order->lawyer_schedule }}</div>
                                                     </div>
-    
+
                                                     <div class="my-2 row">
                                                         <div class="col-md-6">Status</div>
                                                         <div class="col-md-6 text-reset font-weight-normal">: </div>
                                                     </div>
-    
+
                                                     <div class="my-2 row">
                                                         <div class="col-md-6">Detail Masalah</div>
                                                         <div class="col-md-6 text-reset font-weight-normal">: {{ $order->catatan }}</div>

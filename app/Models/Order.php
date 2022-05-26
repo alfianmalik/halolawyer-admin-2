@@ -3,17 +3,17 @@
 namespace App\Models;
 
 use App\Lawyers;
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use DB;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Order extends Model
 {
     use LogsActivity;
-    
+
     /**
      * @var string
      */
@@ -53,7 +53,7 @@ class Order extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, "id", "user_id");
+        return $this->belongsTo(User::class, "user_id");
     }
 
     /**
