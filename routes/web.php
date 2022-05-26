@@ -32,7 +32,7 @@ Route::get('/', function(){
 
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin'],function(){
-	
+
 	Route::get('/',[AdminController::class,'index'])->name('admin');
 
 	Route::group(['prefix' => 'chat'],function(){
@@ -53,7 +53,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin
 			Route::post('/store',[App\Http\Controllers\CaseCategoryController::class, 'storePost'])->name('casecategory.store.post');
 			Route::get('/edit/{id}',[App\Http\Controllers\CaseCategoryController::class, 'edit'])->name('casecategory.edit');
 			Route::post('/edit/{id}',[App\Http\Controllers\CaseCategoryController::class, 'editPost'])->name('casecategory.edit.post');
-			
+
 		});
 		Route::group(['prefix' => 'specialization'],function(){
 			Route::get('/',[App\Http\Controllers\SpecializationController::class, 'index'])->name('specialization.index');
@@ -70,7 +70,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin
 	Route::resource('/user','UserController');
 
 	//Route View
-	
+
 
 });
 
@@ -95,8 +95,10 @@ Route::group(['namespace' => 'Lawyer','middleware' => 'auth' ,'prefix' => 'lawye
 
 Route::group(['namespace' => 'Product', 'middleware' => 'auth' , 'prefix' => 'product'],function(){
 	Route::get('/mitra', [ProductController::class,'mitra'])->name('product.mitra');
-	Route::get('/mitra/{uuid}', [ProductController::class,'mitraEdit'])->name('product.mitra.edit');
+	Route::get('/mitra/{id}', [ProductController::class,'mitraEdit'])->name('product.mitra.edit');
 	Route::post('/mitra', [ProductController::class,'mitraPostEdit'])->name('product.mitra.post.edit');
+    Route::get('/mitra/store', [ProductController::class,'mitraStore'])->name('product.mitra.store');
+	Route::post('/mitra/store', [ProductController::class,'mitraPostStore'])->name('product.mitra.post.store');
 
 	Route::get('/dokumen', [ProductController::class,'document'])->name('product.document');
 });
@@ -111,7 +113,7 @@ Route::group(['namespace' => 'Setting', 'middleware' => 'auth' , 'prefix' => 'se
 	Route::get('/brand', [FooterController::class, 'brand'])->name('brand');
 	Route::get('/faq', [FooterController::class, 'faq'])->name('faq');
 	Route::post('/update/{id}', [FooterController::class, 'update'])->name('footer.update');
-	
+
 });
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'auth' , 'prefix' => 'admin'],function(){

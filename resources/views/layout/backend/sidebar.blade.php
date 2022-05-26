@@ -49,13 +49,13 @@
         </a>
         <div id="product" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('user') }}">
+                <a class="collapse-item" href="{{ route('product.mitra') }}">
                     <span>Layanan Mitra</span>
                 </a>
-                <a class="collapse-item" href="{{ route('lawyers') }}">
+                <a class="collapse-item" href="{{ route('product.document') }}">
                     <span>Layanan Dokumen</span>
                 </a>
-                <a class="collapse-item" href="{{ route('lawyers') }}">
+                <a class="collapse-item" href="{{ route('product.mitra') }}">
                     <span>Artikel & E Journal</span>
                 </a>
             </div>
@@ -74,7 +74,7 @@
             <span>Marketing</span>
         </a>
     </li>
-    
+
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin') }}">
