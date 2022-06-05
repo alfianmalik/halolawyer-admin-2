@@ -12,7 +12,7 @@
                             </h5>
                         </div>
                         <div class="col-md-2 float-right text-right">
-                            <i class="fa fa-trash mt-3 mr-4" @click="deleteItem(index)"></i>    
+                            <i class="fa fa-trash mt-3 mr-4" @click="deleteItem(index)"></i>
                         </div>
                     </div>
                 </div>
@@ -27,11 +27,11 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="form-group row">
                         <label for="judul_perkara" class="col-sm-3 col-form-label">Judul Perkara</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="judul_perkara" aria-describedby="basic-addon3" :name="'caseexperience['+ index +'][judul_perkara]'" placeholder="Judul Perkara">
+                            <input type="text" class="form-control" required id="judul_perkara" aria-describedby="basic-addon3" :name="'caseexperience['+ index +'][judul_perkara]'" placeholder="Judul Perkara">
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <button type="button" name="" id="" class="btn btn-outline-primary btn-block mt-5" @click="addNew">+ Add New</button>        
+        <button type="button" name="" id="" class="btn btn-outline-primary btn-block mt-5" @click="addNew">+ Add New</button>
     </div>
 </template>
 

@@ -2447,7 +2447,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["specialization", "cases", "lawyercategory"],
+  props: ["specialization", "cases", "lawyercategory", "lawyerspecializations"],
   name: "EditSpesialisasi",
   data: function data() {
     return {
@@ -2464,8 +2464,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default())
   },
   mounted: function mounted() {
-    console.log(this.lawyercategory);
-    this.items = this.lawyercategory;
+    var _this = this;
+
+    this.items = this.lawyercategory; // console.log(this.cases)
+    // console.log(this.cases)
+    // console.log(this.category)
+
+    Object.keys(this.items).forEach(function (key, index) {
+      // console.log(key);
+      // console.log(this.items[key]);
+      _this.category[index] = {
+        "id": 2,
+        "name": "Keluarga",
+        "description": "Berisi konsultasi dan layanan terkait aspek hukum keluarga, misalnya masalah perceraian, pewarisan, pengampuan dan lainnya.",
+        "icon": "",
+        "is_activated": 1,
+        "deleted_at": null,
+        "created_at": "2022-03-09T02:15:00.000000Z",
+        "updated_at": "2022-04-08T09:05:07.000000Z"
+      };
+    });
+    console.log(this.category);
   },
   methods: {
     addNew: function addNew() {
@@ -2475,7 +2494,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.items.splice(index, 1);
     },
     getSpesialization: function getSpesialization(category) {
-      var _this = this;
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -2483,7 +2502,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 axios.get("/api/get/specialization/" + category).then(function (res) {
-                  _this.options = res.data;
+                  _this2.options = res.data;
                   console.log(res.data);
                 })["catch"](function (err) {
                   console.error(err);
@@ -2513,21 +2532,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var tag = {
         name: newTag
       };
-      console.log(newTag);
       this.options.push(tag);
       this.value.push(tag);
     }
   },
   watch: {
     value: function value(val) {
-      // my new value in val. Perform your
-      // select update methods here
-      // let list = Object.keys(val).map((key) => {
-      //     return val[key]
-      // });
-      // console.log(list);
-      // console.log(idx);
-      // console.log(JSON.stringify(val))
       this.tagging = JSON.stringify(val);
     }
   }
@@ -51871,6 +51881,7 @@ var render = function () {
                       staticClass: "form-control",
                       attrs: {
                         type: "text",
+                        required: "",
                         id: "judul_perkara",
                         "aria-describedby": "basic-addon3",
                         name: "caseexperience[" + index + "][judul_perkara]",
@@ -52812,15 +52823,11 @@ var render = function () {
                 ]),
               ]
             ),
-            _vm._v(" "),
-            _c("input", {
-              attrs: {
-                type: "text",
-                name: "lawyer_category[" + index + "][id]",
-              },
-              domProps: { value: _vm.items[index].id },
-            }),
-            _vm._v(" "),
+            _vm._v(
+              "\n            " +
+                _vm._s(item[0].case_category_id) +
+                "\n            "
+            ),
             _c(
               "div",
               {
@@ -52851,8 +52858,8 @@ var render = function () {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.items[index].case_category_id,
-                              expression: "items[index].case_category_id",
+                              value: _vm.category[index],
+                              expression: "category[index]",
                             },
                           ],
                           staticClass: "form-control",
@@ -52872,8 +52879,8 @@ var render = function () {
                                     return val
                                   })
                                 _vm.$set(
-                                  _vm.items[index],
-                                  "case_category_id",
+                                  _vm.category,
+                                  index,
                                   $event.target.multiple
                                     ? $$selectedVal
                                     : $$selectedVal[0]
@@ -52887,11 +52894,16 @@ var render = function () {
                             ],
                           },
                         },
-                        _vm._l(_vm.cases, function (item, idxi) {
+                        _vm._l(_vm.cases, function (data, idxi) {
                           return _c(
                             "option",
-                            { key: idxi, domProps: { value: item.id } },
-                            [_vm._v(_vm._s(item.name))]
+                            {
+                              key: idxi,
+                              domProps: {
+                                value: item[0].case_category_id == data.id,
+                              },
+                            },
+                            [_vm._v(_vm._s(data.id))]
                           )
                         }),
                         0
@@ -52955,7 +52967,7 @@ var render = function () {
               expression: "tagging",
             },
           ],
-          attrs: { type: "hidden", name: "specialization[list]" },
+          attrs: { type: "text", name: "specialization[list]" },
           domProps: { value: _vm.tagging },
           on: {
             input: function ($event) {

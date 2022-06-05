@@ -12,23 +12,22 @@
                             </h5>
                         </div>
                         <div class="col-md-2 float-right text-right">
-                            <i class="fa fa-trash mt-3 mr-4" @click="deleteItem(index)"></i>    
+                            <i class="fa fa-trash mt-3 mr-4" @click="deleteItem(index)"></i>
                         </div>
                     </div>
                 </div>
-                <input :value=items[index].id type="text" :name="'lawyer_category['+ index +'][id]'" />
-
+                {{ item[0].case_category_id }}
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Kategori Kasus</label>
                             <div class="col-sm-9">
-                                <select class="form-control" :name="'specialization[case]['+ index +']'" id="" @change="getSpesialization(category[index])" v-model="items[index].case_category_id">
-                                    <option v-for="(item, idxi) in cases" :key="idxi" :value="item.id">{{ item.name }}</option>
+                                <select class="form-control" :name="'specialization[case]['+ index +']'" id="" @change="getSpesialization(category[index])" v-model="category[index]">
+                                    <option v-for="(data, idxi) in cases" :key="idxi" v-bind:value="item[0].case_category_id == data.id">{{ data.id }}</option>
                                 </select>
-                            </div>  
+                            </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Spesialisasi</label>
                             <div class="col-sm-9">
@@ -38,10 +37,11 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" :name="'specialization[list]'" v-model="tagging">
+
+            <input type="text" :name="'specialization[list]'" v-model="tagging">
         </div>
 
-        <button type="button" name="" id="" class="btn btn-outline-primary btn-block mt-5" @click="addNew">+ Add New</button>        
+        <button type="button" name="" id="" class="btn btn-outline-primary btn-block mt-5" @click="addNew">+ Add New</button>
     </div>
 </template>
 
@@ -50,7 +50,7 @@
 import Multiselect from 'vue-multiselect'
 
 export default {
-    props: ["specialization","cases", "lawyercategory"],
+    props: ["specialization", "cases", "lawyercategory", "lawyerspecializations"],
     name: "EditSpesialisasi",
     data: function () {
         return {
@@ -67,9 +67,19 @@ export default {
         Multiselect
     },
     mounted() {
-        console.log(this.lawyercategory)
-        this.items = this.lawyercategory
 
+        this.items = this.lawyercategory;
+        // console.log(this.cases)
+        // console.log(this.cases)
+        // console.log(this.category)
+        Object.keys(this.items).forEach((key, index) => {
+            // console.log(key);
+            // console.log(this.items[key]);
+            this.category[index] =
+                {"id":2,"name":"Keluarga","description":"Berisi konsultasi dan layanan terkait aspek hukum keluarga, misalnya masalah perceraian, pewarisan, pengampuan dan lainnya.","icon":"","is_activated":1,"deleted_at":null,"created_at":"2022-03-09T02:15:00.000000Z","updated_at":"2022-04-08T09:05:07.000000Z"};
+        });
+
+        console.log(this.category)
     },
     methods : {
         addNew() {
@@ -85,7 +95,7 @@ export default {
                     console.log(res.data)
                 })
                 .catch(err => {
-                    console.error(err); 
+                    console.error(err);
                 })
         },
         onSelect (items, lastSelectItem) {
@@ -104,21 +114,12 @@ export default {
             const tag = {
                 name: newTag
             }
-            console.log(newTag)
             this.options.push(tag)
             this.value.push(tag)
         }
     },
     watch:{
         value (val) {
-            // my new value in val. Perform your
-            // select update methods here
-            // let list = Object.keys(val).map((key) => {
-            //     return val[key]
-            // });
-            // console.log(list);
-            // console.log(idx);
-            // console.log(JSON.stringify(val))
             this.tagging = JSON.stringify(val)
         }
     }

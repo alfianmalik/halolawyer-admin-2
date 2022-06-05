@@ -135,11 +135,9 @@ class LawyersController extends Controller
 
 			if ($request->specialization["list"]) {
 				$specializations = json_decode($request->specialization['list']);
-                // dd($specializations);
 				foreach($specializations as $idx => $lists) {
 					foreach($lists as $idx => $list) {
                         $case = CaseCategory::find($list->pivot->case_category_id);
-                        // dd($case);
                         $lawyer_category = $lawyer->lawyers_category()->create([
                             'case_category_id' => $list->pivot->case_category_id,
                             'name' => $case->name,
@@ -176,6 +174,9 @@ class LawyersController extends Controller
 		return redirect()->route("lawyers")->with("status", "Successfully adding Mitra");;
 	}
 
+    /**
+     *
+     */
 	public function edit(Request $request)
 	{
 		# code...
@@ -183,7 +184,8 @@ class LawyersController extends Controller
 		$specialization = Specialization::all();
 		$lawyer = Lawyers::whereUuid($request->uuid)->first();
 		$lawyer_specializations = $lawyer->lawyers_specialization;
-		$lawyer_categories = $lawyer->lawyers_category;
+        // dd($lawyer->lawyers_category->groupBy("case_category_id")->toArray());
+		$lawyer_categories = $lawyer->lawyers_category->groupBy("case_category_id")->toArray();
 
 		return view('admin.lawyer.edit', compact("lawyer", "case_categories", "specialization", "lawyer_specializations", "lawyer_categories"));
 	}
@@ -288,7 +290,6 @@ class LawyersController extends Controller
 			}
 
 			if ($request->specialization) {
-				dd($request->all());
 				foreach ($request->specialization as $keys => $items) {
 					if ($items) {
 						$specializations = json_decode($request->specialization['list']);
