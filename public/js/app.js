@@ -2464,26 +2464,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default())
   },
   mounted: function mounted() {
-    var _this = this;
-
     this.items = this.lawyercategory; // console.log(this.cases)
     // console.log(this.cases)
     // console.log(this.category)
+    // Object.keys(this.items).forEach((key, index) => {
+    // console.log(key);
+    // console.log(this.items[key]);
 
-    Object.keys(this.items).forEach(function (key, index) {
-      // console.log(key);
-      // console.log(this.items[key]);
-      _this.category[index] = {
-        "id": 2,
-        "name": "Keluarga",
-        "description": "Berisi konsultasi dan layanan terkait aspek hukum keluarga, misalnya masalah perceraian, pewarisan, pengampuan dan lainnya.",
-        "icon": "",
-        "is_activated": 1,
-        "deleted_at": null,
-        "created_at": "2022-03-09T02:15:00.000000Z",
-        "updated_at": "2022-04-08T09:05:07.000000Z"
-      };
-    });
+    this.category[0] = {
+      "id": 1,
+      "name": "Keluarga",
+      "description": "Berisi konsultasi dan layanan terkait aspek hukum keluarga, misalnya masalah perceraian, pewarisan, pengampuan dan lainnya.",
+      "icon": "",
+      "is_activated": 1,
+      "deleted_at": null,
+      "created_at": "2022-03-09T02:15:00.000000Z",
+      "updated_at": "2022-04-08T09:05:07.000000Z"
+    }; // });
+
     console.log(this.category);
   },
   methods: {
@@ -2494,7 +2492,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.items.splice(index, 1);
     },
     getSpesialization: function getSpesialization(category) {
-      var _this2 = this;
+      var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -2502,7 +2500,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 axios.get("/api/get/specialization/" + category).then(function (res) {
-                  _this2.options = res.data;
+                  _this.options = res.data;
                   console.log(res.data);
                 })["catch"](function (err) {
                   console.error(err);
@@ -52899,9 +52897,7 @@ var render = function () {
                             "option",
                             {
                               key: idxi,
-                              domProps: {
-                                value: item[0].case_category_id == data.id,
-                              },
+                              domProps: { value: item[0].case_category_id },
                             },
                             [_vm._v(_vm._s(data.id))]
                           )

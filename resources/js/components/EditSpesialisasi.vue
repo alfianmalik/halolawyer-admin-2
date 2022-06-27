@@ -23,7 +23,7 @@
                             <label for="name" class="col-sm-3 col-form-label">Kategori Kasus</label>
                             <div class="col-sm-9">
                                 <select class="form-control" :name="'specialization[case]['+ index +']'" id="" @change="getSpesialization(category[index])" v-model="category[index]">
-                                    <option v-for="(data, idxi) in cases" :key="idxi" v-bind:value="item[0].case_category_id == data.id">{{ data.id }}</option>
+                                    <option v-for="(data, idxi) in cases" :key="idxi" v-bind:value="item[0].case_category_id">{{ data.id }}</option>
                                 </select>
                             </div>
                         </div>
@@ -72,12 +72,12 @@ export default {
         // console.log(this.cases)
         // console.log(this.cases)
         // console.log(this.category)
-        Object.keys(this.items).forEach((key, index) => {
+        // Object.keys(this.items).forEach((key, index) => {
             // console.log(key);
             // console.log(this.items[key]);
-            this.category[index] =
-                {"id":2,"name":"Keluarga","description":"Berisi konsultasi dan layanan terkait aspek hukum keluarga, misalnya masalah perceraian, pewarisan, pengampuan dan lainnya.","icon":"","is_activated":1,"deleted_at":null,"created_at":"2022-03-09T02:15:00.000000Z","updated_at":"2022-04-08T09:05:07.000000Z"};
-        });
+            this.category[0] =
+                {"id":1,"name":"Keluarga","description":"Berisi konsultasi dan layanan terkait aspek hukum keluarga, misalnya masalah perceraian, pewarisan, pengampuan dan lainnya.","icon":"","is_activated":1,"deleted_at":null,"created_at":"2022-03-09T02:15:00.000000Z","updated_at":"2022-04-08T09:05:07.000000Z"};
+        // });
 
         console.log(this.category)
     },
