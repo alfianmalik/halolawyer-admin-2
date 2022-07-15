@@ -11,7 +11,9 @@
                         <h2>Konsultasi Chat</h2>
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-danger  float-right" data-target="#endChat" data-toggle="modal">End Chat</button>
+                        @if(!$order->is_finished)
+                            <button class="btn btn-danger  float-right" data-target="#endChat" data-toggle="modal">End Chat</button>
+                        @endif
 
                         <!-- Modal -->
                         <div class="modal fade" id="endChat" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
