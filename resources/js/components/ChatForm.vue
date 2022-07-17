@@ -8,7 +8,6 @@
                 class="form-control input-sm"
                 placeholder="Type your message here..."
                 v-model="newMessage"
-                @keyup.enter="sendMessage"
             >
             &nbsp;&nbsp;
             <span class="input-group-btn">
@@ -30,7 +29,7 @@
         },
 
         created() {
-            
+
         },
         methods: {
             isParticipant() {

@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-md-4">
                         @if(!$order->is_finished)
-                            <button class="btn btn-danger  float-right" data-target="#endChat" data-toggle="modal">End Chat</button>
+                            <button class="btn btn-danger  float-right" data-target="#endChat" data-toggle="modal" v-if="!finished">End Chat</button>
                         @endif
 
                         <!-- Modal -->

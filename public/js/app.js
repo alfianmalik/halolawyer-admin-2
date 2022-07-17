@@ -2049,7 +2049,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["user", "conversation"],
   data: function data() {
@@ -2163,8 +2162,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       var token = document.head.querySelector('meta[name="csrf-token"]');
-      var pusher = new Pusher("", {
-        cluster: "mt1",
+      var pusher = new Pusher("cf715e6aee39e960b6bd", {
+        cluster: "ap1",
         auth: {
           headers: {
             "X-CSRF-Token": token.content
@@ -3607,8 +3606,8 @@ var app = new Vue({
       var _this = this;
 
       var token = document.head.querySelector('meta[name="csrf-token"]');
-      var pusher = new Pusher("", {
-        cluster: "mt1",
+      var pusher = new Pusher("cf715e6aee39e960b6bd", {
+        cluster: "ap1",
         auth: {
           headers: {
             "X-CSRF-Token": token.content
@@ -3676,8 +3675,8 @@ window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/d
 
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "cf715e6aee39e960b6bd",
+  cluster: "ap1",
   forceTLS: true // broadcaster: 'socket.io',
   // host: 'http://localhost:6001'
 
@@ -52161,15 +52160,6 @@ var render = function () {
         },
         domProps: { value: _vm.newMessage },
         on: {
-          keyup: function ($event) {
-            if (
-              !$event.type.indexOf("key") &&
-              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-            ) {
-              return null
-            }
-            return _vm.sendMessage.apply(null, arguments)
-          },
           input: function ($event) {
             if ($event.target.composing) {
               return
