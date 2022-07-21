@@ -74,14 +74,16 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix' => 'admin
 
 });
 
-Route::group(['namespace' => 'User','middleware' => 'auth' ,'prefix' => 'user'],function(){
+Route::group(['namespace' => 'User', 'middleware' => 'auth' ,'prefix' => 'user'],function(){
 	Route::get('/', [UserController::class,'index'])->name('user');
+    Route::get('/new', [UserController::class,'new'])->name('user.new');
+    Route::post('/new/store', [UserController::class,'newPost'])->name('user.new.store');
 	Route::get('/edit/{uuid}', [UserController::class,'edit'])->name('user.edit');
 	Route::post('/edit/{uuid}', [UserController::class,'editPost'])->name('user.post.edit');
 });
 
 
-Route::group(['namespace' => 'Lawyer','middleware' => 'auth' ,'prefix' => 'lawyers'],function(){
+Route::group(['namespace' => 'Lawyer', 'middleware' => 'auth' ,'prefix' => 'lawyers'],function(){
 	Route::get('/',[LawyersController::class,'index'])->name('lawyers');
 	Route::get('/new',[LawyersController::class,'new'])->name('lawyers.new');
 	Route::post('/post',[LawyersController::class,'newPost'])->name('lawyers.new.post');

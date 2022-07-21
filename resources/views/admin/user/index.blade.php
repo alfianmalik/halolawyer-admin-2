@@ -10,10 +10,19 @@
       </div>
       <div class="col-md-6">
         <button type="button" name="" id="" class="btn btn-outline-primary btn-sm float-right mt-1  ml-2"> <i class="fa fa-file-export"></i> Export</button>
-        <button type="button" name="" id="" class="btn btn-primary btn-sm float-right mt-1">Add New</button>
+        <a href="{{ route("user.new") }}" name="" id="" class="btn btn-primary btn-sm float-right mt-1">Add New</a>
       </div>
   </div>
   <div style="border-top: 1px solid #eee;">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
       <div class="row">
           <div class="col-md-6 mt-3">
               <div class="form-group has-search ml-3">
@@ -63,7 +72,7 @@
 
                               <!-- Button trigger modal -->
                               <i class="fa fa-eye cursor-pointer" data-toggle="modal" data-target="#modelUser{{ $user->id }}"></i>
-                                                            
+
                               <!-- Modal -->
                               <div class="modal fade" id="modelUser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
@@ -97,12 +106,12 @@
                                                         <div>Tanggal Registrasi</div>
                                                         <div class="text-reset font-weight-normal">{{ date("d F Y", strtotime($user->created_at)) }}</div>
                                                     </div>
-    
+
                                                     <div class="my-2">
                                                         <div>Jenis Kelamin</div>
                                                         <div class="font-weight-normal">{{ !$user->gender?"-":$user->gender }}</div>
                                                     </div>
-    
+
                                                     <div class="my-2">
                                                         <div>Tanggal Lahir</div>
                                                         <div class="font-weight-normal">{{ $user->bod }}</div>
