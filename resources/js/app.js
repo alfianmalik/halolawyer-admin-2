@@ -80,16 +80,15 @@ const app = new Vue({
         },
         startChatPusher() {
             let token = document.head.querySelector('meta[name="csrf-token"]');
-      
+
             let pusher = new Pusher(process.env.MIX_PUSHER_APP_KEY, {
               cluster: process.env.MIX_PUSHER_APP_CLUSTER,
               auth: { headers: { "X-CSRF-Token": token.content } },
               authEndpoint: "/broadcasting/auth",
             });
-      
+
             let channel = pusher.subscribe(
-              `private-m
-              c-start-chat-conversation.${conversation.id}`
+              `private-mc-start-chat-conversation.${conversation.id}`
             );
             channel.bind("App\\Events\\StartTimeChat", data => {
                 // console.log(new Date().getTime() + 10000)
